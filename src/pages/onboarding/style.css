@@ -1,0 +1,62 @@
+/****** WELCOME PAGE ******/
+.onboard-header {
+  max-height: 50vh;
+  width: 100vw;
+}
+
+.onboard-img {
+  max-height: 50vh;
+  width: 100%;
+  object-fit: cover;
+}
+
+.content {
+  background-color: #FFFFFF;
+  color: #000;
+  font-weight: 400;
+}
+
+.custom-shape-divider-bottom-1629923973 {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
+  bottom: 43vh;
+}
+
+.custom-shape-divider-bottom-1629923973 svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 154px;
+}
+
+.custom-shape-divider-bottom-1629923973 .shape-fill {
+  fill: #FFFFFF;
+}
+.content-title {
+
+}
+
+.content-paragraph {
+
+}
+
+.section-continue-button {
+
+}
+
+.continue-button {
+
+}
+
+.section-skip-button {
+
+}
+
+.skip-button {
+  
+}
+
