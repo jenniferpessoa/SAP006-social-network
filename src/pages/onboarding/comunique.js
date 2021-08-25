@@ -24,7 +24,7 @@ export const Comunique = () => {
     </main>
 
     <section class="section-continue-button">
-      <button data-continue id="btn-continue">Continuar</button>
+      <button data-continue id="btn-continue" class="btn-continue">Continuar</button>
     </section>
   </section>
   `;

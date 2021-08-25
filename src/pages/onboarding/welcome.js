@@ -16,7 +16,8 @@ export const Welcome = () => {
 
     <section class="content">
       <header class="content-title">
-        Vamos navegar...
+        Vamos<br>
+        navegar...
       </header>
 
       <main class="content-paragraph">
@@ -24,7 +25,7 @@ export const Welcome = () => {
       </main>
 
       <section class="section-continue-button">
-        <button data-continue id="btn-continue">Continuar</button>
+        <button data-continue id="btn-continue" class="btn-continue">Continuar</button>
       </section>
 
       <section class="section-skip-button">
