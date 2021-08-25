@@ -75,8 +75,9 @@ body, .menu {
   .menu-nav.active .menu {
     height: calc(100vh - 60px);
     visibility: visible;
-    height: 40%; /* devemos escolher se o menu precisa ocupar toda a tela*/
+    height: 20%; /* devemos escolher se o menu precisa ocupar toda a tela*/
     /*overflow-y: auto;*/
+    text-align: center;
   
   }
 

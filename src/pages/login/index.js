@@ -42,7 +42,14 @@ export const Login = () => {
         </form>
       </section>
     </section>
+
   </main>
+  
+  <footer class="audiobox">
+  <div class="wave one"></div>
+  <div class="wave two"></div>
+ <div class="wave three"></div>
+ </footer>
   `;
 
   const keepLogged = root.querySelector('#keep-me-logged');
@@ -67,7 +74,7 @@ export const Login = () => {
     window.location.replace('/reset');
   });
 
-  btnSignUp.addEventListener('click', () => { //Aqui não podemos chamar a navigation?
+  btnSignUp.addEventListener('click', () => { // Aqui não podemos chamar a navigation?
     window.history.pushState({}, '', '/signup');
     const popStateEvent = new PopStateEvent('popstate', { state: {} });
     dispatchEvent(popStateEvent);
