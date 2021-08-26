@@ -25,30 +25,26 @@ const routeRender = () => {
   };
 
   auth.onAuthStateChanged((user) => {
-
     if (!user && (path !== '/signup' || path !== '/login')) {
       window.history.replaceState(null, null, path);
-    };
+    }
     if (user && (path === '/' || path === '/login' || path === '/signup')) {
       path = '/feed';
       window.history.replaceState(null, null, path);
-    };
+    }
     if (!user && (path === '/feed')) {
       path = '/login';
       window.history.replaceState(null, null, path);
       // window.location.reload();
-    };
+    }
 
     elements.innerHTML = '';
     elements.appendChild(routes[path]());
-
   });
+};
 
-}
-
-  window.addEventListener('popstate', routeRender);
-  window.addEventListener('load', routeRender);
-
+window.addEventListener('popstate', routeRender);
+window.addEventListener('load', routeRender);
 
 export const navigation = (path, state = {}) => {
   window.history.pushState(state, null, path);

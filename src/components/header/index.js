@@ -16,8 +16,8 @@ export function headerMenu() {
                 <span class='hamburguer'></span>
             </button>
             <ul class='menu'>
+                <li class='menu-a' id='feed'>HOME</li>
                 <li class='menu-a' id='profile'>PERFIL</li>
-                <li class='menu-a' id='languages'>IDIOMAS</li>
                 <li class='menu-a' id='logout'>SAIR</li>
             </ul>
         </nav>
@@ -46,18 +46,6 @@ export function headerMenu() {
         window.history.pushState('nulo', 'nulo', '/profile');
         const popStateEvent = new PopStateEvent('popstate', {});
         dispatchEvent(popStateEvent);
-        break;
-
-      case 'languages':
-        // const templateDeleteConfirmation = `
-        // <div>
-        //   <p>IDIOMAS</p>
-        //   <i data-port='port' class='lang-port'>port</i>
-        //   <i data-port='eng' class='lang-port'>eng</i>
-        // </div>
-        // `;
-        popUpNotice();
-        
         break;
 
       case 'logout':

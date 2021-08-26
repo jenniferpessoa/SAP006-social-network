@@ -1,61 +1,82 @@
 /*@import url('../../components/header/style-header.css'); 
 @import url('../../components/posts/style.css'); */
 @import url('../../pages/onboarding/style.css');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap');
 
 * {
   margin: 0;  
   padding: 0;
-  font-family: 'Poppins', sans-serif;
-  /*box-sizing: border-box;*/
+  /* font-family: 'Poppins', sans-serif; */
+  box-sizing: border-box;
+  justify-content: center;
+  font-family: 'Raleway', sans-serif;
+  font-weight: bold;
   
 }
 
 body {    
   width: 100%;
-  height: 100vh;
+  height: 100%;
   /*display: flex;*/
   justify-content: center;  
-  background-color: #FFF;
+  background-color: #BDD7E9
   /* background: linear-gradient(180deg, rgba(68, 136, 182, 0.418) 16.67%, rgba(114, 183, 211, 0.25) 100%); */
-  background-attachment: fixed;
+  /* background-attachment: fixed; */
+  /* background-image: url(./img/agua.jpg) */
+  /* background-color: #E5E5E5; */
 }
 
 .logo {
   margin-bottom: 50px;
   font-weight: bold;
   font-size: 15px;
-  color: #ffff;
+  color: rgb(14, 13, 13);
   text-align: center;  
+}
+
+.bombordo {
+  width: 20%;
+  margin: 25px;
+    /* justify-content: center;
+    margin: -4% 0% -11% 37%; */
+}
+
+.rede {
+  color: black;
+  margin-bottom: 8%;
+  justify-content: center;
 }
 
 .container {
   display:flex;
-  width: 60vw;
-  height: 60vh;
-  border-radius: 20px;
-  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+  /* width: 50vw; */
+  /*height: 60vh; */
+  /* box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2); */
   margin-left: auto; /*para manter o body sem display flex*/
-  margin-right: auto; /*para manter o body sem display flex*/
+  /* margin-right: auto; para manter o body sem display flex */
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: -65px;
 }
 
-.img-container {  
-  width: 50%;
-  height: 100%;
-  border-radius: 20px 0 0 20px;
-  background-image: url(img/login-image.png);
-  background-size: cover;
-}
-
-.login-container {
-  border-radius: 0 20px 20px 0;
-  width: 50%;
+.opt-login {
+  /* width: 50%; */
   background-color: white;
+  border-radius: 20px 0 0 0 ;
 }
 
 .form-container {
   display: flex;
   flex-direction: column;    
-  padding:30px;
+  padding: 30px;
+  background-color: #ffffff;
+  border-radius: 0% 0% 5% 5%;
+  width: 25%;
+  justify-content: center;  
+  align-items: center;
+  
 }
 
 .form-options {
@@ -64,6 +85,7 @@ body {
   height: 7vh;
   line-height: 3;    
   text-align: center;  
+  width: 25%;
 }
 
 .opt-login, .opt-signup {
@@ -74,45 +96,59 @@ body {
   transition: 0.3 ease;  
 }
 
+
 .opt-signup {
   border-radius: 0 20px 0 0 ;
+  background-color: #123249;
+  color: #FFF;
 }
 
 .form-options span:hover {
   color: white;
-  background-color:#FEB15E;
+  background-color: #E6B76C;
 }
 
-.form-fields label {
-  color: rgb(85, 84, 84);
+.form-fields  {
+  color: #123249;
   margin-bottom: 5px;
   display: inline-block;
+  
 }
 
 .form-item {
   width: 100%;
-  padding: 8px 13px;
+  padding: 7px;
   outline: none;
   border: 1px solid lightgray;
-  /*letter-spacing: 1px;*/
-  border-radius: 10px;  
+  /* border-radius: 10px;   */
+  border-radius: 0px 0px 8px 8px;
+  color: rgb(255, 255, 255);
+  background-color: #123249;
+  align-items: center;
 }
 
 .form-fields input:focus {
   border-color: #638FB1;
 }
 
-.input-email {
-  margin-bottom: 10px;
+.input-email, .input-password {
+  margin-bottom: 13px;
+  background-color: #FFFFFF;
+  color: black;
+  align-items: center;
 }
 
 .rememberForgot {    
-  margin-left: 10px; 
   display: flex;
-  justify-content: space-between;    
+  flex-direction: column;
+  /* justify-content: space-between; */
   color: black;
-  font-size: 12px;   
+  font-size: 12px;
+  align-items: center;
+  cursor: pointer;
+  line-height: 1.5;
 }
+
 
 .rememberForgot a {
   text-decoration: none;
@@ -128,7 +164,7 @@ body {
 
 .btn:hover{
   color: white;
-  background-color: #FEB15E;
+  background-color: #E6B76C;
 }
 
 .btn-login, .btn-signup {
@@ -138,7 +174,7 @@ body {
 .separator {  
   text-align: center;
   color: rgb(34, 33, 33);  
-  margin: 5px;
+  margin-bottom: 9px; 
 }
 
 .separator p {
@@ -162,13 +198,14 @@ body {
   }
 
   .container {
-    width: 70vw; 
-    height: 65vh;                     
+    /* width: 70vw; 
+    height: 65vh;        */
+    justify-content: center;              
   }
     
-  .img-container {
+  /* .img-container {
     display: none;
-  }
+  } */
 
   .login-container {
     width: 100%;

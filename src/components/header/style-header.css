@@ -12,7 +12,7 @@ body, .menu {
 }*/
 
 .logo-header {
-  width: 15%;
+  width: 60%;
   cursor: pointer;
 }
 
@@ -54,7 +54,7 @@ body, .menu {
 
 @media (max-width: 600px) {
   .logo-header{
-    width: 30%;
+    width: 40%;
   }
   
   .menu {
@@ -75,8 +75,9 @@ body, .menu {
   .menu-nav.active .menu {
     height: calc(100vh - 60px);
     visibility: visible;
-    height: 40%; /* devemos escolher se o menu precisa ocupar toda a tela*/
+    height: 25%; /* devemos escolher se o menu precisa ocupar toda a tela*/
     /*overflow-y: auto;*/
+    text-align: center;
   
   }
 
@@ -101,7 +102,7 @@ body, .menu {
     width: 20px;
     border-top: 2px solid;
     display: block;    
-    color: #e7e7e7;
+    color: #E6B76C;
   }
 
   .hamburguer::after, .hamburguer::before {

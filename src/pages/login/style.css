@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css?family=Gloria+Hallelujah');
+
+/* body{
+  background-color: #BFD0DC;
+} */
+
+.audiobox{
+
+height: 100%;
+width: 100%;
+top: 52%;
+left: 50%;
+position: absolute;
+overflow: hidden;
+transform: translate(-50%, -50%);
+z-index: -1;
+}
+  /* height:400px;
+  width:300px;
+  top:50%;
+  left:50%;
+  position:absolute;
+  overflow: hidden;
+  transform: translate(-50%, -50%);
+} */
+
+.wave{
+    top: 90%;
+    left: -43%; 
+    width: 1850px;
+    height: 2000px;
+    background-color: #28c0d4;
+    opacity: 0.6;
+    position: absolute;
+    border-radius: 40%;
+    /* width: 100%;
+    height: 100%; */
+
+/* 
+
+    top: 75%;
+    left: -117%;
+    width: 1000px;
+    height: 1025px;
+    background-color: #61aca9;
+    opacity: 0.6;
+    position: absolute;
+    border-radius: 40%;  */
+}
+
+.wave.one{
+    animation: wave 15s linear -1s infinite;
+    /* wave 23s linear -13s infinite; */
+}
+.wave.two{
+    animation: wave 18s linear -1s infinite;
+    /* wave 48s linear -51s infinite */
+}
+.wave.three{
+    animation: wave 21s linear -1s infinite;
+    /* wave 64s linear -36s infinite */
+}
+@keyframes wave{
+  0%{
+    transform: rotate(0deg);
+  }
+  100%{
+    transform: rotate(360deg);
+  }
+}

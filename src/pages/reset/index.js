@@ -6,7 +6,7 @@ export const Reset = () => {
   const root = document.createElement('div');
   root.innerHTML = `
   <header class='logo'>
-    <h1>>A Bordo</h1>
+    <h1>>BomBordo</h1>
     <h2>A Rede Social dos Velejadores</h2>
   </header>
   <main class='container'>  

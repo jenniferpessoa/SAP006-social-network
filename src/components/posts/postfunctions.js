@@ -61,7 +61,6 @@ const commentsPost = (idPost, container) => {
   getComments(idPost).then((snapshot) => {
     const commentsArray = snapshot.data().comments;
     console.log(snapshot.data().comments);
- 
 
     commentsArray.forEach((comment) => {
       const commentLi = document.createElement('li');
