@@ -1,5 +1,5 @@
 import {
-  navigation
+  navigation,
 } from '../../router.js';
 
 export const Comunique = () => {
@@ -29,16 +29,15 @@ export const Comunique = () => {
   </section>
   `;
 
-  const rootElement = document.createElement('div')
-  rootElement.setAttribute('class', 'comunique-container')
+  const rootElement = document.createElement('div');
+  rootElement.setAttribute('class', 'comunique-container');
   rootElement.innerHTML += template;
 
-  const continueBtn = rootElement.querySelector('#btn-continue')
+  const continueBtn = rootElement.querySelector('#btn-continue');
   continueBtn.addEventListener('click', (event) => {
-    event.preventDefault()
-    navigation('/login')
+    event.preventDefault();
+    navigation('/login');
   });
 
   return rootElement;
-
-} 
+};

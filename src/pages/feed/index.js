@@ -1,8 +1,7 @@
 // import { signOut } from "../../services/index.js";
 import { createPost, getPost, currentUser } from '../../services/index.js';
 import { printPost } from '../../components/posts/posts.js';
-import { headerMenu } from '../../components/header/index.js';
-import { profileFeed } from '../../components/profile-feed/profile-feed.js';
+import { headerMenuFeed } from '../../components/header/menuFeed.js';
 
 function loadPost() {
   getPost().then((snapshot) => {
@@ -14,9 +13,7 @@ function loadPost() {
 
 export const Feed = () => {
   // chama os outros elementos do html
-  headerMenu();
-  profileFeed();
-
+  headerMenuFeed();
   // cria a publicação do usuário
   const user = currentUser();
   const idUser = user.uid;

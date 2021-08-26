@@ -45,7 +45,7 @@ const signOut = () => {
     .auth()
     .signOut()
     .then(() => {
-      window.location.replace('/');
+      window.location.replace('/login');
     })
     .catch((error) => {
     });
@@ -98,9 +98,11 @@ const createHome = (user) => firebase.firestore().collection('home').doc(user.us
 const getHome = (uid) => firebase.firestore().collection('home').where('userId', '==', uid).get()
   .then((snapshot) => snapshot);
 
+const infoBoat = (idUser) => firebase.firestore().collection('home').doc(idUser).get();
+
 export {
   loginEmailAndPassword, loginWithGmail, signUpWithEmailAndPassword, keepMeLogged, resetPassword,
   signOut, createPost, createComment, getPost, getComments, updatePost, deletePostFeed,
   currentUser, createHome, getHome, uploadPicture, downloadPicture, likePost, getLikes, unlikePost,
-  deletePostComment,
+  deletePostComment, infoBoat,
 };

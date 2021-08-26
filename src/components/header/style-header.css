@@ -1,133 +1,70 @@
+@import url("../../components/popup/style.css");
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap');
 @import url('../../components/popup/style.css'); 
 
-body, .menu {
-  margin: 0px;
-  padding: 0px;  
-  font-family: 'Montserrat', sans-serif;
-  color:beige; 
-}
-/*@font-face { 
-  font-family: Montserrat;
-  src: url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
-}*/
-
-.logo-header {
-  width: 60%;
-  cursor: pointer;
-}
-
-.menu-header { 
-  box-sizing: border-box;
-  width: 100%;
-  height: 10%;
-  padding: 0.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: #1f1f4b;
-  color: #e7e7e7;
-}
 
 .menu {
+  font-family: 'Raleway', sans-serif;
   display: flex;
-  list-style: none;
-  gap: .5rem;
+  flex-flow: column nowrap;
+  justify-content: center;
+  width: 25%;
+  height: 100%;
+  background-color: #29465C;
+  box-shadow: rgb(0 0 0 / 35%) 0px 5px 15px;
+  color: #fff;
+  position: fixed;
+  top: 0;
 }
-
-.menu-a {
-  color: black;
-  text-decoration: none;
-  display: block;
-  padding: .5rem;
-  color: #e7e7e7;
-  cursor: pointer;
-}
-
-.menu-a:hover {
-  background: rgba(0, 0, 0, .05);
-  color: #ffd632;
-}
-
-.btn-mobile {
-  display: none;
-}
-
-@media (max-width: 600px) {
-  .logo-header{
-    width: 40%;
-  }
-  
-  .menu {
-    display: block;    
-    position: absolute;
-    width: 50%;
-    /*top: 60px;*/
-    right: 0;
-    background: #1f1f4b;
-    height: 0;
-    transition: .6s;
-    z-index: 1000;
-    visibility: hidden;
-    overflow-y: hidden;
-    
-  }
-
-  .menu-nav.active .menu {
-    height: calc(100vh - 60px);
-    visibility: visible;
-    height: 25%; /* devemos escolher se o menu precisa ocupar toda a tela*/
-    /*overflow-y: auto;*/
-    text-align: center;
-  
-  }
-
-  .menu-a {
-    padding: 1rem 0;
-    margin: 0 1rem;
-    border-bottom: 2px solid rgba(0, 0, 0, .05);
-  }
-
-  .btn-mobile {
-    display: flex;
-    padding: .5rem 1rem;
-    font-size: 1rem;
-    border: none;
-    background: none;
+.logo-header {
     cursor: pointer;
-    gap: .5rem;
-
+    width: 70%;
+    margin: 5% auto;
   }
-
-  .hamburguer {
-    width: 20px;
-    border-top: 2px solid;
-    display: block;    
-    color: #E6B76C;
+.profile,
+.btnLogout {
+  color: #fff;
+  border: none;
+  background: none;
+  cursor: pointer;
+  margin: 5%;
+  font-size: 20px;
+}
+.navProfile {
+    display: flex;
+    flex-flow: column nowrap;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.692);
+    width: 80%;
+    border-radius: 5%;
+    margin: 5% auto;
+    padding: 5%;
+    box-shadow: rgb(140, 166, 189) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
   }
+.profile{
+    text-align: center;
+    letter-spacing: 2px;
+    color:#29465C;
+    text-shadow: 2px 0px #29465C;
+}
 
-  .hamburguer::after, .hamburguer::before {
-    content: '';
-    display: block;
-    width: 20px;
-    height: 2px;
-    background: currentColor;
-    margin-top: 5px;
-    transition: .3s;
-    position: relative;
+.profilePhoto {
+    margin-inline: auto;
+    width: 60%;
+    border-radius: 10%;
+    border: solid 1px #29465C;
   }
+.userName, .boatName{
+    font-family: 'Raleway', sans-serif;
+    font-weight: bold;
+    text-align: center;
+    padding: 5%;
+    color: #000;
 
-  .menu-nav.active .hamburguer {
-    border-top-color: transparent;      
-  }
-
-  .menu-nav.active .hamburguer::before {
-    transform: rotate(135deg);
-  }
-
-  .menu-nav.active .hamburguer::after {
-    transform: rotate(-135deg);
-    top: -7px;
-  }
+}
+.btnLogout{
+    font-family: 'Raleway', sans-serif;
+    text-shadow: 2px 2px #000000;
 }
 
 
