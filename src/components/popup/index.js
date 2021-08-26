@@ -1,4 +1,4 @@
-const popUpNotice = (template) => {
+export const popUpNotice = (template) => {
   const root = document.querySelector('.root');
 
   const popupContainer = document.createElement('div');
@@ -23,7 +23,6 @@ const popUpNotice = (template) => {
   }
   exibeModal();
 
-
   popup.addEventListener('click', (event) => {
     const classNameOfClickedElement = event.target.classList[0];
     const classNames = ['popup-close', 'popup-wrapper'];
@@ -35,18 +34,18 @@ const popUpNotice = (template) => {
     }
   });
   return root;
-}
+};
 
 // export const popUpConfirmDelete = () => {
 //   const root = document.querySelector('.root');
 
 //   const popupContainer = document.createElement('div');
-//   popupContainer.innerHTML = ` 
-   
+//   popupContainer.innerHTML = `
+
 //       <div class='popup-wrapper'>
 //           <div class='popup'>
 //             <div class='popup-close'> x </div>
-//             <div class='popup-content'></div>      
+//             <div class='popup-content'></div>
 //           </div>
 //         </div>
 //     `;
@@ -66,7 +65,7 @@ const popUpNotice = (template) => {
 //     // `;
 //   }
 //   exibeModal();
-  
+
 //   popup.addEventListener('click', (event) => {
 //     const classNameOfClickedElement = event.target.classList[0];
 //     const classNames = ['popup-close', 'popup-wrapper'];
@@ -78,8 +77,4 @@ const popUpNotice = (template) => {
 //     }
 //   });
 //   return root;
-// }
-
-export { popUpNotice }
-
- 
+// };
