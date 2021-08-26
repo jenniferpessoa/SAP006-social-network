@@ -117,11 +117,12 @@ function printPost(post) {
       }
 
       if (e.dataset.save) {
-        const saveTextarea = document.querySelector(`#${event.target.id}`).parentNode.parentNode.previousElementSibling.value;
+        const saveTextarea = document.querySelector(`#${event.target.id}`).parentNode.parentNode.previousElementSibling;
         const editionBtns = document.querySelector(`#${event.target.id}`).parentNode;
         const postId = (document.querySelector(`#${event.target.id}`)).parentNode.parentNode.parentNode.parentNode.children[0].getAttribute('id');
         editionBtns.style.display = 'none';
-        updatePost(postId, saveTextarea);
+        updatePost(postId, saveTextarea.value);
+        saveTextarea.setAttribute('disabled');
       }
 
       if (e.dataset.cancel) {
