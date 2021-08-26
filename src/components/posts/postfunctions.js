@@ -66,7 +66,7 @@ const commentsPost = (idPost, container) => {
   getComments(idPost).then((snapshot) => {
     const commentsArray = snapshot.data().comments;
 
-    commentsArray.forEach((comment) => {
+      commentsArray.forEach((comment) => {
       const commentLi = document.createElement('li');
       const commentId = comment.date.replaceAll(/[/: ]/g, '');
       commentLi.classList.add('comment-main-level');
