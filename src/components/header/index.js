@@ -1,5 +1,5 @@
 import { signOut } from '../../services/index.js';
-import { popUpNotice } from '../../components/popup/index.js'
+import { popUpNotice } from '../popup/index.js';
 // import { popUpNotice } from '../../components'
 
 export function headerMenu() {
@@ -49,10 +49,15 @@ export function headerMenu() {
         break;
 
       case 'languages':
-        const templateDeleteConfirmation = `
-        <div>IDIOMAS</div>
-        `;      
-        popUpNotice(templateDeleteConfirmation);
+        // const templateDeleteConfirmation = `
+        // <div>
+        //   <p>IDIOMAS</p>
+        //   <i data-port='port' class='lang-port'>port</i>
+        //   <i data-port='eng' class='lang-port'>eng</i>
+        // </div>
+        // `;
+        popUpNotice();
+        
         break;
 
       case 'logout':
@@ -65,13 +70,8 @@ export function headerMenu() {
         dispatchEvent(popSStateEvent);
         break;
       default:
-        return //ele precisa retornar algo que mantenha o usuário na tela atual
+        return; // ele precisa retornar algo que mantenha o usuário na tela atual
     }
     nav.classList.remove('active');
   });
-
-
-
-
-  
 }

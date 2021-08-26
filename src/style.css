@@ -1,11 +1,11 @@
-/*@import url('../../components/header/style-header.css'); 
-@import url('../../components/posts/style.css'); */
+/*@import url('../../components/header/style-header.css'); */
+@import url('../../components/posts/style-comments.css'); 
 
 * {
   margin: 0;  
   padding: 0;
   font-family: 'Poppins', sans-serif;
-  box-sizing: border-box;
+  /*box-sizing: border-box;*/
   
 }
 
