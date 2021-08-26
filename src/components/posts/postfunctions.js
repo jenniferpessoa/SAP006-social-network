@@ -1,6 +1,6 @@
 /* eslint-disable spaced-comment */
 import {
-  getComments, deletePostFeed, likePost, getLikes, unlikePost, currentUser,
+  getComments, deletePostFeed, likePost, getLikes, unlikePost, currentUser, deletePostComment,
 } from '../../services/index.js';
 
 const deletePost = (idPost, post) => {
@@ -57,13 +57,18 @@ const sendLike = (idUser, idPostClicked, numLikes, likeIcon) => {
   }).catch('error');
 };
 
+const deleteComment = (idPost, comment, commentUL, commentLi) => {
+  commentUL.removeChild(commentLi);
+  deletePostComment(idPost, comment);
+};
+
 const commentsPost = (idPost, container) => {
   getComments(idPost).then((snapshot) => {
     const commentsArray = snapshot.data().comments;
-    console.log(snapshot.data().comments);
 
-      commentsArray.forEach((comment) => {
+    commentsArray.forEach((comment) => {
       const commentLi = document.createElement('li');
+      const commentId = comment.date.replaceAll(/[/: ]/g, '');
       commentLi.classList.add('comment-main-level');
       const commentTemplate = `
             <div class='comment-avatar'><img src='../../img/profileImg.png' class='imgComment' alt=''></div>
@@ -72,11 +77,19 @@ const commentsPost = (idPost, container) => {
               <div class="comment-head">
                 <h6 class="comment-name by-author">${comment.name}</h6>
                 <span>${comment.date}</span>
+                &nbsp;
+                <button type='button' id='delete-${commentId}' class='deleteComment' style="display:${currentUser().uid === comment.idUser ? 'block' : 'none'}" >Delete</button>
                 </div>
               <div class="comment-content">${comment.text}</div>            
             </div>
            `;
       commentLi.innerHTML = commentTemplate;
+      const deleteBtn = commentLi.querySelector(`#delete-${commentId}`);
+
+      deleteBtn.addEventListener('click', (event) => {
+        event.stopPropagation();
+        deleteComment(idPost, comment, container, commentLi);
+      });
 
       const picturePost = commentLi.querySelector('.imgComment');
 

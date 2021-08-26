@@ -81,6 +81,8 @@ const updatePost = (idPost, post) => firebase.firestore().collection('post').doc
 
 const deletePostFeed = (idPost) => firebase.firestore().collection('post').doc(idPost).delete();
 
+const deletePostComment = (idPost, comment) => firebase.firestore().collection('post').doc(idPost).update({ comments: firebase.firestore.FieldValue.arrayRemove(comment) });
+
 const getLikes = (idPost) => firebase.firestore().collection('post').doc(idPost).get();
 
 const likePost = (idUser, idPost) => firebase.firestore().collection('post').doc(idPost).update({ likes: firebase.firestore.FieldValue.arrayUnion(idUser) });
@@ -100,7 +102,7 @@ const infoBoat = (idUser) => firebase.firestore().collection('home').doc(idUser)
 
 export {
   loginEmailAndPassword, loginWithGmail, signUpWithEmailAndPassword, keepMeLogged, resetPassword,
-  signOut, createPost, getPost, updatePost, deletePostFeed, currentUser, createHome, getHome,
-  uploadPicture, downloadPicture, likePost, getLikes, unlikePost, infoBoat, createComment,
-  getComments,
+  signOut, createPost, createComment, getPost, getComments, updatePost, deletePostFeed,
+  currentUser, createHome, getHome, uploadPicture, downloadPicture, likePost, getLikes, unlikePost,
+  deletePostComment, infoBoat,
 };
