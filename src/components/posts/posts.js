@@ -37,8 +37,9 @@ const Post = (photoPost, nameUserPost, text, idUserPost, idPost, dateP, likesPos
       <section data-showcomments='${idPost}' id='showcomments-${idPost}' class='showcomments'>
         <div class="comments-container">
           <p class='username'></p> 
-          <textarea data-commentInput='${idPost}' class='commentInput' type='text' placeholder='Sua Mensagem'></textarea>      
-          <button type='button' data-send='${idPost}'>Publicar</button>
+          <textarea data-commentInput='${idPost}' class='commentInput' type='text' placeholder='Sua Mensagem'></textarea>
+          <label for="form7">Send your comment</label>      
+          <button type='button' data-send='${idPost}' class='sendComment'>Publicar</button>
           <ul data-listcomments='${idPost}' class='comments-list'>
           
           </ul>
@@ -96,7 +97,7 @@ function printPost(post) {
 
     if (commentsShow) {
       postElement.querySelector('[data-showcomments]').style.display = 'block';
-      /*commentUl.innerHTML = '';*/
+      
       commentsPost(commentsIdPost, commentUl);
     }
 
@@ -106,7 +107,7 @@ function printPost(post) {
 
     if (sendComment === sectionCommentId) {
       const commentText = postElement.querySelector('[data-commentInput]');
-
+      
       const commentObj = {
         idUser,
         idPost,
@@ -116,6 +117,8 @@ function printPost(post) {
         date: date.toLocaleString('pt-BR'),
       };
       console.log(commentObj.idPost);
+
+      commentText.innerHTML = '';
 
       //cria o comentário com a função do services
       createComment(commentObj.idPost, commentObj);
