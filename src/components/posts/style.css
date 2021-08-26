@@ -1,4 +1,4 @@
-@import url("../../components/popup/style.css");
+@import url("../../components/popup/style-comments.css");
 
 /*** Botões dos posts ***/
 
@@ -19,7 +19,20 @@
 }
 
 .edition-btns {
+  width: 30vw;
   display: none;
+  background-color: blue;
+  margin-right: 10%;
+  list-style: none;
+  gap: .5rem;
+  
+
+}
+
+
+.commentBtn {
+  background-color: blue;
+  margin-right: 40%;
 }
   
 .likeBtn {
@@ -33,7 +46,7 @@
   display: block;
 }
 
-.editBtn {
+.editBtn, .deleteBtn {
   border: none;
   border-radius: 5px;
   padding: 5px;
@@ -44,13 +57,13 @@
   display: none;
 }
 
-.deleteBtn {
+.saveEditBtn, .cancelEditBtn {
   border: none;
   border-radius: 5px;
-  padding: 5px;
-  margin-right: 1%;
+  margin: 5%;
   background-color: #ffd632;
   color: #1f1f4b;
   width: 60px;
   display: none;
 }
+

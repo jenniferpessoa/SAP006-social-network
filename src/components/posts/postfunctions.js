@@ -1,6 +1,6 @@
 /* eslint-disable spaced-comment */
 import {
-  deletePostFeed, likePost, getLikes, unlikePost,
+  getComments, deletePostFeed, likePost, getLikes, unlikePost, currentUser,
 } from '../../services/index.js';
 
 const deletePost = (idPost, post) => {
@@ -30,8 +30,7 @@ const deletePost = (idPost, post) => {
     const answerUser = event.target.id;
 
     if (answerUser === 'yes') {
-      deletePostFeed(idPost);
-      post.remove();
+      deletePostFeed(idPost).then(post.remove());
       popup.style.display = 'none';
     } else {
       popup.style.display = 'none';
@@ -58,4 +57,35 @@ const sendLike = (idUser, idPostClicked, numLikes, likeIcon) => {
   }).catch('error');
 };
 
-export { deletePost, sendLike };
+const commentsPost = (idPost, container) => {
+  getComments(idPost).then((snapshot) => {
+    const commentsArray = snapshot.data().comments;
+    console.log(snapshot.data().comments);
+
+    commentsArray.forEach((comment) => {
+      const commentLi = document.createElement('li');
+      commentLi.classList.add('comment-main-level');
+      const commentTemplate = `
+            <div class='comment-avatar'><img src='../../img/profileImg.png' class='imgComment' alt=''></div>
+
+            <div class="comment-box">
+              <div class="comment-head">
+                <h6 class="comment-name by-author">${comment.name}</h6>
+                <span>${comment.date}</span>
+                </div>
+              <div class="comment-content">${comment.text}</div>            
+            </div>
+           `;
+      commentLi.innerHTML = commentTemplate;
+
+      const picturePost = commentLi.querySelector('.imgComment');
+
+      if (comment.photo) {
+        picturePost.src = comment.photo;
+      }
+      container.prepend(commentLi);
+    });
+  });
+};
+
+export { deletePost, sendLike, commentsPost };

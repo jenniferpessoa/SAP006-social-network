@@ -48,13 +48,6 @@ export function headerMenu() {
         dispatchEvent(popStateEvent);
         break;
 
-      case 'languages':
-        const templateDeleteConfirmation = `
-        <div>IDIOMAS</div>
-        `;
-        popUpNotice(templateDeleteConfirmation);
-        break;
-
       case 'logout':
         signOut();
         break;

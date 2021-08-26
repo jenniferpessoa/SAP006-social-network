@@ -1,6 +1,7 @@
 @import url('../../components/header/style-header.css'); 
 @import url('../../components/profile-feed/style-profile-user.css');
 @import url('../../components/posts/style.css'); 
+@import url('../../components/posts/style-comments.css'); 
 
 
 .postContainer {

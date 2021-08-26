@@ -1,5 +1,5 @@
 import {
-  navigation
+  navigation,
 } from '../../router.js';
 
 export const Welcome = () => {
@@ -51,5 +51,4 @@ export const Welcome = () => {
   });
 
   return rootElement;
-
-}
+};
