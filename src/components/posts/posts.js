@@ -153,7 +153,7 @@ function printPost(post) {
       editionBtns.style.display = 'none';
       saveEditButton.style.display = 'block';
       cancelEditButton.style.display = 'block';
-      postElement.querySelector('[data-btnsEd]').style.display = 'block';
+      postElement.querySelector('[data-btnsEd]').style.display = 'flex';
       editTextarea.removeAttribute('disabled');
       editTextarea.focus();
     }
