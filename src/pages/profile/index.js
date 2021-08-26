@@ -21,7 +21,7 @@ export const Profile = () => {
       
         <div class='redefinition'>
         <a href='#' id='reset'>Redefinir senha</a>
-      </div>
+        </div>
 
           <section class='profile-image-container'>
             <label class='label-image'>
@@ -61,6 +61,12 @@ export const Profile = () => {
       </form>
     </section>
   </main>
+  </main>
+  <footer class="audiobox">
+  <div class="wave one"></div>
+  <div class="wave two"></div>
+ <div class="wave three"></div>
+ </footer>
   `;
 
   // upload da imagem:  storage.ref(`images/${loggeduserId}`).put(file);

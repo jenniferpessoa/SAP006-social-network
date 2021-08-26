@@ -7,7 +7,7 @@
 
 .profile-container {
   display: inline-block;
-  align-items: center;
+  justify-content: center;
 }
   
 .profile-image-container {
@@ -15,6 +15,7 @@
   width: 25%;
   height: auto;
   text-align: center;
+  justify-content: center;
 }
   
 .profile-image-container input[type='file'] {
@@ -25,6 +26,7 @@
   position: relative;
   width: 120px;
   height: 120px;
+  justify-content: center;
 }
   
 .avatar-image {
@@ -56,7 +58,7 @@
   
 .avatar-figcaption:hover{
   opacity: 1;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(241, 238, 238, 0.315);
 }
   
 .avatar-figcaption > img {
@@ -67,7 +69,7 @@
   
 /*informações do perfil*/
 .profile-form {
-  display: inline-flex;
+  /* display: inline-flex; */
 }
   
 .fieldset-container {
@@ -94,17 +96,21 @@
 
 p {
   padding-top: 5%;
+  font-weight: bold;
 }
 
 .redefinition { 
   display: flex; 
   justify-content: flex-end;
+
 }
 
 .redefinition a {
-  color: #1B47AD;
+  color: #fe424d;
   text-decoration: none;
   font-size: 12px;
+  font-weight: bold;
+  font-size: 16px;
 }
   
 .saveBtn {
@@ -167,6 +173,7 @@ p {
 
 @media only screen and (min-width: 600px) {
   /* For tablets: */
+
   .col-s-1 {width: 8.33%;}
   .col-s-2 {width: 16.66%;}
   .col-s-3 {width: 25%;}
@@ -179,16 +186,27 @@ p {
   .col-s-10 {width: 83.33%;}
   .col-s-11 {width: 91.66%;}
   .col-s-12 {width: 100%;}
+
 }
 
 @media only screen and (max-width:767px){
   .fieldset-container{
-    flex-wrap: wrap;
+  /* flex-wrap: wrap; */
+  justify-content: center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: revert;
+  background-color: #cfd5d8c9;
+  border-radius: 20px;
+  border: none;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
 
   }
 
   .form-fields {
-    display: contents;
+   display: contents;
   }
 
   /* .saveBtn {
@@ -212,3 +230,20 @@ p {
   .col-11 {width: 91.66%;}
   .col-12 {width: 100%;}
 }
+
+/* @media (max-width: 500px){
+  #cadastro{
+    font-size: 100%;
+  }
+
+ #google-login{
+  width: 100%;
+  margin: 8% auto;
+  }
+
+  #entrar{
+    width: 60%;
+    padding: 6px;
+    font-size: 100%
+  }
+} */

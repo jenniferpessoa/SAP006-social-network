@@ -7,29 +7,27 @@ export const Login = () => {
   const root = document.createElement('div');
   root.innerHTML = `
   <header class='logo'>
-    <h1>BomBordo</h1>
-    <h2>A Rede Social dos Velejadores</h2>
-  </header>
+  <img src='./img/logo-header.png' class='bombordo'></img>
+      </header>
+
+
   <main class='container'>  
-    <section class='img-container'>
-    </section>    
-    <section id='login' class='login-container'>
+
       <header class='form-options'>
         <span class='opt-login'>Login</span>
         <span class='opt-signup'>Cadastro</span>
       </header>
-      <section class='form-container'>
+        <section class='form-container'>
+        <h4 class="rede">A Rede Social dos Velejadores</h4>
         <form>
-          <div class='form-fields'>
-            <label for='email'>E-mail</label>
-            <input id='email' type='e-mail' class='input-email form-item'>
-              
-            <label class='label-login' for='password'>Senha</label>
-            <input id='password' type='password' class='input-password form-item'>
+           <div class='form-fields'>
+            <input id='email' type='e-mail' class='input-email form-item' placeholder="E-mail">
+            <input id='password' type='password' class='input-password form-item' placeholder="Senha">
           </div>
+
           <section class='errors'></section>
           <div class='rememberForgot' >
-            <label><input type='checkbox' id='keep-me-logged'>Manter-me conectado</label>
+            <label><input type='checkbox' id='keep-me-logged'> Mantenha-me conectado</label>
             <a href='#' id='reset'>Esqueci a senha</a>
           </div>  
 
@@ -41,10 +39,9 @@ export const Login = () => {
           </button>
         </form>
       </section>
-    </section>
-
-  </main>
+      
   
+  </main>
   <footer class="audiobox">
   <div class="wave one"></div>
   <div class="wave two"></div>

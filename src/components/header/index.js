@@ -16,6 +16,7 @@ export function headerMenu() {
                 <span class='hamburguer'></span>
             </button>
             <ul class='menu'>
+                <li class='menu-a' id='feed'>HOME</li>
                 <li class='menu-a' id='profile'>PERFIL</li>
                 <li class='menu-a' id='logout'>SAIR</li>
             </ul>

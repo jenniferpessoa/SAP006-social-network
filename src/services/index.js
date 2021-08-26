@@ -45,7 +45,7 @@ const signOut = () => {
     .auth()
     .signOut()
     .then(() => {
-      window.location.replace('/');
+      window.location.replace('/login');
     })
     .catch((error) => {
     });
