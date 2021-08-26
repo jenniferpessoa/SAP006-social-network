@@ -1,5 +1,6 @@
-/*@import url('../../components/header/style-header.css'); */
-@import url('../../components/posts/style-comments.css'); 
+/*@import url('../../components/header/style-header.css'); 
+@import url('../../components/posts/style.css'); */
+@import url('../../pages/onboarding/style.css');
 
 * {
   margin: 0;  
@@ -14,7 +15,8 @@ body {
   height: 100vh;
   /*display: flex;*/
   justify-content: center;  
-  background: linear-gradient(180deg, rgba(68, 136, 182, 0.418) 16.67%, rgba(114, 183, 211, 0.25) 100%);
+  background-color: #FFF;
+  /* background: linear-gradient(180deg, rgba(68, 136, 182, 0.418) 16.67%, rgba(114, 183, 211, 0.25) 100%); */
   background-attachment: fixed;
 }
 
