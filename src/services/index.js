@@ -69,7 +69,13 @@ const currentUser = () => firebase.auth().currentUser;
 
 const createPost = (post) => firebase.firestore().collection('post').add(post);
 
+//const createComment = (comment) => firebase.firestore.FieldValue.arrayUnion(comment);
+
+const createComment = (idPost, comment) => firebase.firestore().collection('post').doc(idPost).update({ comments: firebase.firestore.FieldValue.arrayUnion(comment) });
+
 const getPost = () => firebase.firestore().collection('post').orderBy('date', 'desc').get();
+
+const getComments = (idPost) => firebase.firestore().collection('post').doc(idPost).get();
 
 const updatePost = (idPost, post) => firebase.firestore().collection('post').doc(idPost).update({ text: post });
 
@@ -92,6 +98,6 @@ const getHome = (uid) => firebase.firestore().collection('home').where('userId',
 
 export {
   loginEmailAndPassword, loginWithGmail, signUpWithEmailAndPassword, keepMeLogged, resetPassword,
-  signOut, createPost, getPost, updatePost, deletePostFeed, currentUser, createHome, getHome,
-  uploadPicture, downloadPicture, likePost, getLikes, unlikePost,
+  signOut, createPost, createComment, getPost, getComments, updatePost, deletePostFeed,
+  currentUser, createHome, getHome, uploadPicture, downloadPicture, likePost, getLikes, unlikePost,
 };
