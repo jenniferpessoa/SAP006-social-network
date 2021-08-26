@@ -45,7 +45,7 @@ const signOut = () => {
     .auth()
     .signOut()
     .then(() => {
-      window.location.replace('/login');
+      window.location.replace('/');
     })
     .catch((error) => {
     });
@@ -69,7 +69,7 @@ const currentUser = () => firebase.auth().currentUser;
 
 const createPost = (post) => firebase.firestore().collection('post').add(post);
 
-//const createComment = (comment) => firebase.firestore.FieldValue.arrayUnion(comment);
+// const createComment = (comment) => firebase.firestore.FieldValue.arrayUnion(comment);
 
 const createComment = (idPost, comment) => firebase.firestore().collection('post').doc(idPost).update({ comments: firebase.firestore.FieldValue.arrayUnion(comment) });
 
@@ -80,6 +80,8 @@ const getComments = (idPost) => firebase.firestore().collection('post').doc(idPo
 const updatePost = (idPost, post) => firebase.firestore().collection('post').doc(idPost).update({ text: post });
 
 const deletePostFeed = (idPost) => firebase.firestore().collection('post').doc(idPost).delete();
+
+const deletePostComment = (idPost, comment) => firebase.firestore().collection('post').doc(idPost).update({ comments: firebase.firestore.FieldValue.arrayRemove(comment) });
 
 const getLikes = (idPost) => firebase.firestore().collection('post').doc(idPost).get();
 
@@ -100,4 +102,5 @@ export {
   loginEmailAndPassword, loginWithGmail, signUpWithEmailAndPassword, keepMeLogged, resetPassword,
   signOut, createPost, createComment, getPost, getComments, updatePost, deletePostFeed,
   currentUser, createHome, getHome, uploadPicture, downloadPicture, likePost, getLikes, unlikePost,
+  deletePostComment,
 };
