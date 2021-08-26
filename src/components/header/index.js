@@ -1,5 +1,5 @@
 import { signOut } from '../../services/index.js';
-import { popUpNotice } from '../popup/index.js';
+//import { popUpNotice } from '../popup/index.js';
 // import { popUpNotice } from '../../components'
 
 export function headerMenu() {

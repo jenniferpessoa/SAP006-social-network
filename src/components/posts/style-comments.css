@@ -1,8 +1,9 @@
 .showcomments {
     display: none;
-    position: absolute;
+   /* position: absolute;*/
     background-color: white;
-    padding: 5px;    
+    padding: 5px;
+    border-radius: 10px;    
   }
 
 .commentInput {
@@ -26,7 +27,7 @@
    font-family: 'Poppins', sans-serif;
   /* background: #dee1e3;*/  
    margin: 60px auto 15px;
-   width: 768px;
+   width: 100%;
 
   }
   
@@ -35,9 +36,7 @@
       position: relative;
   }
   
-  /**
-   * Lineas / Detalles
-   -----------------------*/
+  /*** Lineas / Detalles  -----------------------*/
    .comments-list:before {
       content: '';
       width: 2px;
