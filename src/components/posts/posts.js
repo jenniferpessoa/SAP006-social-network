@@ -96,7 +96,7 @@ function printPost(post) {
 
     if (commentsShow) {
       postElement.querySelector('[data-showcomments]').style.display = 'block';
-      commentUl.innerHTML = '';
+      /*commentUl.innerHTML = '';*/
       commentsPost(commentsIdPost, commentUl);
     }
 
@@ -115,14 +115,15 @@ function printPost(post) {
         text: commentText.value,
         date: date.toLocaleString('pt-BR'),
       };
-      console.log(commentObj);
+      console.log(commentObj.idPost);
 
       //cria o comentário com a função do services 
-      createComment(idPost, commentObj);
+      createComment(commentObj.idPost, commentObj);
 
       //atualiza a section dos comentários 
       commentUl.innerHTML = '';
-      commentsPost(sendComment, commentUl);
+      commentsPost(commentObj.idPost, commentUl);
+      console.log(commentUl);
     }
 
 

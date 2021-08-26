@@ -77,7 +77,7 @@ export const Feed = () => {
       date: date.toLocaleString('pt-BR'),
       dateP: `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`,
       likes: [],
-      comments:[],
+      comments: [],
     };
     console.log(postObj);
     createPost(postObj);
