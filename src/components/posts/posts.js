@@ -2,14 +2,14 @@
 /* eslint-disable no-console */
 /* eslint-disable spaced-comment */
 /* eslint-disable no-restricted-syntax */
-import { updatePost, currentUser } from '../../services/index.js';
-//import { Feed } from '../../pages/feed/index.js';
-import { deletePost, sendLike } from './postfunctions.js';
+import { createComment, updatePost, currentUser } from '../../services/index.js';
+import { deletePost, sendLike, commentsPost } from './postfunctions.js';
 
 const Post = (photoPost, nameUserPost, text, idUserPost, idPost, dateP, likesPost) => {
+  const element = document.createElement('div');
   const template = `
-  <main class='postContainer' data-post id=${idUserPost}>
-    <header class='post-header' id=${idPost}>      
+  <main class='postContainer' data-post='${idPost}' id='${idUserPost}'>
+    <header class='post-header' id='${idPost}'>      
       <section class='userInfo'>
         <img id='photoPost-${idPost}' class='imageCirclePostUser' src='${photoPost}' height="40px" width="40px">
         <p class='username'>${nameUserPost}</p> 
@@ -17,70 +17,67 @@ const Post = (photoPost, nameUserPost, text, idUserPost, idPost, dateP, likesPos
       <p id='postDate' class='postDate'>${dateP}</p> 
     </header> 
     <form class='formContainer'>
-      <textarea id='textarea-${idPost}' class='postInput' placeholder='Sua Mensagem' disabled>${text}</textarea>      
+      <textarea data-textPost='${idPost}' id='${idPost}' class='postInput' placeholder='Sua Mensagem' disabled>${text}</textarea>      
+      
       <section id='section' class='postBtnContainer'>
-        <div id='edition-btns' class='edition-btns'>
-          <button data-save='save' type='button' id='save-${idPost}' class='saveEditBtn'>Save</button> 
-          <button data-cancel='cancel' type='button' id='cancel-${idPost}' class='cancelEditBtn'>Cancel</button>
-        </div>
-        <a data-num='num' id='numLike-${idPost}' class='numLikes'>${likesPost.length}</a>
-        <i data-like='like' id='like-${idPost}' class='far fa-heart'></i>
-        <button data-edit='edit' type='button' id='edit-${idPost}' class='editBtn'>Edit</button>
-        <button type='button' data-delete='delete' id='delete-${idPost}' class='deleteBtn'>Delete</button>
+        <button type='button' data-comments='${idPost}' id='comment-${idPost}' class='commentBtn'>Comments</button>
+        
+        <button data-edit='${idPost}' type='button' id='edit-${idPost}' class='editBtn'>Edit</button>
+          <ul data-btnsEd='${idPost}' id='edition-btns' class='edition-btns'>
+             <li data-saveEdit='${idPost}' type='button' id='save-${idPost}' class='saveEditBtn'>Save</li> 
+             <li data-cancelEdit='${idPost}' type='button' id='cancel-${idPost}' class='cancelEditBtn'>Cancel</li>
+          </ul>
+
+        <button type='button' data-delete='${idPost}' id='delete-${idPost}' class='deleteBtn'>Delete</button>
+
+        <a data-num='${idPost}' id='numLike-${idPost}' class='numLikes'>${likesPost.length}</a>
+        <i data-like='${idPost}' id='like-${idPost}' class='far fa-heart'></i>
+      </section> 
+      
+      <section data-showcomments='${idPost}' id='showcomments-${idPost}' class='showcomments'>
+        <div class="comments-container">
+          <p class='username'></p> 
+          <textarea data-commentInput='${idPost}' class='commentInput' type='text' placeholder='Sua Mensagem'></textarea>
+          <label for="form7">Send your comment</label>      
+          <button type='button' data-send='${idPost}' class='sendComment'>Publicar</button>
+          <ul data-listcomments='${idPost}' class='comments-list'>
+          
+          </ul>
+        </div>  
       </section>  
-    </form>    
+    </form>      
   </main>
   `;
-  return template;
+  element.innerHTML = template;
+  return element;
 };
 
 function printPost(post) {
   const user = currentUser();
   const idUser = user.uid;
-
+  const date = new Date();
   const idPost = post.id;
   const text = post.data().text;
   const idUserPost = post.data().idUser;
   const nameUserPost = post.data().name;
   const photoPost = post.data().photo;
-  // const datePost = post.data().date;
   const dateP = post.data().dateP;
   const likesPost = post.data().likes;
 
-  // const updateId = {
-  //   idPost: post.id,
-  // };
-  // updatePost(updateId, post.id);
-  // console.log(updateId);
+  const timeline2 = document.querySelector('[data-feedTimeline]');
 
-  firebase.firestore().collection('post').doc(post.id).update({
-    idPost: post.id,
-  });
+  const postElement = Post(photoPost, nameUserPost, text, idUserPost, idPost, dateP, likesPost);
+  timeline2.appendChild(postElement);
 
-  const timeline2 = document.querySelector('.feedTimeline');
-  timeline2.innerHTML += '';
-  // eslint-disable-next-line max-len
-  timeline2.innerHTML += Post(photoPost, nameUserPost, text, idUserPost, idPost, dateP, likesPost);
-
-  // const picturePost = document.querySelector(`#photoPost-${idPost}`);
-  // picturePost.src = photoPost;
-
-  const postSelected = document.querySelectorAll('[data-post]');
-  const btnLike = document.querySelector(`#like-${idPost}`);
-  const numberOfLikes = document.querySelector(`#numLike-${idPost}`);
-  const btnEdit = document.querySelector(`#edit-${idPost}`);
-  const btnSaveEdit = document.querySelector(`#save-${idPost}`);
-  const btnCancelEdit = document.querySelector(`#cancel-${idPost}`);
-  const btnDelete = document.querySelector(`#delete-${idPost}`);
+  const listOfPosts = postElement.querySelector('[data-post]');
+  const btnLike = postElement.querySelector(`#like-${idPost}`);
+  //const numberOfLikes = postElement.querySelector(`#numLike-${idPost}`);
+  const btnEdit = postElement.querySelector(`#edit-${idPost}`);
+  const btnDelete = postElement.querySelector(`#delete-${idPost}`);
 
   if (idUser === idUserPost) {
-    btnLike.style.display = 'none';
-    numberOfLikes.style.display = 'none';
     btnEdit.style.display = 'block';
     btnDelete.style.display = 'block';
-  } else {
-    btnSaveEdit.style.display = 'none';
-    btnCancelEdit.style.display = 'none';
   }
 
   if (likesPost.includes(idUser)) {
@@ -89,51 +86,95 @@ function printPost(post) {
     btnLike.classList.add('far');
   }
 
-  for (const partOfPost of postSelected) {
-    partOfPost.addEventListener('click', (event) => {
-      const e = event.target;
-      const mainPost = (document.querySelector(`#${event.target.id}`)).parentNode.parentNode.parentNode;
+  //(commentPublish == target)
+  listOfPosts.addEventListener('click', (e) => {
+    const { target } = e;
 
-      const idCreatorPost = (document.querySelector(`#${event.target.id}`)).parentNode.parentNode.parentNode.getAttribute('id');
-      const idPostClicked = (document.querySelector(`#${event.target.id}`)).parentNode.parentNode.parentNode.children[0].getAttribute('id');
-      //const deleteBtn = (event.target.id).includes('delete');
-      const likeIcon = document.querySelector(`#${event.target.id}`);
-      const numLikes = document.querySelector(`#${event.target.id}`).previousElementSibling;
+    //Botão Comentários, aparecerá a section
+    const commentsIdPost = target.dataset.comments;
+    const commentUl = postElement.querySelector('[data-listcomments]');
+    const commentsShow = postElement.querySelector('[data-comments]');
 
-      if (e.dataset.delete && idCreatorPost === idUser) {
-        deletePost(idPostClicked, mainPost);
-      }
+    if (commentsShow) {
+      postElement.querySelector('[data-showcomments]').style.display = 'block';
+      
+      commentsPost(commentsIdPost, commentUl);
+    }
 
-      if (e.dataset.like) {
-        sendLike(idUser, idPostClicked, numLikes, likeIcon);
-      }
+    //Botão Publicar comentário
+    const sendComment = target.dataset.send;
+    const sectionCommentId = target.parentNode.parentNode.parentNode.parentNode.children[0].id;
 
-      if (e.dataset.edit && idCreatorPost === idUser) {
-        const editTextarea = (document.querySelector(`#${event.target.id}`)).parentNode.previousElementSibling;
-        const editionBtns = document.querySelector(`#${event.target.id}`).previousElementSibling.previousElementSibling.previousElementSibling;
-        editionBtns.style.display = 'block';
-        editTextarea.removeAttribute('disabled');
-        editTextarea.focus();
-      }
+    if (sendComment === sectionCommentId) {
+      const commentText = postElement.querySelector('[data-commentInput]');
+      
+      const commentObj = {
+        idUser,
+        idPost,
+        name: user.displayName,
+        photo: user.photoURL,
+        text: commentText.value,
+        date: date.toLocaleString('pt-BR'),
+      };
+      console.log(commentObj.idPost);
 
-      if (e.dataset.save) {
-        const saveTextarea = document.querySelector(`#${event.target.id}`).parentNode.parentNode.previousElementSibling;
-        const editionBtns = document.querySelector(`#${event.target.id}`).parentNode;
-        const postId = (document.querySelector(`#${event.target.id}`)).parentNode.parentNode.parentNode.parentNode.children[0].getAttribute('id');
-        editionBtns.style.display = 'none';
-        updatePost(postId, saveTextarea.value);
-        saveTextarea.setAttribute('disabled');
-      }
+      commentText.innerHTML = '';
 
-      if (e.dataset.cancel) {
-        const editTextarea = (document.querySelector(`#${event.target.id}`)).parentNode.parentNode.previousSibling.previousSibling;
-        editTextarea.setAttribute('disabled', '');
-        const editionBtns = document.querySelector(`#${event.target.id}`).parentNode;
-        editionBtns.style.display = 'none';
-        //console.log(editTextarea, 'cancela mesmo <3');
-      }
-    });
-  }
+      //cria o comentário com a função do services
+      createComment(commentObj.idPost, commentObj);
+
+      //atualiza a section dos comentários
+      commentUl.innerHTML = '';
+      commentsPost(commentObj.idPost, commentUl);
+      console.log(commentUl);
+    }
+
+    //Parte das funções do Post Deletar, curtir, Editar
+    const postSelectDelete = (postElement.querySelector('[data-delete]')).parentNode.parentNode.parentNode; //está bugada, pedir ajuda da Mari
+    const deleteButton = postElement.querySelector('[data-delete]');
+    if (deleteButton === target) {
+      deletePost(idPost, postSelectDelete);
+    }
+
+    const likeIdPost = target.dataset.like;
+    const likeIcon = postElement.querySelector('[data-like]');
+    const numLikes = postElement.querySelector('[data-num]');
+    if (likeIcon === target) {
+      sendLike(idUser, likeIdPost, numLikes, likeIcon);
+    }
+
+    const editButton = target.dataset.edit;
+    const editTextarea = postElement.querySelector('[data-textPost]');
+    const editionBtns = document.querySelector('[data-edit]');
+
+    const saveEditButton = postElement.querySelector('[data-saveEdit]');
+    const cancelEditButton = postElement.querySelector('[data-cancelEdit]');
+
+    if (editButton) {
+      editionBtns.style.display = 'none';
+      saveEditButton.style.display = 'block';
+      cancelEditButton.style.display = 'block';
+      postElement.querySelector('[data-btnsEd]').style.display = 'flex';
+      editTextarea.removeAttribute('disabled');
+      editTextarea.focus();
+    }
+
+    if (saveEditButton === target) {
+      const saveTextarea = postElement.querySelector('[data-textPost]').value;
+      console.log(saveTextarea);
+      updatePost(idPost, saveTextarea);
+
+      editionBtns.style.display = 'block';
+      postElement.querySelector('[data-btnsEd]').style.display = 'none';
+    }
+
+    if (cancelEditButton === target) {
+      editTextarea.setAttribute('disabled', '');
+
+      editionBtns.style.display = 'block';
+      postElement.querySelector('[data-btnsEd]').style.display = 'none';
+    }
+  });
   return timeline2;
 }
 

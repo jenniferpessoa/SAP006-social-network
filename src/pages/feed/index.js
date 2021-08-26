@@ -23,7 +23,7 @@ export const Feed = () => {
   const root = document.createElement('main');
   root.classList.add('feed-container');
   root.innerHTML = `  
-    <main class='postContainer'>
+    <div class='postContainer'>
       <header id='postHeader' class='post-header'>
       <section class='userInfo'>
         <img src='../../img/profileImg.png' id='pictureUser' class='imageCirclePostUser' height="40px" width="40px">
@@ -35,10 +35,17 @@ export const Feed = () => {
         <section class='postBtnContainer'>
           <button type='button' class='publishBtn'>Publicar</button>
         </section>  
-      </form>     
-    <section class='feedTimeline'></section>
-    </main>  
+      </form> 
+    </div>      
+    <section data-feedTimeline='feedTimeline' class='feedTimeline'></section>     
   `;
+
+  // firebase.firestore().collection('home').doc(idUser).get()
+  //   .then((snapshot) => {
+  //     console.log(snapshot)
+  //     console.log(snapshot.data())
+  //     console.log(snapshot.data().boat)
+  //   })
 
   const textInput = root.querySelector('.postInput');
   const btnPublish = root.querySelector('.publishBtn');

@@ -1,4 +1,5 @@
 /* eslint-disable no-tabs */
+import { navigation } from '../../router.js';
 import {
   createHome, currentUser, getHome, uploadPicture, downloadPicture,
 } from '../../services/index.js';
@@ -15,14 +16,19 @@ export const Profile = () => {
 	<main class='profile-container row'>
     <section class='profile-form col-11'>
       <form>
+    
         <fieldset class='fieldset-container'>
-					<legend class='legend'> Seu Perfil </legend>
-          <section class='profile-image-container col-4'>
+      
+        <div class='redefinition'>
+        <a href='#' id='reset'>Redefinir senha</a>
+        </div>
+
+          <section class='profile-image-container'>
             <label class='label-image'>
             <input type='file' name='arquivo'>
 
             <figure class='profile-figure'>
-              <img src='img/avatar.png' class='avatar-image'>
+              <img src='img/profileImg.png' class='avatar-image'>
             <figcaption class='avatar-figcaption'>
                 <img src='img/camera-figcaption.png'>
               </figcaption>
@@ -30,34 +36,37 @@ export const Profile = () => {
           </section>
 
 					<div class='form-fields col-9 '>
-            <p>Nome Completo:
+            <p>Nome:
               <input id='name' type='name' class='input-item' value='${loggedUser.displayName}'>
             </p>
 
-            <p>Localização:
-              <input id='localization' type='localization' class='input-item' value='${null}'>
+            <p>Local:
+              <input id='localization' type='localization' class='input-item' value=''>
             </p>
 
-            <p>Nome e Modelo do Barco:
-              <input id='boat' type='name' class='input-item' value='${null}'>
+            <p>Nome e modelo do veleiro:
+              <input id='boat' type='name' class='input-item' value=''>
             </p>
 
-            <p>Email:
+            <p>E-mail:
               <input id='email' type='name' class='input-item' value='${loggedUser.email}' disabled>
             </p>
 
-            <div class='redefinition'>
-              <a href='#' id='reset'>Redefinir senha</a>
-            </div>
-
+     
             <nav class='btn-profile-container'>
-              <button type='submit' id='saveBtn' class='saveBtn'>Atualizar</button>
+              <button type='submit' id='saveBtn' class='saveBtn'>Salvar</button>
             </nav>
 				  </div>
         </fieldset>
       </form>
     </section>
   </main>
+  </main>
+  <footer class="audiobox">
+  <div class="wave one"></div>
+  <div class="wave two"></div>
+ <div class="wave three"></div>
+ </footer>
   `;
 
   // upload da imagem:  storage.ref(`images/${loggeduserId}`).put(file);
@@ -69,12 +78,12 @@ export const Profile = () => {
 
   function showPhoto() {
     const photoUser = loggedUser.photoURL;
-    //console.log('passou por aqui', loggedUser)
+    // console.log('passou por aqui', loggedUser)
     if (photoUser) {
       imageProfile.src = photoUser;
-    };
-  };
-  
+    }
+  }
+
   showPhoto();
 
   inputPhoto.addEventListener('change', (e) => {
@@ -109,7 +118,10 @@ export const Profile = () => {
     loggedUser.updateProfile({
       displayName: name.value,
     });
-    createHome(infoUser);
+    createHome(infoUser)
+      .then(() => {
+        navigation('/feed');
+      });
   });
 
   function getInfo() {

@@ -2,6 +2,7 @@
 @import url('../../components/profile-feed/style-profile-user.css');
 @import url('../../components/posts/style.css'); 
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap');
+@import url('../../components/posts/style-comments.css'); 
 
 .postContainer {
     width: 80vw;
@@ -139,6 +140,15 @@
   
     .publishBtn {
       margin-top: -4px;
+}
+
+@media screen and (max-width: 768px) {
+    .feedContainer{
+      width: 70vw;
+      height: 30vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
   }
   
