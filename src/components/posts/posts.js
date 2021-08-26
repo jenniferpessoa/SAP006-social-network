@@ -89,7 +89,7 @@ function printPost(post) {
   listOfPosts.addEventListener('click', (e) => {
     const { target } = e;
 
-    //Botão Comentários, aparecerá a section 
+    //Botão Comentários, aparecerá a section
     const commentsIdPost = target.dataset.comments;
     const commentUl = postElement.querySelector('[data-listcomments]');
     const commentsShow = postElement.querySelector('[data-comments]');
@@ -100,13 +100,13 @@ function printPost(post) {
       commentsPost(commentsIdPost, commentUl);
     }
 
-    //Botão Publicar comentário 
+    //Botão Publicar comentário
     const sendComment = target.dataset.send;
     const sectionCommentId = target.parentNode.parentNode.parentNode.parentNode.children[0].id;
 
     if (sendComment === sectionCommentId) {
       const commentText = postElement.querySelector('[data-commentInput]');
-      
+
       const commentObj = {
         idUser,
         idPost,
@@ -117,16 +117,14 @@ function printPost(post) {
       };
       console.log(commentObj.idPost);
 
-      //cria o comentário com a função do services 
+      //cria o comentário com a função do services
       createComment(commentObj.idPost, commentObj);
 
-      //atualiza a section dos comentários 
+      //atualiza a section dos comentários
       commentUl.innerHTML = '';
       commentsPost(commentObj.idPost, commentUl);
       console.log(commentUl);
     }
-
-
 
     //Parte das funções do Post Deletar, curtir, Editar
     const postSelectDelete = (postElement.querySelector('[data-delete]')).parentNode.parentNode.parentNode; //está bugada, pedir ajuda da Mari
@@ -178,4 +176,3 @@ function printPost(post) {
 }
 
 export { printPost };
-

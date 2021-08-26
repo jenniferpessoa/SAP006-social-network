@@ -1,5 +1,5 @@
 import {
-  navigation
+  navigation,
 } from '../../router.js';
 
 export const Conecte = () => {
@@ -34,14 +34,14 @@ export const Conecte = () => {
     </section>
   `;
 
-  const rootElement = document.createElement('div')
-  rootElement.setAttribute('class', 'conecte-container')
+  const rootElement = document.createElement('div');
+  rootElement.setAttribute('class', 'conecte-container');
   rootElement.innerHTML = template;
 
-  const continueBtn = rootElement.querySelector('#btn-continue')
+  const continueBtn = rootElement.querySelector('#btn-continue');
   continueBtn.addEventListener('click', (event) => {
-    event.preventDefault()
-    navigation('/comunique')
+    event.preventDefault();
+    navigation('/comunique');
   });
 
   // const skipBtn = rootElement.querySelector('.btn-skip')
@@ -51,5 +51,4 @@ export const Conecte = () => {
   // });
 
   return rootElement;
-
-} 
+};
