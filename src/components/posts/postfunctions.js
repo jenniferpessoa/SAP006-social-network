@@ -62,7 +62,7 @@ const commentsPost = (idPost, container) => {
     const commentsArray = snapshot.data().comments;
     console.log(snapshot.data().comments);
 
-    commentsArray.forEach((comment) => {
+      commentsArray.forEach((comment) => {
       const commentLi = document.createElement('li');
       commentLi.classList.add('comment-main-level');
       const commentTemplate = `
