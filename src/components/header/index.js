@@ -17,7 +17,6 @@ export function headerMenu() {
             </button>
             <ul class='menu'>
                 <li class='menu-a' id='profile'>PERFIL</li>
-                <li class='menu-a' id='languages'>IDIOMAS</li>
                 <li class='menu-a' id='logout'>SAIR</li>
             </ul>
         </nav>

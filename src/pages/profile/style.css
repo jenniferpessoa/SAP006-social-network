@@ -184,16 +184,17 @@ p {
 @media only screen and (max-width:767px){
   .fieldset-container{
     flex-wrap: wrap;
+
   }
 
   .form-fields {
     display: contents;
   }
 
-  .saveBtn {
-    /* margin-top: 50%; */
+  /* .saveBtn {
+    margin-top: 50%;
     
-  }
+  } */
 }
 
 @media only screen and (min-width: 768px) {
