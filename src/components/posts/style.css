@@ -47,6 +47,14 @@
   width: 60px;
 }
 
+.fa-trash-alt::before {
+  font-size: 25px;
+  color: #ffd632;
+  padding: 5px;
+  margin-right: 25px;
+  width: 60px;
+}
+
 .likeBtn {
   border: none;
   border-radius: 5px;
