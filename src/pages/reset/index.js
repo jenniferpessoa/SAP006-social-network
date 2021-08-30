@@ -1,4 +1,5 @@
 // eslint-disable-next-line import/no-cycle
+import { getError } from '../../Errors/index.js';
 import { navigation } from '../../router.js';
 import { resetPassword } from '../../services/index.js';
 
@@ -37,7 +38,11 @@ export const Reset = () => {
 
   btnReset.addEventListener('click', () => {
     const email = document.getElementById('email').value;
-    resetPassword(email);
+    resetPassword(email).then(() => {
+      alert('E-mail enviado com sucesso! Confira sua caixa de entrada');
+    }).catch((error) => {
+      getError(error);
+    });
   });
 
   btnReturn.addEventListener('click', () => {

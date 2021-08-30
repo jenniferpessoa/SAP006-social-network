@@ -64,14 +64,10 @@ export const Login = () => {
 
   reset.addEventListener('click', (event) => {
     event.preventDefault();
-    window.location.replace('/reset');
+    navigation('/reset');
   });
 
-  btnSignUp.addEventListener('click', () => { // Aqui não podemos chamar a navigation?
-    window.history.pushState({}, '', '/signup');
-    const popStateEvent = new PopStateEvent('popstate', { state: {} });
-    dispatchEvent(popStateEvent);
-  });
+  btnSignUp.addEventListener('click', () => navigation('/signup'));
 
   btnLogin.addEventListener('click', () => {
     const email = document.getElementById('email').value;
@@ -86,7 +82,11 @@ export const Login = () => {
   });
 
   btnGmail.addEventListener('click', () => {
-    loginWithGmail();
+    loginWithGmail().then(() => {
+      navigation('/feed');
+    }).catch((error) => {
+      getError(error);
+    });
   });
 
   return root;
