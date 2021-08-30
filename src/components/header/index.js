@@ -1,5 +1,5 @@
 import { signOut } from '../../services/index.js';
-import { popUpNotice } from '../../components/popup/index.js'
+import { popUpNotice } from '../popup/index.js';
 // import { popUpNotice } from '../../components'
 
 export function headerMenu() {
@@ -25,7 +25,7 @@ export function headerMenu() {
 
   rootMain.prepend(header);
 
-  const menu = document.querySelector('.menu');
+  // const menu = document.querySelector('.menu');
   const btnMobile = document.querySelector('.btn-mobile');
   const nav = document.querySelector('.menu-nav');
 
@@ -44,14 +44,16 @@ export function headerMenu() {
     switch (optionMenu) {
       case 'profile':
         window.history.pushState('nulo', 'nulo', '/profile');
+        // eslint-disable-next-line no-case-declarations
         const popStateEvent = new PopStateEvent('popstate', {});
         dispatchEvent(popStateEvent);
         break;
 
       case 'languages':
+        // eslint-disable-next-line no-case-declarations
         const templateDeleteConfirmation = `
         <div>IDIOMAS</div>
-        `;      
+        `;
         popUpNotice(templateDeleteConfirmation);
         break;
 
@@ -61,17 +63,13 @@ export function headerMenu() {
 
       case 'feed':
         window.history.pushState('nulo', 'nulo', '/feed');
+        // eslint-disable-next-line no-case-declarations
         const popSStateEvent = new PopStateEvent('popstate', {});
         dispatchEvent(popSStateEvent);
         break;
       default:
-        return //ele precisa retornar algo que mantenha o usuário na tela atual
+        return; // ele precisa retornar algo que mantenha o usuário na tela atual
     }
     nav.classList.remove('active');
   });
-
-
-
-
-  
 }

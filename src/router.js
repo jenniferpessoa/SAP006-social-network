@@ -1,3 +1,4 @@
+/* eslint-disable import/no-cycle */
 import { Feed } from './pages/feed/index.js';
 import { Login } from './pages/login/index.js';
 import { Profile } from './pages/profile/index.js';

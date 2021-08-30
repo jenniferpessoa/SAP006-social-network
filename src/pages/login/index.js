@@ -67,7 +67,7 @@ export const Login = () => {
     window.location.replace('/reset');
   });
 
-  btnSignUp.addEventListener('click', () => { //Aqui não podemos chamar a navigation?
+  btnSignUp.addEventListener('click', () => { // Aqui não podemos chamar a navigation?
     window.history.pushState({}, '', '/signup');
     const popStateEvent = new PopStateEvent('popstate', { state: {} });
     dispatchEvent(popStateEvent);

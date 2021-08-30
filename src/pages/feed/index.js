@@ -13,11 +13,11 @@ function loadPost() {
 }
 
 export const Feed = () => {
-  //chama os outros elementos do html 
+  // chama os outros elementos do html
   headerMenu();
   profileFeed();
 
-  //cria a publicação do usuário 
+  // cria a publicação do usuário
   const user = currentUser();
   const idUser = user.uid;
   const name = user.displayName;
@@ -46,7 +46,7 @@ export const Feed = () => {
   const textInput = root.querySelector('.postInput');
   const btnPublish = root.querySelector('.publishBtn');
   const picturePost = root.querySelector('#pictureUser');
-  // insere a foto 
+  // insere a foto
   if (photo) {
     picturePost.src = photo;
   }
@@ -55,7 +55,7 @@ export const Feed = () => {
     root.querySelector('.username').innerText = 'User';
   }
 
-  //publica criando o objeto no post-firestore
+  // publica criando o objeto no post-firestore
   btnPublish.addEventListener('click', () => {
     const postObj = {
       idUser,
@@ -68,7 +68,7 @@ export const Feed = () => {
       likes: [],
       comments: [],
     };
-    console.log(postObj);
+    // console.log(postObj);
     createPost(postObj);
 
     const timeline = document.querySelector('.feedTimeline');

@@ -69,12 +69,12 @@ export const Profile = () => {
 
   function showPhoto() {
     const photoUser = loggedUser.photoURL;
-    //console.log('passou por aqui', loggedUser)
+    // console.log('passou por aqui', loggedUser)
     if (photoUser) {
       imageProfile.src = photoUser;
-    };
-  };
-  
+    }
+  }
+
   showPhoto();
 
   inputPhoto.addEventListener('change', (e) => {

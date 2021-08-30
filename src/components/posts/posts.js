@@ -20,12 +20,12 @@ const Post = (photoPost, nameUserPost, text, idUserPost, idPost, dateP, likesPos
       <textarea id='textarea-${idPost}' class='postInput' placeholder='Sua Mensagem' disabled>${text}</textarea>      
       <section id='section' class='postBtnContainer'>
         <div id='edition-btns' class='edition-btns'>
-          <button data-save='save' type='button' id='save-${idPost}' class='saveEditBtn'>Save</button> 
-          <button data-cancel='cancel' type='button' id='cancel-${idPost}' class='cancelEditBtn'>Cancel</button>
+          <i data-save='save' type='button' id='save-${idPost}' class='far fa-check-square'></i> 
+          <i data-cancel='cancel' type='button' id='cancel-${idPost}' class='far fa-window-close'></i>
         </div>
         <a data-num='num' id='numLike-${idPost}' class='numLikes'>${likesPost.length}</a>
         <i data-like='like' id='like-${idPost}' class='far fa-heart'></i>
-        <button data-edit='edit' type='button' id='edit-${idPost}' class='editBtn'>Edit</button>
+        <i data-edit='edit' type='button' id='edit-${idPost}' class='far fa-edit'></i>
         <button type='button' data-delete='delete' id='delete-${idPost}' class='deleteBtn'>Delete</button>
       </section>  
     </form>    
@@ -81,6 +81,7 @@ function printPost(post) {
   } else {
     btnSaveEdit.style.display = 'none';
     btnCancelEdit.style.display = 'none';
+    btnEdit.style.display = 'none';
   }
 
   if (likesPost.includes(idUser)) {

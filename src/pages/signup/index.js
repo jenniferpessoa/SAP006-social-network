@@ -1,4 +1,4 @@
-import { signUpWithEmailAndPassword, loginWithGmail, currentUser } from '../../services/index.js';
+import { signUpWithEmailAndPassword, loginWithGmail /* currentUser */ } from '../../services/index.js';
 // eslint-disable-next-line import/no-cycle
 import { navigation } from '../../router.js';
 import { getError } from '../../Errors/index.js';

@@ -1,24 +1,26 @@
 // importamos a função que vamos testar
-//import { loginEmailAndPassword, signUpWithGoogle, loginWithGmail, keepMeLogged, signOut } from '../src/services/index.js'
-import * as services from '../src/services/index.js'
+// import { loginEmailAndPassword, signUpWithGoogle, loginWithGmail, keepMeLogged, signOut } 
+// from '../src/services/index.js'
+import * as services from '../src/services/index.js';
 
-jest.mock('../src/services/index.js')
-//jest.mock('loginEmailAndPassword')
+jest.mock('../src/services/index.js');
+// jest.mock('loginEmailAndPassword')
 
 describe('loginEmailAndPassword', () => {
-  const email = 'user@teste.com'
-  const password = '123456'
+  const email = 'user@teste.com';
+  const password = '123456';
   it('should be a function', () => {
     expect(typeof services.loginEmailAndPassword).toBe('function');
   });
-  
+
   // it('should call Firebase loginEmailAndPassword function', () => {
   //   services.loginEmailAndPassword(email, password)
   //   expect(firebase.signInWithEmailAndPassword._isMockFunction).toHaveBeenCalledTimes(1);
-  //   //expect(firebase.signInWithEmailAndPassword()).toHaveBeenCalledTimes(1); //Use .toHaveBeenCalledTimes para garantir que uma função de simulação (mock, em inglês) foi chamada um número exato de vezes.
+  //   expect(firebase.signInWithEmailAndPassword()).toHaveBeenCalledTimes(1);
+  // Use .toHaveBeenCalledTimes para garantir que uma função de simulação 
+  // (mock, em inglês) foi chamada um número exato de vezes.
   // }); // expect(utils.isAuthorized._isMockFunction).toBeTruthy();
 });
-
 
 describe('signUpWithGoogle', () => {
   const email = 'user@gmail.com';
@@ -32,7 +34,6 @@ describe('signUpWithGoogle', () => {
   // });
 });
 
-
 describe('loginWithGmail', () => {
   it('should be a function', () => {
     expect(typeof services.loginWithGmail).toBe('function');
@@ -42,7 +43,6 @@ describe('loginWithGmail', () => {
   //   expect(firebase.auth).toHaveBeenCalledTimes(1);
   // });
 });
-
 
 describe('keepMeLogged', () => {
   it('should be a function', () => {
@@ -54,7 +54,6 @@ describe('keepMeLogged', () => {
   // });
 });
 
-
 describe('signOut', () => {
   it('should be a function', () => {
     expect(typeof services.signOut).toBe('function');
@@ -64,6 +63,3 @@ describe('signOut', () => {
   //   expect(firebase.auth).toHaveBeenCalledTimes(1);
   // });
 });
-
-
-
