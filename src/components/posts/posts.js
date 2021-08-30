@@ -26,7 +26,7 @@ const Post = (photoPost, nameUserPost, text, idUserPost, idPost, dateP, likesPos
         <a data-num='num' id='numLike-${idPost}' class='numLikes'>${likesPost.length}</a>
         <i data-like='like' id='like-${idPost}' class='far fa-heart'></i>
         <i data-edit='edit' type='button' id='edit-${idPost}' class='far fa-edit'></i>
-        <button type='button' data-delete='delete' id='delete-${idPost}' class='deleteBtn'>Delete</button>
+        <i type='button' data-delete='delete' id='delete-${idPost}' class='far fa-trash-alt'></i>
       </section>  
     </form>    
   </main>
@@ -82,6 +82,7 @@ function printPost(post) {
     btnSaveEdit.style.display = 'none';
     btnCancelEdit.style.display = 'none';
     btnEdit.style.display = 'none';
+    btnDelete.style.display = 'none';
   }
 
   if (likesPost.includes(idUser)) {
