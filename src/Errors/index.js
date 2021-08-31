@@ -11,7 +11,7 @@ const firebaseErrors = {
 };
 
 function printError(message) {
-  const element = document.createElement('p')
+  const element = document.createElement('p');
   element.innerHTML = message;
   const errors = document.querySelector('.errors');
   errors.innerHTML = '';

@@ -1,4 +1,4 @@
-import { getError } from '../Errors/index';
+import { getError } from '../Errors/index.js';
 
 const storage = firebase.storage();
 
@@ -15,12 +15,13 @@ const signUpWithEmailAndPassword = (email, password) => firebase
 
 const keepMeLogged = (persistence) => {
   firebase.auth().setPersistence(persistence).then(() => {
-    const provider = new firebase.Auth();
+    const provider = new firebase.auth();
     return firebase.auth().signInWithRedirect(provider);
   }).catch((error) => {
-    getError(error);
+    console.log(error)//getError(error);
   });
 };
+
 
 const signOut = () => firebase.auth().signOut();
 
