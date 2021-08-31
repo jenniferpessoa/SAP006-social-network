@@ -18,6 +18,11 @@ body {
   background-attachment: fixed;
 }
 
+.menu-header {
+  display: none;
+  background-color: black;
+}
+
 .logo {
   margin-bottom: 50px;
   font-weight: bold;

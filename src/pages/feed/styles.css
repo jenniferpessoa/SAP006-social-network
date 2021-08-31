@@ -3,7 +3,16 @@
 @import url('../../components/posts/style.css'); 
 
 
-.postContainer {
+.menu-header {
+  display: none;
+} 
+
+/* .root {
+  display: flex;
+} */
+
+
+.postContainer, .publishContainer {
   width: 80vw;
   height: 30vh; 
   margin-top: 40px;
@@ -135,7 +144,7 @@
 */
 
 @media screen and (min-width: 1024px) {
-  .postContainer{
+  .postContainer, .publishContainer{
     width: 50vw;
     height: 25vh;        
   }  

@@ -13,7 +13,6 @@ function loadPost() {
 }
 
 export const Feed = () => {
-  // chama os outros elementos do html
   headerMenu();
   profileFeed();
 
@@ -23,15 +22,13 @@ export const Feed = () => {
   const name = user.displayName;
   const photo = user.photoURL;
   const date = new Date();
-  const root = document.createElement('main');
+
+  const root = document.createElement('div');
   root.classList.add('feed-container');
   root.innerHTML = `  
-    <main class='postContainer'>
-      <header id='postHeader' class='post-header'>
-      <section class='userInfo'>
-        <img src='../../img/profileImg.png' id='pictureUser' class='imageCirclePostUser' height="40px" width="40px">
-        <p class='username'>${name}</p> 
-      </section>      
+    <div class='publishContainer'>
+      <header id='postHeader' class='post-header'>   
+        <p class='username'>${name}</p>          
       </header> 
       <form class='formContainer'>
         <textarea class='postInput' type='text' placeholder='Sua Mensagem'></textarea>      
@@ -39,17 +36,18 @@ export const Feed = () => {
           <button type='button' class='publishBtn'>Publicar</button>
         </section>  
       </form>     
-    <section class='feedTimeline'></section>
-    </main>  
-  `;
-
+    </div>  
+    <ul data-feedTimeline='feedTimeline' class='feedTimeline'></ul>
+  `; 
+  
   const textInput = root.querySelector('.postInput');
   const btnPublish = root.querySelector('.publishBtn');
-  const picturePost = root.querySelector('#pictureUser');
+  //const picturePost = root.querySelector('#pictureUser');
   // insere a foto
-  if (photo) {
-    picturePost.src = photo;
-  }
+  // <img src='../../img/profileImg.png' id='pictureUser' class='imageCirclePostUser' height="40px" width="40px"></img>
+  // if (photo) {
+  //   picturePost.src = photo;
+  // }
   // confere o nome
   if (!name) {
     root.querySelector('.username').innerText = 'User';
@@ -63,7 +61,7 @@ export const Feed = () => {
       name,
       photo,
       text: textInput.value,
-      date: date.toLocaleString('pt-BR'),
+      date,
       dateP: `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`,
       likes: [],
       comments: [],
@@ -71,7 +69,7 @@ export const Feed = () => {
     // console.log(postObj);
     createPost(postObj);
 
-    const timeline = document.querySelector('.feedTimeline');
+    const timeline = root.querySelector('.feedTimeline');
     timeline.innerHTML = '';
     textInput.value = '';
     loadPost();
