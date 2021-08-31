@@ -5,10 +5,15 @@ import { popUpNotice } from '../popup/index.js';
 // import { popUpNotice } from '../../components'
 
 export function headerMenu() {
-  const rootMain = document.querySelector('.root');
-  rootMain.innerHTML = '';
-  const header = document.createElement('header');
-  header.classList.add('menu-header');
+  // const rootMain = document.querySelector('.body');
+  // console.log(rootMain);
+  const header = document.querySelector('header');
+
+  // const rootMain = document.querySelector('.body');
+  // rootMain.innerHTML = ''
+  // console.log(rootMain);
+  // const header = document.createElement('header');
+  //header.classList.add('menu-header');
   header.innerHTML = `
         <figure>
           <img src='./img/logo-header.png' alt='A bordo' class='logo-header' id='feed'/>
@@ -24,10 +29,10 @@ export function headerMenu() {
             </ul>
         </nav>
         `;
+        header.style.display = 'flex';
+        
 
-  rootMain.prepend(header);
-
-  // const menu = document.querySelector('.menu');
+   // const menu = document.querySelector('.menu');
   const btnMobile = document.querySelector('.btn-mobile');
   const nav = document.querySelector('.menu-nav');
 
