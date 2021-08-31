@@ -3,7 +3,6 @@
 /* eslint-disable spaced-comment */
 /* eslint-disable no-restricted-syntax */
 import { updatePost, currentUser } from '../../services/index.js';
-//import { Feed } from '../../pages/feed/index.js';
 import { deletePost, sendLike } from './postfunctions.js';
 
 const Post = (photoPost, nameUserPost, text, idUserPost, idPost, dateP, likesPost) => {
@@ -48,13 +47,12 @@ const Post = (photoPost, nameUserPost, text, idUserPost, idPost, dateP, likesPos
 
   element.innerHTML = template;
   return element;
-  
 };
 
 function printPost(post) {
   const user = currentUser();
   const idUser = user.uid;
-  const date = new Date();
+  const date = post.data().date;
   const idPost = post.id;
   const text = post.data().text;
   const idUserPost = post.data().idUser;
@@ -88,7 +86,7 @@ function printPost(post) {
   }
 
   listOfPosts.addEventListener('click', (e) => {
-    const { target } = e;    
+    const { target } = e;
 
     const postSelectDelete = (postElement.querySelector('[data-delete]')).parentNode.parentNode.parentNode.parentNode; //está bugada, pedir ajuda da Mari
     const deleteButton = target.dataset.delete;
@@ -105,11 +103,10 @@ function printPost(post) {
 
     const editButton = target.dataset.edit;
     const editBtn = postElement.querySelector('[data-edit]');
-    
-    const editTextarea = postElement.querySelector('[data-textPost]');
-    const editionBtns = postElement.querySelector('[data-editBtns]');
-    
 
+    const editTextarea = postElement.querySelector('[data-textPost]');
+
+    const editionBtns = postElement.querySelector('[data-editBtns]');
     const saveEditButton = postElement.querySelector('[data-saveEdit]');
     const cancelEditButton = postElement.querySelector('[data-cancelEdit]');
 

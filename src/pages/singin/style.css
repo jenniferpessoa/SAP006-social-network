@@ -1,0 +1,223 @@
+/*.sigin-container {
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(
+    180deg,
+    rgba(68, 136, 182, 0.418) 16.67%,
+    rgba(114, 183, 211, 0.25) 100%
+  );
+  background-attachment: fixed;
+}
+*/
+.logo {
+  margin-bottom: 50px;
+  font-weight: bold;
+  font-size: 15px;
+  color: #ffff;
+  text-align: center;
+}
+
+.container {
+  display: flex;
+  width: 60vw;
+  height: 60vh;
+  border-radius: 20px;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+  margin-left: auto; /*para manter o body sem display flex*/
+  margin-right: auto; /*para manter o body sem display flex*/
+}
+
+.img-container {
+  width: 50%;
+  height: 100%;
+  border-radius: 20px 0 0 20px;
+  background-image: url(../../img/login-image.png);
+  background-size: cover;
+}
+
+.login-container {
+  border-radius: 0 20px 20px 0;
+  width: 50%;
+  background-color: white;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+}
+
+.form-options {
+  display: flex;
+  justify-content: center;
+  height: 7vh;
+  line-height: 3;
+  text-align: center;
+}
+
+.opt-login,
+.opt-signup {
+  border-bottom: 1px solid lightgrey;
+  color: black;
+  width: 50%;
+  height: 100%;
+  transition: 0.3 ease;
+}
+
+.opt-signup {
+  border-radius: 0 20px 0 0;
+}
+
+.form-options span:hover {
+  color: white;
+  background-color: #feb15e;
+}
+
+.reset-text {
+  line-height: 5;
+  text-align: center;
+  color: black;
+
+}
+
+.form-fields label {
+  color: rgb(85, 84, 84);
+  margin-bottom: 5px;
+  display: inline-block;
+}
+
+.form-item {
+  width: 100%;
+  padding: 8px 13px;
+  outline: none;
+  border: 1px solid lightgray;
+  /*letter-spacing: 1px;*/
+  border-radius: 10px;
+}
+
+.form-fields input:focus {
+  border-color: #638fb1;
+}
+
+.input-email {
+  margin-bottom: 10px;
+}
+
+.rememberForgot {
+  margin-left: 10px;
+  display: flex;
+  justify-content: space-between;
+  color: black;
+  font-size: 12px;
+}
+
+.rememberForgot a {
+  text-decoration: none;
+  color: black;
+}
+
+.errors {
+  font-size: 12px;
+  color: rgb(241, 82, 82);
+  padding: 5px;
+}
+
+.errors p {
+  margin-top: -25px;
+}
+
+.btn:hover {
+  color: white;
+  background-color: #feb15e;
+}
+
+.btn-login,
+.btn-signup {
+  margin-top: 30px;
+  cursor: pointer;
+}
+
+.separator {
+  text-align: center;
+  color: rgb(34, 33, 33);
+  margin: 5px;
+  margin-top: -10px; 
+}
+
+.btnGmail {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.google-icon {
+  width: 20px;
+  margin-right: 5px;
+}
+
+@media screen and (max-width: 768px) {
+  .logo {
+    font-size: 12px;
+  }
+
+  .container {
+    width: 70vw;
+    height: 65vh;
+  }
+
+  .img-container {
+    display: none;
+  }
+
+  .login-container {
+    width: 100%;
+    border-radius: 20px;
+  }
+
+  .form-fields {
+    margin-bottom: 5px;
+  }
+
+  .btn {
+    font-size: 12px;
+  }
+}
+
+
+/*
+.profile-form {
+  display: inline-flex;
+}
+
+.reset-container {
+  position: relative;
+  display: inline-flex;
+  align-items: stretch;
+  padding: revert;
+  background-color: white;
+  border-radius: 20px;
+  border: none;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.input-item {
+  width: 100%;
+  padding: 8px 13px;
+  outline: none;
+  border: 1px solid lightgray;
+  letter-spacing: 1px;*
+  border-radius: 10px;
+}
+
+.reset-password a {
+  color: black;
+  text-decoration: none;
+  font-size: 12px;
+}
+
+.reset-text {
+  color: black;
+  text-align: center;
+}
+*/

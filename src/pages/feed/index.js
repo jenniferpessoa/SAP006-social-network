@@ -16,7 +16,7 @@ export const Feed = () => {
   headerMenu();
   profileFeed();
 
-  // cria a publicação do usuário
+  //cria a publicação do usuário 
   const user = currentUser();
   const idUser = user.uid;
   const name = user.displayName;
@@ -42,18 +42,12 @@ export const Feed = () => {
   
   const textInput = root.querySelector('.postInput');
   const btnPublish = root.querySelector('.publishBtn');
-  //const picturePost = root.querySelector('#pictureUser');
-  // insere a foto
-  // <img src='../../img/profileImg.png' id='pictureUser' class='imageCirclePostUser' height="40px" width="40px"></img>
-  // if (photo) {
-  //   picturePost.src = photo;
-  // }
-  // confere o nome
+
   if (!name) {
     root.querySelector('.username').innerText = 'User';
   }
 
-  // publica criando o objeto no post-firestore
+  //publica criando o objeto no post-firestore
   btnPublish.addEventListener('click', () => {
     const postObj = {
       idUser,
@@ -66,7 +60,7 @@ export const Feed = () => {
       likes: [],
       comments: [],
     };
-    // console.log(postObj);
+    console.log(postObj);
     createPost(postObj);
 
     const timeline = root.querySelector('.feedTimeline');
