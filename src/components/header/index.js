@@ -2,11 +2,8 @@ import { getError } from '../../Errors/index.js';
 import { navigation } from '../../router.js';
 import { signOut } from '../../services/index.js';
 import { popUpNotice } from '../popup/index.js';
-// import { popUpNotice } from '../../components'
 
 export function headerMenu() {
-  // const rootMain = document.querySelector('.body');
-  // console.log(rootMain);
   const header = document.querySelector('header');
 
   // const rootMain = document.querySelector('.body');
@@ -29,10 +26,8 @@ export function headerMenu() {
             </ul>
         </nav>
         `;
-        header.style.display = 'flex';
-        
+  header.style.display = 'flex';
 
-   // const menu = document.querySelector('.menu');
   const btnMobile = document.querySelector('.btn-mobile');
   const nav = document.querySelector('.menu-nav');
 
