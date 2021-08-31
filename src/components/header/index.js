@@ -1,3 +1,5 @@
+import { getError } from '../../Errors/index.js';
+import { navigation } from '../../router.js';
 import { signOut } from '../../services/index.js';
 import { popUpNotice } from '../popup/index.js';
 // import { popUpNotice } from '../../components'
@@ -58,7 +60,11 @@ export function headerMenu() {
         break;
 
       case 'logout':
-        signOut();
+        signOut().then(() => {
+          navigation('/');
+        }).catch((error) => {
+          getError(error);
+        });
         break;
 
       case 'feed':
