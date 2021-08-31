@@ -54,7 +54,18 @@ export function headerMenu() {
       case 'languages':
         // eslint-disable-next-line no-case-declarations
         const templateDeleteConfirmation = `
-        <div>IDIOMAS</div>
+        <div>IDIOMAS
+          <ul class="nav">
+            <li><a id='pt-opt' class='lang-pt' title='Traduzir para português'>
+              <img src='../../img/brazil.png' /></a></li>
+            <li><a 'en-opt' class='lang-en' title='Translate to English'>
+              <img src=src='../../img/united-states.png'  /></a></li>
+            <li><a 'es-opt' class='lang-es' title='Traducir al español'>
+              <img src=src='../../img/spain.png'/></a></li>
+            <li><a 'fr-opt' class='lang-fr' title='Traduire en français'>
+              <img src=src='../../img/france.png'/></a></li>
+          </ul>
+        </div>
         `;
         popUpNotice(templateDeleteConfirmation);
         break;

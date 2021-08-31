@@ -6,7 +6,7 @@ const popUpNotice = (template) => {
       <div class='popup-wrapper'>
           <div class='popup'>
             <div class='popup-close'> x </div>
-            <div class='popup-content'></div>      
+            <div id="google_translate_element" class='popup-content'></div>      
           </div>
         </div>
     `;
