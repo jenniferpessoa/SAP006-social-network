@@ -53,6 +53,7 @@ body, .menu {
   display: none;
 }
 
+
 @media (max-width: 600px) {
   .logo-header{
     width: 30%;
