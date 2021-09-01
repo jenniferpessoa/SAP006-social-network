@@ -1,0 +1,13 @@
+.weather-container {
+  text-align: end;
+  margin: 20px 15px 0 10px;
+  padding: 20px;
+  background-color: white;
+  height: fit-content;
+  border-radius: 10px 0;
+}
+
+.widget {
+  width: 310px;
+  height: 310px;
+}

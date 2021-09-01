@@ -3,6 +3,7 @@ import { createPost, getPost, currentUser } from '../../services/index.js';
 import { printPost } from '../../components/posts/posts.js';
 import { headerMenu } from '../../components/header/index.js';
 import { profileFeed } from '../../components/profile-feed/profile-feed.js';
+import { weather } from '../../components/weather/index.js';
 
 function loadPost() {
   getPost().then((snapshot) => {
@@ -13,19 +14,25 @@ function loadPost() {
 }
 
 export const Feed = () => {
+  const root = document.createElement('div');
+  root.classList.add('main');
+  root.style.display = 'flex';
+  // const main = document.querySelector('.root');
+  // main.style.display = 'flex';
   headerMenu();
   profileFeed();
+  weather(root);
 
-  //cria a publicação do usuário 
+  // cria a publicação do usuário
   const user = currentUser();
   const idUser = user.uid;
   const name = user.displayName;
   const photo = user.photoURL;
   const date = new Date();
 
-  const root = document.createElement('div');
-  root.classList.add('feed-container');
-  root.innerHTML = `  
+  const feedContainer = document.createElement('div');
+  feedContainer.classList.add('feed-container');
+  feedContainer.innerHTML = `  
     <div class='publishContainer'>
       <header id='postHeader' class='post-header'>   
         <p class='username'>${name}</p>          
@@ -38,8 +45,9 @@ export const Feed = () => {
       </form>     
     </div>  
     <ul data-feedTimeline='feedTimeline' class='feedTimeline'></ul>
-  `; 
-  
+  `;
+  root.append(feedContainer);
+
   const textInput = root.querySelector('.postInput');
   const btnPublish = root.querySelector('.publishBtn');
 
@@ -47,7 +55,7 @@ export const Feed = () => {
     root.querySelector('.username').innerText = 'User';
   }
 
-  //publica criando o objeto no post-firestore
+  // publica criando o objeto no post-firestore
   btnPublish.addEventListener('click', () => {
     const postObj = {
       idUser,
@@ -60,7 +68,7 @@ export const Feed = () => {
       likes: [],
       comments: [],
     };
-    console.log(postObj);
+    // console.log(postObj);
     createPost(postObj);
 
     const timeline = root.querySelector('.feedTimeline');

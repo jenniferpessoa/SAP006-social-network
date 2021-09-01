@@ -10,7 +10,7 @@ export function headerMenu() {
   // rootMain.innerHTML = ''
   // console.log(rootMain);
   // const header = document.createElement('header');
-  //header.classList.add('menu-header');
+  // header.classList.add('menu-header');
   header.innerHTML = `
         <figure>
           <img src='./img/logo-header.png' alt='A bordo' class='logo-header' id='feed'/>
