@@ -22,59 +22,63 @@ export const Feed = () => {
   headerMenu();
   profileFeed();
   weather(root);
+  //root.style.alignItems = 'flex-start';
+  headerMenu();
 
   // cria a publicação do usuário
   const user = currentUser();
   const idUser = user.uid;
   const name = user.displayName;
   const photo = user.photoURL;
+  const email = user.email;
   const date = new Date();
+
+  profileFeed(root, idUser, name, email, photo);
 
   const feedContainer = document.createElement('div');
   feedContainer.classList.add('feed-container');
   feedContainer.innerHTML = `  
     <div class='publishContainer'>
-      <header id='postHeader' class='post-header'>   
-        <p class='username'>${name}</p>          
-      </header> 
-      <form class='formContainer'>
-        <textarea class='postInput' type='text' placeholder='Sua Mensagem'></textarea>      
-        <section class='postBtnContainer'>
+      <form class='formPublishContainer'>
+        <textarea class='postPublishInput' type='text' placeholder='faça o seu Aviso aos Navegantes'></textarea>      
+        <section class='publishBtnContainer'>
           <button type='button' class='publishBtn'>Publicar</button>
         </section>  
       </form>     
     </div>  
     <ul data-feedTimeline='feedTimeline' class='feedTimeline'></ul>
   `;
-  root.append(feedContainer);
+  root.appendChild(feedContainer);
 
-  const textInput = root.querySelector('.postInput');
+  const textInput = root.querySelector('.postPublishInput');
   const btnPublish = root.querySelector('.publishBtn');
 
-  if (!name) {
-    root.querySelector('.username').innerText = 'User';
-  }
+
 
   // publica criando o objeto no post-firestore
   btnPublish.addEventListener('click', () => {
-    const postObj = {
-      idUser,
-      idPost: '',
-      name,
-      photo,
-      text: textInput.value,
-      date,
-      dateP: `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`,
-      likes: [],
-      comments: [],
-    };
-    // console.log(postObj);
-    createPost(postObj);
+    if (!textInput.value) {
+      alert('Escreva a sua mensagem!');
+    } else {
+      const postObj = {
+        idUser,
+        idPost: '',
+        name,
+        photo,
+        text: textInput.value,
+        date,
+        dateP: `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`,
+        likes: [],
+        comments: [],
+      };
+      console.log(postObj);
+      createPost(postObj);
 
-    const timeline = root.querySelector('.feedTimeline');
-    timeline.innerHTML = '';
-    textInput.value = '';
-    loadPost();
+      const timeline = root.querySelector('.feedTimeline');
+      timeline.innerHTML = '';
+      textInput.value = '';
+      loadPost();
+    }
   });
 
   loadPost();
