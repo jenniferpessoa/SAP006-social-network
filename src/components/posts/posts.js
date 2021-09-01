@@ -17,7 +17,7 @@ const Post = (photoPost, nameUserPost, text, idUserPost, idPost, dateP, likesPos
       <time datetime='${dateP}' id='postDate' class='postDate'>${dateP}</time> 
     </header> 
     <form class='formContainer'>
-      <textarea data-textPost='${idPost}' id='textarea-${idPost}' class='postInput' placeholder='Sua Mensagem' disabled>${text}</textarea>      
+      <textarea data-textPost='${idPost}' id='textarea-${idPost}' class='postInput' disabled>${text}</textarea>      
       <section id='section' class='postBtnContainer'>
         <div data-editBtns='${idPost}' id='edition-btns' class='edition-btns'>
           <i data-saveEdit='${idPost}' id='save-${idPost}' class='far fa-check-square'></i> 
@@ -91,6 +91,7 @@ function printPost(post) {
     const postSelectDelete = (postElement.querySelector('[data-delete]')).parentNode.parentNode.parentNode.parentNode; //está bugada, pedir ajuda da Mari
     const deleteButton = target.dataset.delete;
     if (deleteButton) {
+      console.log(postSelectDelete);
       deletePost(deleteButton, postSelectDelete);
     }
 
@@ -119,14 +120,20 @@ function printPost(post) {
 
     if (saveEditButton === target) {
       const saveTextarea = postElement.querySelector('[data-textPost]').value;
-      updatePost(idPost, saveTextarea);
-      editTextarea.setAttribute('disabled', '');
-      editionBtns.style.display = 'none';
-      editBtn.style.display = 'block';
+      if (!saveTextarea) {
+        alert('Escreva a sua mensagem!');
+        editTextarea.value = text;
+      } else {
+        updatePost(idPost, saveTextarea);
+        editTextarea.setAttribute('disabled', '');
+        editionBtns.style.display = 'none';
+        editBtn.style.display = 'block';
+      }
     }
 
     if (cancelEditButton === target) {
       editTextarea.setAttribute('disabled', '');
+      editTextarea.value = text;
       editionBtns.style.display = 'none';
       editBtn.style.display = 'block';
     }

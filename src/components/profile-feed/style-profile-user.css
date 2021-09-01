@@ -1,31 +1,58 @@
 
 
 .profile-feed {
+  box-sizing: border-box;
+  background-color: white;
   width: 20%;
-  height: 40%;
-  margin-top: 40px;
- /* position: relative;
-    display: inline-flex;
-    align-items: stretch;
-    padding: revert;
-    background-color: white;
-    border-radius: 20px;
-    border: none;
-    box-shadow: 5px 5px 15px rgb(0 0 0 / 20%);*/
+  margin: 0 5% 0 2%;
+  border-radius: 10px;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+  box-sizing: border-box;
+  font-size: 13px;
+  text-rendering: optimizeLegibility;
 }
 
-.userprofile {
-  width: 20%;
-  height: 40%;
-  margin-top: 40px;
- /* position: relative;*/
-    display: inline-flex;
-    align-items: stretch;
-    padding: revert;
-    background-color: white;
-    border-radius: 20px;
-    border: none;
-    box-shadow: 5px 5px 15px rgb(0 0 0 / 20%);
+.panel {
+  border: 2px solid #ffd632;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+}
 
+.profileInfoFeed .user-heading {
+  color: #1f1f4b;
+  border-radius: 4px 4px 0 0;
+  text-align: center;
+}
+
+.profileInfoFeed .user-heading .feedProfilePicture .userPicture {
+  width: 112px;
+  height: 112px;
+  border-radius: 50%;
+  margin: 4% 0 2% 0;
+
+}
+
+.profileInfoFeed .user-heading .userName {
+  font-size: 22px;
+  font-weight: 300;
+}
+
+.profileInfoFeed .user-heading .userEmail {
+  font-size: 12px;
+}
+
+.userInfoProfileFeed {
+  margin-top: 7%;
+  list-style: none;
+  background: #1f1f4b;
+  text-align: center;
+}
+
+.userLocalization, .userBoat, .userSave {
+  border-bottom: 1px solid #ebeae6;
+  margin-top: 0;
+  line-height: 30px;
+  font-size: 16px;
+  padding-right: 10px;
+  color: #ffd632;
 }
 

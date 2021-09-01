@@ -4,13 +4,10 @@ import { signOut } from '../../services/index.js';
 import { popUpNotice } from '../popup/index.js';
 
 export function headerMenu() {
-  const header = document.querySelector('header');
-
-  // const rootMain = document.querySelector('.body');
-  // rootMain.innerHTML = ''
-  // console.log(rootMain);
-  // const header = document.createElement('header');
-  //header.classList.add('menu-header');
+  const main = document.querySelector('.root');
+  main.innerHTML = '';
+  const header = document.createElement('header');
+  header.classList.add('menu-header');
   header.innerHTML = `
         <figure>
           <img src='./img/logo-header.png' alt='A bordo' class='logo-header' id='feed'/>
@@ -26,7 +23,7 @@ export function headerMenu() {
             </ul>
         </nav>
         `;
-  header.style.display = 'flex';
+  main.prepend(header);
 
   const btnMobile = document.querySelector('.btn-mobile');
   const nav = document.querySelector('.menu-nav');
@@ -78,4 +75,5 @@ export function headerMenu() {
     }
     nav.classList.remove('active');
   });
+  return header;
 }
