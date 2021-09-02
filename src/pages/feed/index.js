@@ -14,16 +14,11 @@ function loadPost() {
 }
 
 export const Feed = () => {
-  const root = document.createElement('div');
+  const root = document.createElement('main');
   root.classList.add('main');
   root.style.display = 'flex';
   // const main = document.querySelector('.root');
   // main.style.display = 'flex';
-  headerMenu();
-  profileFeed();
-  weather(root);
-  //root.style.alignItems = 'flex-start';
-  headerMenu();
 
   // cria a publicação do usuário
   const user = currentUser();
@@ -33,7 +28,9 @@ export const Feed = () => {
   const email = user.email;
   const date = new Date();
 
+  headerMenu();
   profileFeed(root, idUser, name, email, photo);
+  weather(root);
 
   const feedContainer = document.createElement('div');
   feedContainer.classList.add('feed-container');
