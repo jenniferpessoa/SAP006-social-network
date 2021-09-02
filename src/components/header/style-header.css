@@ -42,6 +42,8 @@ body, .menu {
   padding: .5rem;
   color: #e7e7e7;
   cursor: pointer;
+  float: left;
+  position: relative;
 }
 
 .menu-a:hover {
@@ -53,6 +55,48 @@ body, .menu {
   display: none;
 }
 
+.nav {
+  position: absolute;
+  background-color: #1f1f4b;  
+  right: 10px;
+  top: 30px;
+  padding: 0 10px 10px 10px;
+  box-shadow:0 5px 5px rgba(0, 0, 0, 0.2);    
+  border-radius: 5px;
+  visibility: hidden;
+}
+
+.nav.active {
+  visibility: visible;
+}
+
+.nav li {
+  list-style: none;
+}
+.nav a {
+  display: inline-flex;
+  align-items: center;
+  font-size: 15px;
+}
+
+.flag{
+  width: 40px;
+  margin-right: 5px;
+}
+
+.skiptranslate {
+  display: none;
+}
+
+.goog-te-banner-frame {
+  display: none !important;
+}
+
+body {
+   position: static !important;
+  top: 0 !important;
+}
+    
 
 @media (max-width: 600px) {
   .logo-header{

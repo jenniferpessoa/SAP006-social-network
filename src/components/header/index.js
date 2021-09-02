@@ -1,7 +1,7 @@
 import { getError } from '../../Errors/index.js';
 import { navigation } from '../../router.js';
 import { signOut } from '../../services/index.js';
-import { popUpNotice } from '../popup/index.js';
+import { translate } from '../translate/index.js';
 
 export function headerMenu() {
   const main = document.querySelector('.root');
@@ -18,7 +18,18 @@ export function headerMenu() {
             </button>
             <ul class='menu'>
                 <li class='menu-a' id='profile'>PERFIL</li>
-                <li class='menu-a' id='languages'>IDIOMAS</li>
+                <li class='menu-a' id='languages'>IDIOMAS
+                  <ul id='google_translate_element' data-lang class='nav'>
+                    <li><a data-pt class='lang-pt' title='Traduzir para português'>
+                      <img class='flag' src='../../img/brazil.png' />Português</a></li>
+                    <li><a data-en class='lang-en' title='Translate to English'>
+                      <img class='flag' src='../../img/united-states.png'/>English</a></li>
+                    <li><a data-es class='lang-es' title='Traducir al español'>
+                      <img class='flag' src='../../img/spain.png'/>Español</a></li>
+                    <li><a data-fr class='lang-fr' title='Traduire en français'>
+                      <img class='flag' src='../../img/france.png'/>Français</a></li>
+                  </ul>
+                </li>  
                 <li class='menu-a' id='logout'>SAIR</li>
             </ul>
         </nav>
@@ -49,22 +60,7 @@ export function headerMenu() {
         break;
 
       case 'languages':
-        // eslint-disable-next-line no-case-declarations
-        const templateDeleteConfirmation = `
-        <div class='change-lang'>
-            <ul class="nav">
-              <li><a class='lang-pt' title='Traduzir para português'>
-                <img data-pt class='flag' src='../../img/brazil.png' /></a></li>
-              <li><a class='lang-en' title='Translate to English'>
-                <img data-en class='flag' src='../../img/united-states.png'  /></a></li>
-              <li><a class='lang-es' title='Traducir al español'>
-                <img data-es class='flag' src='../../img/spain.png'/></a></li>
-              <li><a class='lang-fr' title='Traduire en français'>
-                <img data-fr class='flag' src='../../img/france.png'/></a></li>
-            </ul>
-        </div>
-        `;
-        popUpNotice(templateDeleteConfirmation);
+        translate();
         break;
 
       case 'logout':
