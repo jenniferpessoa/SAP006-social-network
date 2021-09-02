@@ -1,7 +1,7 @@
 import { infoUser, currentUser } from '../../services/index.js';
 
 export const profileFeed = (root, idUser, name, email, photo) => {
-  const profileContainer = document.createElement('div');
+  const profileContainer = document.createElement('aside');
   profileContainer.classList.add('profile-feed');
   profileContainer.innerHTML = ` 
   <div class="profileInfoFeed col-md-3">

@@ -13,7 +13,7 @@ function loadPost() {
 }
 
 export const Feed = () => {
-  const root = document.createElement('div');
+  const root = document.createElement('main');
   root.classList.add('main');
   root.style.display = 'flex';
   //root.style.alignItems = 'flex-start';

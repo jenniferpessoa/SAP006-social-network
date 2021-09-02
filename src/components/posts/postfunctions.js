@@ -7,8 +7,7 @@ import { modal } from '../popup/index.js';
 const deletePost = (idPost, post) => {
   modal.confirm('Essa postagem será excluída, deseja continuar?', () => {
     // const postDiv = rootElement.querySelector(`[data-id="${deleteId}"]`);
-    deletePost(idPost);
-    post.remove();
+    deletePostFeed(idPost).then(() => post.remove());    
   });
 
 
