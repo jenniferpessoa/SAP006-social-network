@@ -3,7 +3,6 @@ import { createPost, getPost, currentUser } from '../../services/index.js';
 import { printPost } from '../../components/posts/posts.js';
 import { headerMenu } from '../../components/header/index.js';
 import { profileFeed } from '../../components/profile-feed/profile-feed.js';
-import { weather } from '../../components/weather/index.js';
 
 function loadPost() {
   getPost().then((snapshot) => {

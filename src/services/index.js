@@ -1,39 +1,23 @@
 import { getError } from '../Errors/index.js';
-import { navigation } from '../router.js';
+import { navigation } from '../routes/navigation.js';
 
 const storage = firebase.storage();
 
-const loginEmailAndPassword = (email, password, checkbox) => {
-  if (checkbox.checked === true) {
-    firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL).then(() => {
-      firebase.auth().signInWithEmailAndPassword(email, password).then(() => navigation('/feed'));
-    }).catch((error) => {
-      getError(error);
-    });
-  } else {
-    firebase.auth().setPersistence(firebase.auth.Auth.Persistence.NONE).then(() => {
-      firebase.auth().signInWithEmailAndPassword(email, password).then(() => navigation('/feed'));
-    }).catch((error) => {
-      getError(error);
-    });
-  }
+const loginEmailAndPassword = (email, password) => {
+  firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION).then(() => {
+    firebase.auth().signInWithEmailAndPassword(email, password).then(() => navigation('/feed'));
+  }).catch((error) => {
+    getError(error);
+  });
 };
 
-const loginWithGmail = (checkbox) => {
+const loginWithGmail = () => {
   const provider = new firebase.auth.GoogleAuthProvider();
-  if (checkbox.checked === true) {
-    firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL).then(() => {
-      firebase.auth().signInWithPopup(provider).then(() => navigation('/feed'));
-    }).catch((error) => {
-      getError(error);
-    });
-  } else {
-    firebase.auth().setPersistence(firebase.auth.Auth.Persistence.NONE).then(() => {
-      firebase.auth().signInWithPopup(provider).then(() => navigation('/feed'));
-    }).catch((error) => {
-      getError(error);
-    });
-  }
+  firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL).then(() => {
+    firebase.auth().signInWithPopup(provider).then(() => navigation('/feed'));
+  }).catch((error) => {
+    getError(error);
+  });
 };
 
 const signUpWithEmailAndPassword = (email, password) => firebase
@@ -43,7 +27,11 @@ const signOut = () => firebase.auth().signOut();
 
 const resetPassword = (email) => firebase.auth().sendPasswordResetEmail(email);
 
-const currentUser = () => firebase.auth().currentUser;
+const currentUser = () => {
+  const userSession = sessionStorage.getItem(Object.keys(sessionStorage)[0]);
+  const user = JSON.parse(userSession);
+  return user;
+};
 
 const createPost = (post) => firebase.firestore().collection('post').add(post);
 

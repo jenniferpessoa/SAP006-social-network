@@ -1,5 +1,5 @@
 import { getError } from '../../Errors/index.js';
-import { navigation } from '../../router.js';
+import { navigation } from '../../routes/navigation.js';
 import { signOut } from '../../services/index.js';
 import { translate } from '../translate/index.js';
 
