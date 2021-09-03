@@ -1,7 +1,7 @@
 import { getError } from '../../Errors/index.js';
 // eslint-disable-next-line import/no-cycle
 import { navigation } from '../../router.js';
-import { loginEmailAndPassword, loginWithGmail, keepMeLogged } from '../../services/index.js';
+import { loginEmailAndPassword, loginWithGmail } from '../../services/index.js';
 
 export const Login = () => {
   const root = document.createElement('div');
@@ -45,22 +45,11 @@ export const Login = () => {
   </main>
   `;
 
-  const keepLogged = root.querySelector('#keep-me-logged');
+  const checkboxKeepLogged = root.querySelector('#keep-me-logged');
   const reset = root.querySelector('#reset');
   const btnSignUp = root.querySelector('.opt-signup');
   const btnLogin = root.querySelector('#buttonLogin');
   const btnGmail = root.querySelector('#btnGmail');
-
-  keepLogged.addEventListener('change', () => {
-    const local = firebase.auth.Auth.Persistence.LOCAL;
-    const none = firebase.auth.Auth.Persistence.NONE;
-    if (keepLogged.checked === true && btnLogin) {
-      keepMeLogged(local);
-    } else if (keepLogged.checked === true && btnGmail) {
-      keepMeLogged(local);
-    }
-    keepMeLogged(none);
-  });
 
   reset.addEventListener('click', (event) => {
     event.preventDefault();
@@ -72,17 +61,11 @@ export const Login = () => {
   btnLogin.addEventListener('click', () => {
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
-    loginEmailAndPassword(email, password)
-      .then(() => {
-        navigation('/feed');
-      })
-      .catch((error) => {
-        getError(error);
-      });
+    loginEmailAndPassword(email, password, checkboxKeepLogged);
   });
 
   btnGmail.addEventListener('click', () => {
-    loginWithGmail().then(() => {
+    loginWithGmail(checkboxKeepLogged).then(() => {
       navigation('/feed');
     }).catch((error) => {
       getError(error);

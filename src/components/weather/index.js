@@ -1,5 +1,5 @@
 export function weather(root) {
-  const weatherWidget = document.createElement('aside');
+  const weatherWidget = document.createElement('section');
   weatherWidget.classList.add('weather-container');
   weatherWidget.innerHTML = `
     <iframe src='https://www.meteoblue.com/en/weather/widget/three?geoloc=detect&nocurrent=0&noforecast=0&days=4&tempunit=CELSIUS&windunit=KILOMETER_PER_HOUR&layout=image' 

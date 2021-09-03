@@ -30,7 +30,6 @@ export const Feed = () => {
 
   headerMenu();
   profileFeed(root, idUser, name, email, photo);
-  weather(root);
 
   const feedContainer = document.createElement('div');
   feedContainer.classList.add('feed-container');
@@ -49,8 +48,6 @@ export const Feed = () => {
 
   const textInput = root.querySelector('.postPublishInput');
   const btnPublish = root.querySelector('.publishBtn');
-
-
 
   // publica criando o objeto no post-firestore
   btnPublish.addEventListener('click', () => {
