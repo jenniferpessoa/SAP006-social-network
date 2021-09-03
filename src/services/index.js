@@ -1,27 +1,43 @@
 import { getError } from '../Errors/index.js';
+import { navigation } from '../router.js';
 
 const storage = firebase.storage();
 
-const loginEmailAndPassword = (email, password) => firebase
-  .auth().signInWithEmailAndPassword(email, password);
+const loginEmailAndPassword = (email, password, checkbox) => {
+  if (checkbox.checked === true) {
+    firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL).then(() => {
+      firebase.auth().signInWithEmailAndPassword(email, password).then(() => navigation('/feed'));
+    }).catch((error) => {
+      getError(error);
+    });
+  } else {
+    firebase.auth().setPersistence(firebase.auth.Auth.Persistence.NONE).then(() => {
+      firebase.auth().signInWithEmailAndPassword(email, password).then(() => navigation('/feed'));
+    }).catch((error) => {
+      getError(error);
+    });
+  }
+};
 
-const loginWithGmail = () => {
+const loginWithGmail = (checkbox) => {
   const provider = new firebase.auth.GoogleAuthProvider();
-  return firebase.auth().signInWithPopup(provider);
+  if (checkbox.checked === true) {
+    firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL).then(() => {
+      firebase.auth().signInWithPopup(provider).then(() => navigation('/feed'));
+    }).catch((error) => {
+      getError(error);
+    });
+  } else {
+    firebase.auth().setPersistence(firebase.auth.Auth.Persistence.NONE).then(() => {
+      firebase.auth().signInWithPopup(provider).then(() => navigation('/feed'));
+    }).catch((error) => {
+      getError(error);
+    });
+  }
 };
 
 const signUpWithEmailAndPassword = (email, password) => firebase
   .auth().createUserWithEmailAndPassword(email, password);
-
-const keepMeLogged = (persistence) => {
-  firebase.auth().setPersistence(persistence).then(() => {
-    const provider = new firebase.auth();
-    return firebase.auth().signInWithRedirect(provider);
-  }).catch((error) => {
-    console.log(error)//getError(error);
-  });
-};
-
 
 const signOut = () => firebase.auth().signOut();
 
@@ -55,7 +71,7 @@ const getHome = (uid) => firebase.firestore().collection('home').where('userId',
 const infoUser = (idUser) => firebase.firestore().collection('home').doc(idUser).get();
 
 export {
-  loginEmailAndPassword, loginWithGmail, signUpWithEmailAndPassword, keepMeLogged, resetPassword,
+  loginEmailAndPassword, loginWithGmail, signUpWithEmailAndPassword, resetPassword,
   signOut, createPost, getPost, updatePost, deletePostFeed, currentUser, createHome, getHome,
   uploadPicture, downloadPicture, likePost, getLikes, unlikePost, infoUser,
 };

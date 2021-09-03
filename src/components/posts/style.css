@@ -38,6 +38,7 @@
   padding: 5px;
   margin-right: -10px;
   width: 60px;
+  cursor: pointer;
 }
 
 .fa-window-close::before {
@@ -46,6 +47,7 @@
   padding: 5px;
   margin-right: 25px;
   width: 60px;
+  cursor: pointer;
 }
 
 .fa-trash-alt::before {
@@ -54,6 +56,7 @@
   padding: 5px;
   margin-right: 25px;
   width: 60px;
+  cursor: pointer;
 }
 
 .likeBtn {
@@ -66,25 +69,3 @@
   width: 60px;
   display: block;
 }
-
-/*.editBtn {
-  border: none;
-  border-radius: 5px;
-  padding: 5px;
-  margin-right: 1%;
-  background-color: #ffd632;
-  color: #1f1f4b;
-  width: 60px;
-  display: none;
-}*/
-
-.deleteBtn {
-  border: none;
-  border-radius: 5px;
-  padding: 5px;
-  margin-right: 1%;
-  background-color: #ffd632;
-  color: #1f1f4b;
-  width: 60px;
-  display: none;
-  }
