@@ -1,6 +1,5 @@
-import { signUpWithEmailAndPassword, loginWithGmail /* currentUser */ } from '../../services/index.js';
-// eslint-disable-next-line import/no-cycle
-import { navigation } from '../../router.js';
+import { signUpWithEmailAndPassword, loginWithGmail } from '../../services/index.js';
+import { navigation } from '../../routes/navigation.js';
 import { getError } from '../../Errors/index.js';
 
 export const SignUp = () => {

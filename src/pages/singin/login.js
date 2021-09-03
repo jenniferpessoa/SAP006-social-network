@@ -1,6 +1,5 @@
 import { getError } from '../../Errors/index.js';
-// eslint-disable-next-line import/no-cycle
-import { navigation } from '../../router.js';
+import { navigation } from '../../routes/navigation.js';
 import { loginEmailAndPassword, loginWithGmail } from '../../services/index.js';
 
 export const Login = () => {
@@ -29,7 +28,6 @@ export const Login = () => {
           </div>
           <section class='errors'></section>
           <div class='rememberForgot' >
-            <label><input type='checkbox' id='keep-me-logged'>Manter-me conectado</label>
             <a href='#' id='reset'>Esqueci a senha</a>
           </div>  
 
@@ -45,7 +43,6 @@ export const Login = () => {
   </main>
   `;
 
-  const checkboxKeepLogged = root.querySelector('#keep-me-logged');
   const reset = root.querySelector('#reset');
   const btnSignUp = root.querySelector('.opt-signup');
   const btnLogin = root.querySelector('#buttonLogin');
@@ -61,11 +58,11 @@ export const Login = () => {
   btnLogin.addEventListener('click', () => {
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
-    loginEmailAndPassword(email, password, checkboxKeepLogged);
+    loginEmailAndPassword(email, password);
   });
 
   btnGmail.addEventListener('click', () => {
-    loginWithGmail(checkboxKeepLogged).then(() => {
+    loginWithGmail().then(() => {
       navigation('/feed');
     }).catch((error) => {
       getError(error);

@@ -1,7 +1,8 @@
-import { infoUser, currentUser } from '../../services/index.js';
+import { infoUser } from '../../services/index.js';
 import { weather } from '../weather/index.js';
 
 export const profileFeed = (root, idUser, name, email, photo) => {
+  const rootPf = root;
   const asideContainer = document.createElement('aside');
   asideContainer.classList.add('aside-info');
   asideContainer.innerHTML = ` 
@@ -28,8 +29,8 @@ export const profileFeed = (root, idUser, name, email, photo) => {
   root.prepend(asideContainer);
 
   infoUser(idUser).then((snapshot) => {
-    root.querySelector('.userBoat').innerHTML = `Veleiro: ${snapshot.data().boat}`;
-    root.querySelector('.userLocalization').innerHTML = `Local: ${snapshot.data().localization}`;
+    rootPf.querySelector('.userBoat').innerHTML = `Veleiro: ${snapshot.data().boat}`;
+    rootPf.querySelector('.userLocalization').innerHTML = `Local: ${snapshot.data().localization}`;
   });
 
   if (photo) {
@@ -37,7 +38,7 @@ export const profileFeed = (root, idUser, name, email, photo) => {
     userPictureProfileFeed.src = photo;
   }
   if (!name) {
-    root.querySelector('.userName').innerHTML = `Atualize o seu perfil`;
+    rootPf.querySelector('.userName').innerHTML = 'Atualize o seu perfil';
   }
 
   return root;

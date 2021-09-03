@@ -1,6 +1,5 @@
-// eslint-disable-next-line import/no-cycle
 import { getError } from '../../Errors/index.js';
-import { navigation } from '../../router.js';
+import { navigation } from '../../routes/navigation.js';
 import { resetPassword } from '../../services/index.js';
 
 export const Reset = () => {

@@ -1,4 +1,3 @@
-/* eslint-disable no-tabs */
 import {
   createHome, currentUser, getHome, uploadPicture, downloadPicture,
 } from '../../services/index.js';
@@ -12,11 +11,11 @@ export const Profile = () => {
   const root = document.createElement('div');
   root.classList.add('root-profile');
   root.innerHTML = `
-	<main class='profile-container row'>
+  <main class='profile-container row'>
     <section class='profile-form col-11'>
       <form>
         <fieldset class='fieldset-container'>
-					<legend class='legend'> Seu Perfil </legend>
+        <legend class='legend'> Seu Perfil </legend>
           <section class='profile-image-container col-4'>
             <label class='label-image'>
             <input type='file' name='arquivo'>
@@ -29,7 +28,7 @@ export const Profile = () => {
             </figure>
           </section>
 
-					<div class='form-fields col-9 '>
+          <div class='form-fields col-9 '>
             <p>Nome Completo:
               <input id='name' type='name' class='input-item' value='${loggedUser.displayName}'>
             </p>
@@ -53,7 +52,7 @@ export const Profile = () => {
             <nav class='btn-profile-container'>
               <button type='submit' id='saveBtn' class='saveBtn'>Atualizar</button>
             </nav>
-				  </div>
+          </div>
         </fieldset>
       </form>
     </section>
