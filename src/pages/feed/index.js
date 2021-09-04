@@ -16,10 +16,10 @@ export const Feed = () => {
   const root = document.createElement('main');
   root.classList.add('main');
   root.style.display = 'flex';
-  //root.style.alignItems = 'flex-start';
-  headerMenu();
+  // const main = document.querySelector('.root');
+  // main.style.display = 'flex';
 
-  //cria a publicação do usuário 
+  // cria a publicação do usuário
   const user = currentUser();
   const idUser = user.uid;
   const name = user.displayName;
@@ -27,6 +27,7 @@ export const Feed = () => {
   const email = user.email;
   const date = new Date();
 
+  headerMenu();
   profileFeed(root, idUser, name, email, photo);
 
   const feedContainer = document.createElement('div');
@@ -47,9 +48,7 @@ export const Feed = () => {
   const textInput = root.querySelector('.postPublishInput');
   const btnPublish = root.querySelector('.publishBtn');
 
-
-
-  //publica criando o objeto no post-firestore
+  // publica criando o objeto no post-firestore
   btnPublish.addEventListener('click', () => {
     if (!textInput.value) {
       alert('Escreva a sua mensagem!');

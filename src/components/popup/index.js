@@ -78,7 +78,6 @@ export const modal = {
       }
     });
   },
-
 };
 
 export { popUpNotice };
