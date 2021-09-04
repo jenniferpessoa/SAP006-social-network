@@ -1,4 +1,4 @@
-import { infoUser, currentUser } from '../../services/index.js';
+import { infoUser } from '../../services/index.js';
 
 export const profileFeed = (root, idUser, name, email, photo) => {
   const profileContainer = document.createElement('aside');
@@ -16,7 +16,7 @@ export const profileFeed = (root, idUser, name, email, photo) => {
       <ul class="userInfoProfileFeed nav-pills nav-stacked">
         <li class="userLocalization"></li>
         <li class="userBoat"></li>
-        <li class="userSave">Salvos</li>        
+        <li class="userSave"><i data-savePos type='button' id='savePost' class="fas fa-anchor"></i></li>        
       </ul>
     </div>
   </div>
@@ -24,8 +24,13 @@ export const profileFeed = (root, idUser, name, email, photo) => {
   root.prepend(profileContainer);
 
   infoUser(idUser).then((snapshot) => {
+    if (!snapshot.data().boat || !snapshot.data().localization) {
+    root.querySelector('.userBoat').style.display = 'none';
+    root.querySelector('.userLocalization').style.display = 'none';
+    } else {
     root.querySelector('.userBoat').innerHTML = `Veleiro: ${snapshot.data().boat}`;
     root.querySelector('.userLocalization').innerHTML = `Local: ${snapshot.data().localization}`;
+    }
   });
 
   if (photo) {
@@ -35,6 +40,6 @@ export const profileFeed = (root, idUser, name, email, photo) => {
   if (!name) {
     root.querySelector('.userName').innerHTML = `Atualize o seu perfil`;
   }
-
+ 
   return root;
 };

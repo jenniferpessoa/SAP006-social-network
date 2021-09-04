@@ -1,3 +1,4 @@
+@import url("../../components/posts/style-comments.css");
 @import url("../../components/popup/style.css");
 
 /*** Botões dos posts ***/
@@ -9,6 +10,7 @@
   background-color: #fafafa;
 }
 
+
 .fa-heart::before {
   font-size: 25px;
   color: #ffd632;
@@ -16,6 +18,13 @@
 
 .numLikes {
   color: black;
+}
+
+.fa-anchor {
+  font-size: 15px;
+  color: #ffd632;
+  padding: 2% 2% 0 2%;
+  margin-left: 2%;
 }
 
 .fa-edit::before {
@@ -87,4 +96,22 @@
   color: #1f1f4b;
   width: 60px;
   display: none;
-  }
+}
+
+.commentBtn {
+  background-color: #ffd632;  
+  border: none;
+  border-radius: 5px;
+  padding: 5px;  
+  width: 80px; 
+  height: 30px;
+}
+
+.commentBtn {
+  margin-right: auto;
+}
+
+.sendComment {
+  margin-left: 70%;
+  margin-top: 2%;
+}

@@ -47,6 +47,12 @@ const downloadPicture = (log) => storage.ref().child(`images/${log}`).getDownloa
 
 const unlikePost = (idUser, idPost) => firebase.firestore().collection('post').doc(idPost).update({ likes: firebase.firestore.FieldValue.arrayRemove(idUser) });
 
+const createComment = (idPost, comment) => firebase.firestore().collection('post').doc(idPost).update({ comments: firebase.firestore.FieldValue.arrayUnion(comment) });
+
+const getComments = (idPost) => firebase.firestore().collection('post').doc(idPost).get();
+
+//const deletePostComment = (idPost, comment) => firebase.firestore().collection('post').doc(idPost).update({ comments: firebase.firestore.FieldValue.arrayRemove(comment) });
+
 const createHome = (user) => firebase.firestore().collection('home').doc(user.userId).set(user);
 
 const getHome = (uid) => firebase.firestore().collection('home').where('userId', '==', uid).get()
@@ -57,5 +63,6 @@ const infoUser = (idUser) => firebase.firestore().collection('home').doc(idUser)
 export {
   loginEmailAndPassword, loginWithGmail, signUpWithEmailAndPassword, keepMeLogged, resetPassword,
   signOut, createPost, getPost, updatePost, deletePostFeed, currentUser, createHome, getHome,
-  uploadPicture, downloadPicture, likePost, getLikes, unlikePost, infoUser,
+  uploadPicture, downloadPicture, likePost, getLikes, unlikePost, createComment, getComments, 
+ /* deletePostComment,*/ infoUser,
 };

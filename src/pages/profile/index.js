@@ -2,7 +2,7 @@
 import {
   createHome, currentUser, getHome, uploadPicture, downloadPicture,
 } from '../../services/index.js';
-import { headerMenu } from '../../components/header/index.js';
+//import { headerMenu } from '../../components/header/index.js';
 
 export const Profile = () => {
   headerMenu();
