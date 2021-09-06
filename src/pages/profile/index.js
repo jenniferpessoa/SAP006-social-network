@@ -105,7 +105,7 @@ export const Profile = () => {
       userId: loggedUser.uid,
     };
 
-    loggedUser.updateProfile({
+    firebase.auth().currentUser.updateProfile({
       displayName: name.value,
     });
     createHome(infoUser);

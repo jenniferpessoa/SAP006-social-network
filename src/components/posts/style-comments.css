@@ -1,0 +1,122 @@
+.showcomments {
+    display: none;
+    padding: 5px;
+    border-radius: 10px;      
+  }
+  .showcomments.active {
+    display: block;
+  }
+
+.commentsinput-container {
+  width: 100%;
+  margin-bottom: 2%;
+  padding-bottom: 1%;
+  background: linear-gradient(
+  180deg,
+  rgba(68, 136, 182, 0.418) 16.67%,
+  rgba(114, 183, 211, 0.25) 100%
+  );
+  background-attachment: fixed;
+  text-align: center;
+}
+
+.commentInput {
+  text-align: center;
+  margin: 2% auto 0 auto;  
+  width: 80%;
+	border: none;
+	background: #E8E8E8;
+	height: 60%;	
+	border-bottom: 2px solid #1f1f4b;
+	transition: all 0.5s;	   
+}  
+
+.sendComment {
+    background-color: #ffd632;  
+    font-size: smaller;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;  
+    width: 60px; 
+    height: 25px;
+    margin-left: 70%;    
+}
+
+.comments-list {
+    /*background-color: #eef2f5;*/
+    width: 100%;
+    list-style: none; 
+    padding-bottom: 3%;
+    background: linear-gradient(
+    180deg,
+    rgba(68, 136, 182, 0.418) 16.67%,
+    rgba(114, 183, 211, 0.25) 100%
+  );
+  background-attachment: fixed;
+}
+
+.elementComment {    
+    width: 80%;
+    background-color: white;
+    border-radius: 4px;
+    box-shadow: 10px 10px 5px #aaaaaa;   
+    list-style: none;  
+    display: flex;
+    flex-direction: column;
+    margin: 2% auto 0 auto;        
+}
+
+.positionComment {
+ color: black;
+}
+
+.textComment {
+    font-size: 13px;
+    font-weight: 500;
+    color: #56575b;
+    padding: 2%;;
+}
+
+.sectionImgComment {
+  display: flex; 
+  padding: 2%;
+}
+
+.comment-avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;  
+ }
+
+.imgUserComment img{
+   border-radius: 50%;
+   height: 100%;   
+}
+
+.sectionInfoUserComment {
+    display: flex;
+    flex-direction: column;
+    padding-left: 2%;
+}
+
+.nameUserComment {
+    font-size: 13px;
+    font-weight: 500;
+    margin-left: 1%;
+    color: #56575b;
+}
+
+.dateComment {
+    font-size: 10px;
+    font-weight: 500;
+    margin-left: 1%;
+    color: #828386;
+}
+
+/* .fa-trash {
+  font-size: 10px;
+  color:blue;
+  padding: 5px;
+  margin-left: 60%;
+  cursor: pointer;
+} */

@@ -52,6 +52,8 @@ export const Feed = () => {
   btnPublish.addEventListener('click', () => {
     if (!textInput.value) {
       alert('Escreva a sua mensagem!');
+    } else if (!name) {
+      alert('Atualize o seu cadastro');
     } else {
       const postObj = {
         idUser,
@@ -77,3 +79,7 @@ export const Feed = () => {
   loadPost();
   return root;
 };
+
+
+
+
