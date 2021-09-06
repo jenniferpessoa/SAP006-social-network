@@ -19,15 +19,10 @@ export const profileFeed = (root, idUser, name, email, photo) => {
         <ul class="userInfoProfileFeed nav-pills nav-stacked">
           <li class="userLocalization"></li>
           <li class="userBoat"></li>
-          <li class="userSave">Salvos</li>        
+          <li class="userSave">Salvos<i data-savePos type='button' id='savePost' class="fas fa-anchor"></i></li>        
         </ul>
       </div>
-      <ul class="userInfoProfileFeed nav-pills nav-stacked">
-        <li class="userLocalization"></li>
-        <li class="userBoat"></li>
-        <li class="userSave"><i data-savePos type='button' id='savePost' class="fas fa-anchor"></i></li>        
-      </ul>
-    </div>
+    </div>  
   </section>
 `;
   weather(asideContainer);

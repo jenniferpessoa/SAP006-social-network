@@ -2,10 +2,10 @@
 /* eslint-disable no-console */
 /* eslint-disable spaced-comment */
 /* eslint-disable no-restricted-syntax */
-import { updatePost, currentUser, createComment } from '../../services/index.js';
-import { /*dateFormat,*/ deletePost, sendLike, commentsPost, savePost } from './postfunctions.js';
+import { updatePost, currentUser, createComment,  } from '../../services/index.js';
+import { /*dateFormat,*/ deletePost, sendLike, displayComments, commentsPost, savePostSelected,  } from './postfunctions.js';
 
-const Post = (photoPost, nameUserPost, text, idUserPost, idPost, dateP, likesPost, displayName) => {
+const Post = (photoPost, nameUserPost, text, idUserPost, idPost, dateP, likesPost) => {
 
   const element = document.createElement('li');
   const template = `
@@ -16,22 +16,23 @@ const Post = (photoPost, nameUserPost, text, idUserPost, idPost, dateP, likesPos
         <p class='username'>${nameUserPost}</p>       
       </section>
       <section class='sectionSaveDate'>
-      <time datetime='${dateP}' id='postDate' class='postDate'>${dateP}</time> 
+      <time datetime='${dateP}' id='postDate' class='postDate'>${dateP}</time>
+      <i data-saveAnchorPost='${idPost}'  type='button' id='${idPost}' class="fas fa-anchor"></i>
                  
       </section>
     </header> 
     <form class='formContainer'>
       <textarea data-textPost='${idPost}' id='textarea-${idPost}' class='postInput' disabled>${text}</textarea>      
       <section id='section' class='postBtnContainer'>
-        <button type='button' data-comments='${idPost}' id='comment-${idPost}' class='commentBtn'>Comments</button>
+        <button type='button' data-comments='${idPost}' id='comment-${idPost}' class='commentBtn'>Comentários</button>
         
         <div data-editBtns='${idPost}' id='edition-btns' class='edition-btns'>
           <i data-saveEdit='${idPost}' id='save-${idPost}' class='far fa-check-square'></i> 
           <i data-cancelEdit='${idPost}' type='button' id='cancel-${idPost}' class='far fa-window-close'></i>
         </div>
-        <i data-edit='${idPost}' type='button' id='edit-${idPost}' class='far fa-edit'></i>
+        <i data-edit='${idPost}' type='button' id='edit-${idPost}' class='far fa-edit' style="display:${currentUser().uid === idUserPost ? 'block' : 'none'}" ></i>
           
-        <i data-delete='${idPost}' type='button'  id='delete-${idPost}' class='far fa-trash-alt'></i>
+        <i data-delete='${idPost}' type='button'  id='delete-${idPost}' class='far fa-trash-alt' style="display:${currentUser().uid === idUserPost ? 'block' : 'none'}" ></i>
 
         <a data-num='${idPost}' id='numLike-${idPost}' class='numLikes'>${likesPost.length}</a>
         <i data-like='${idPost}' id='like-${idPost}' class='far fa-heart'></i>      
@@ -48,8 +49,6 @@ const Post = (photoPost, nameUserPost, text, idUserPost, idPost, dateP, likesPos
     </form>
     </article> 
   `;
-
-  //<i data-anchor='${idPost}' type='button' id='postSave' class="fas fa-anchor"></i>   
 
   element.innerHTML = template;
   return element;
@@ -68,46 +67,33 @@ function printPost(post) {
   const likesPost = post.data().likes;
 
   const timeline2 = document.querySelector('[data-feedTimeline]');
-  const postElement = Post(photoPost, nameUserPost, text, idUserPost, idPost, dateP, likesPost, user.displayName);
+  const postElement = Post(photoPost, nameUserPost, text, idUserPost, idPost, dateP, likesPost);
   timeline2.append(postElement);
 
-  const listOfPosts = postElement.querySelector('[data-post]');
 
   const btnLike = postElement.querySelector(`#like-${idPost}`);
-  const btnEdit = postElement.querySelector(`#edit-${idPost}`);
-  const btnDelete = postElement.querySelector(`#delete-${idPost}`);
-
-  if (idUser === idUserPost) {
-    btnEdit.style.display = 'block';
-    btnDelete.style.display = 'block';
-  } else {
-    btnEdit.style.display = 'none';
-    btnDelete.style.display = 'none';
-  }
-
   if (likesPost.includes(idUser)) {
     btnLike.classList.add('fas');
   } else {
     btnLike.classList.add('far');
   }
 
-
+  const listOfPosts = postElement.querySelector('[data-post]');
   listOfPosts.addEventListener('click', (e) => {
     const { target } = e;
 
-    // const postSaveBtn = postElement.querySelector(`[data-anchor='${idPost}']`);
-    // const postSaveButton = target.dataset.anchor;
+    const postSaveBtn = postElement.querySelector(`[data-saveAnchorPost='${idPost}']`);
+    console.log(postSaveBtn);
+    const postSaveButton = target.dataset.saveanchorpost;
+    console.log(postSaveButton);
 
-    // if (postSaveButton) {
-    //   console.log(postSaveButton);
-    //   console.log(postSaveBtn);
-    //   savePost();
-    // }
+    if (postSaveBtn === target) {      
+      savePostSelected(idUser, postSaveButton);
+    }
 
-    const postSelectDelete = (postElement.querySelector('[data-delete]')).parentNode.parentNode.parentNode.parentNode; //está bugada, pedir ajuda da Mari
+    const postSelectDelete = (postElement.querySelector('[data-delete]')).parentNode.parentNode.parentNode.parentNode;
     const deleteButton = target.dataset.delete;
     if (deleteButton) {
-      console.log(postSelectDelete);
       deletePost(deleteButton, postSelectDelete);
     }
 
@@ -157,13 +143,10 @@ function printPost(post) {
     //Botão Comentários, aparecerá a section
     const commentsIdPost = target.dataset.comments;
     const commentUl = postElement.querySelector('[data-listcomments]');
-    const commentsShow = postElement.querySelector(`[data-showcomments='${idPost}']`);
-
 
     if (commentsIdPost) {
-      postElement.querySelector('[data-showcomments]').style.display = 'block';
-
-      commentsPost(commentsIdPost, commentUl);
+      displayComments(`showcomments-${idPost}`);
+      commentsPost(commentsIdPost, commentUl); // não consegui unir as funções, há um erro no then, mas nao entendo pq
     }
 
     //Botão Publicar comentário
@@ -177,6 +160,8 @@ function printPost(post) {
         alert('Atualize o seu cadastro');
       } else {
         const dateComment = new Date();
+        //  const commentId = dateComment.replaceAll(/[/: ]/g, '');
+
         const commentObj = {
           idUser,
           idPost,
@@ -184,20 +169,22 @@ function printPost(post) {
           photo: user.photoURL,
           text: commentText.value,
           date: dateComment.toLocaleString('pt-BR'),
+          //idComment: commentObj.date.replaceAll(/[/: ]/g, ''),
         };
+        console.log(commentObj);
 
         commentText.value = '';
 
         //cria o comentário com a função do services
         createComment(commentObj.idPost, commentObj);
 
-        //atualiza a section dos comentários
-        commentUl.innerHTML = '';
-        commentsPost(commentObj.idPost, commentUl);
-      }
+            //atualiza a section dos comentários
+            commentUl.innerHTML = '';
+            commentsPost(commentObj.idPost, commentUl, postElement);
+          }          
     }
-  });
-  //return postElement
+    });
+
   return timeline2;
 }
 

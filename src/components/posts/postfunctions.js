@@ -1,15 +1,18 @@
 /* eslint-disable spaced-comment */
 import {
-  deletePostFeed, likePost, getLikes, unlikePost, getComments, /*deletePostComment,*/
+  currentUser, deletePostFeed, likePost, getLikes, unlikePost, getComments, deleteCommentFeed, savePost, getPostSave,
 } from '../../services/index.js';
 import { modal } from '../popup/index.js';
 
 function dateFormat(date) {
   const optionsDate = {
-    year: 'numeric', month: 'numeric', day: 'numeric',
-    hour: 'numeric', minute: 'numeric',
+    year: 'numeric',
+    month: 'numeric',
+    day: 'numeric',
+    hour: 'numeric',
+    minute: 'numeric',
     hour12: false,
-   };
+  };
 
   return new Intl.DateTimeFormat('pt-br', optionsDate).format(date);
 
@@ -47,41 +50,74 @@ const sendLike = (idUser, idPostClicked, numLikes, likeIcon) => {
 //   deletePostComment(idPost, comment);
 // };
 
-const commentsPost = (idPost, container) => {
-  getComments(idPost).then((snapshot) => {
-    const commentsArray = snapshot.data().comments;
+const displayComments = (id) => {
+  const sectionComments = document.getElementById(id);
+  sectionComments.classList.toggle('active');
+  return sectionComments;
+};
 
-    commentsArray.forEach((comment) => {
+const deleteComment = (idPost, comment, commentLi) => {
+  modal.confirm('Essa postagem será excluída, deseja continuar?', () => {
+    deleteCommentFeed(idPost, comment).then(() => commentLi.remove());
+  });
+};
+
+const commentsPost = (idPost, containerComment, containerPost) => {
+  getComments(idPost).then((snapshot) => {
+    //const commentsArray = snapshot.data().comments;
+    // const postElement = containerPost;
+
+    snapshot.forEach((comment) => {
+      const commentId = comment.id;
+      const postCommentId = comment.data().idPost;
+
       const commentLi = document.createElement('li');
-      // const commentId = comment.date.replaceAll(/[/: ]/g, '');
+      //const commentId = comment.date.replaceAll(/[/: ]/g, '');
       commentLi.classList.add('elementComment');
+      commentLi.setAttribute('data-comment', `${commentId}`);
+
       const commentTemplate = `
       <div class="positionComment">
-        <p class="textComment">${comment.text}</p>
+        <p class="textComment">${comment.data().text}</p>
         <div class="sectionImgComment">
           <figure class="comment-avatar"><img class='imgUserComment' src="../../img/profileImg.png" width="30px"></figure>
           
         <section class="sectionInfoUserComment">
-          <h class="nameUserComment">${comment.name}</h>
-          <time class="dateComment">${comment.date}</time>
+          <h class="nameUserComment">${comment.data().name}</h>
+          <time class="dateComment">${comment.data().date}</time>
         </section>
+        <i data-btnLiComment='${commentId}' type='button' id='delete-${commentId}' class='far fa-trash-alt comment' style="display:${currentUser().uid === comment.data().idUser ? 'block' : 'none'}" ></i>
         </div>
       </div>  
         `;
       commentLi.innerHTML = commentTemplate;
 
-      const picturePost = commentLi.querySelector('.imgUserComment');
+      const btnDeleteComment = commentLi.querySelector(`#delete-${commentId}`);
+      console.log(btnDeleteComment);
 
-      if (comment.photo) {
-        picturePost.src = comment.photo;
+      btnDeleteComment.addEventListener('click', (event) => {
+        event.stopPropagation();
+        deleteComment(postCommentId, commentId, commentLi);
+      });
+
+      // const picturePost = commentLi.querySelector('.imgUserComment');
+      if (comment.data().photo) {
+        (commentLi.querySelector('.imgUserComment')).src = comment.data().photo;
       }
-      container.prepend(commentLi);
+
+      containerComment.prepend(commentLi);
     });
   });
 };
 
-const savePost = () => {
-  console.log('oi')
-}
+const savePostSelected = (idUser, idPost) => {
+  const postSave = {
+    idUser,
+    idPost,
+  };
+  savePost(idUser, idPost);
+};
 
-export { deletePost, sendLike, commentsPost, savePost, dateFormat };
+export {
+  deletePost, sendLike, displayComments, commentsPost, savePostSelected, dateFormat,
+};

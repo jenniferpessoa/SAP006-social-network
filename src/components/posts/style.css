@@ -14,6 +14,7 @@
 .fa-heart::before {
   font-size: 25px;
   color: #ffd632;
+  cursor: pointer;
 }
 
 .numLikes {
@@ -25,15 +26,16 @@
   color: #ffd632;
   padding: 2% 2% 0 2%;
   margin-left: 2%;
+  cursor: pointer;
 }
 
 .fa-edit::before {
-  font-size: 25px;
+  font-size: 20px;
   color: #ffd632;
   padding: 5px;
   margin-right: 1%;
   width: 60px;
-  
+  cursor: pointer;  
 }
 
 .edition-btns {
@@ -42,7 +44,7 @@
 }
 
 .fa-check-square::before {
-  font-size: 25px;
+  font-size: 20px;
   color: #ffd632;
   padding: 5px;
   margin-right: -10px;
@@ -51,7 +53,7 @@
 }
 
 .fa-window-close::before {
-  font-size: 25px;
+  font-size: 20px;
   color: #ffd632;
   padding: 5px;
   margin-right: 25px;
@@ -60,7 +62,7 @@
 }
 
 .fa-trash-alt::before {
-  font-size: 25px;
+  font-size: 20px;
   color: #ffd632;
   padding: 5px;
   margin-right: 25px;
@@ -90,7 +92,7 @@
   display: none;
 }*/
 
-.deleteBtn {
+/* .deleteBtn {
   border: none;
   border-radius: 5px;
   padding: 5px;
@@ -99,22 +101,21 @@
   color: #1f1f4b;
   width: 60px;
   display: none;
-}
+} */
 
 .commentBtn {
-  background-color: #ffd632;  
+  background-color: #ffd632; 
+  font-size: small; 
   border: none;
   border-radius: 5px;
   padding: 5px;  
   width: 80px; 
   height: 30px;
+  cursor: pointer;
 }
 
 .commentBtn {
   margin-right: auto;
 }
 
-.sendComment {
-  margin-left: 70%;
-  margin-top: 2%;
-}
+

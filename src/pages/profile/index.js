@@ -1,7 +1,7 @@
 import {
   createHome, currentUser, getHome, uploadPicture, downloadPicture,
 } from '../../services/index.js';
-//import { headerMenu } from '../../components/header/index.js';
+import { headerMenu } from '../../components/header/index.js';
 
 export const Profile = () => {
   headerMenu();
@@ -105,7 +105,7 @@ export const Profile = () => {
       userId: loggedUser.uid,
     };
 
-    loggedUser.updateProfile({
+    firebase.auth().currentUser.updateProfile({
       displayName: name.value,
     });
     createHome(infoUser);

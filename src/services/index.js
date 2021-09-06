@@ -51,11 +51,16 @@ const downloadPicture = (log) => storage.ref().child(`images/${log}`).getDownloa
 
 const unlikePost = (idUser, idPost) => firebase.firestore().collection('post').doc(idPost).update({ likes: firebase.firestore.FieldValue.arrayRemove(idUser) });
 
-const createComment = (idPost, comment) => firebase.firestore().collection('post').doc(idPost).update({ comments: firebase.firestore.FieldValue.arrayUnion(comment) });
+const createComment = (idPost, comment) => firebase.firestore().collection('post').doc(idPost).collection('comments')
+  .add(comment);
 
-const getComments = (idPost) => firebase.firestore().collection('post').doc(idPost).get();
+const getComments = (idPost) => firebase.firestore().collection('post').doc(idPost).collection('comments')
+  .orderBy('date', 'desc')
+  .get();
 
-//const deletePostComment = (idPost, comment) => firebase.firestore().collection('post').doc(idPost).update({ comments: firebase.firestore.FieldValue.arrayRemove(comment) });
+const deleteCommentFeed = (idPost, idComment) => firebase.firestore().collection('post').doc(idPost).collection('comments')
+  .doc(idComment)
+  .delete();
 
 const createHome = (user) => firebase.firestore().collection('home').doc(user.userId).set(user);
 
@@ -64,9 +69,13 @@ const getHome = (uid) => firebase.firestore().collection('home').where('userId',
 
 const infoUser = (idUser) => firebase.firestore().collection('home').doc(idUser).get();
 
+const savePost = (idUser, idPostSave) => firebase.firestore().collection('home').doc(idUser).collection('postsave').doc(idPostSave).add(idPostSave);
+
+const getPostSave = (idPost) => firebase.firestore().collection('post').doc(idPost).collection('postsave').get();
+
 export {
   loginEmailAndPassword, loginWithGmail, signUpWithEmailAndPassword, resetPassword,
   signOut, createPost, getPost, updatePost, deletePostFeed, currentUser, createHome, getHome,
-  uploadPicture, downloadPicture, likePost, getLikes, unlikePost, createComment, getComments, 
- /* deletePostComment,*/ infoUser,
+  uploadPicture, downloadPicture, likePost, getLikes, unlikePost, createComment, getComments,
+  deleteCommentFeed, infoUser, savePost, getPostSave,
 };
