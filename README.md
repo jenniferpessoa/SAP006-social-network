@@ -13,7 +13,7 @@ Desenvolver uma Rede Social
 - [Histórias de Usuário](#histórias-de-usuário)
 - [Interface do Usuário](#interface-do-usuário)
 - [Protótipo de Baixa Fidelidade e Teste de Usabilidade](#protótipo-de-baixa-fidelidade-e-teste-de-usabilidade)
-- [Protótipos de Alta Fidelidade](#protótipos-de-alta-fidelidade)
+- [Protótipos de Alta Fidelidade](#-protótipos-de-alta-fidelidade)
 - [Produto Final: Conhecendo o A\Bordo](#produto-final)
 - [Aprendizagem Utilizada em Projeto](#aprendizagem-utilizada-em-projeto)
 ---
