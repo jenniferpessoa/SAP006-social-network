@@ -69,9 +69,12 @@ const getHome = (uid) => firebase.firestore().collection('home').where('userId',
 
 const infoUser = (idUser) => firebase.firestore().collection('home').doc(idUser).get();
 
-const savePost = (idUser, idPostSave) => firebase.firestore().collection('home').doc(idUser).collection('postsave').doc(idPostSave).add(idPostSave);
+const savePost = (idUser, idPostSave) => firebase.firestore().collection('home').doc(idUser).collection('postsave')
+  .doc(idPostSave)
+  .add(idPostSave);
 
-const getPostSave = (idPost) => firebase.firestore().collection('post').doc(idPost).collection('postsave').get();
+const getPostSave = (idPost) => firebase.firestore().collection('post').doc(idPost).collection('postsave')
+  .get();
 
 export {
   loginEmailAndPassword, loginWithGmail, signUpWithEmailAndPassword, resetPassword,
