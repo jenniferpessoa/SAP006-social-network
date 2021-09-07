@@ -4,7 +4,7 @@ Criando uma   Rede Social
 >
 ## Índice
 
-- [Prefácio](prefácio)
+- [Prefácio](#prefácio)
 - [Idealização do Pojeto](idealização-do-projeto)
 - [3. Objetivos de aprendizagem](#3-objetivos-de-aprendizagem)
 - [4. Considerações gerais](#4-considerações-gerais)
