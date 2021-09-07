@@ -9,12 +9,12 @@ Desenvolver uma Rede Social
 
 - [Prefácio](#prefácio)
 - [Idealização do Pojeto](#idealização-do-projeto--)
-- [Por Que A\Bordo?](#por-que-a\bordo)
-- [Histórias de Usuário](#histórias-de-usuário)
-- [Interface do Usuário](#interface-do-usuário)
-- [Protótipo de Baixa Fidelidade e Teste de Usabilidade](#protótipo-de-baixa-fidelidade-e-teste-de-usabilidade)
+- [Por Que A\Bordo?](#por-que-abordo)
+- [Histórias de Usuário](#-histórias-de-usuário)
+- [Interface do Usuário](#nterface-do-usuário--)
+- [Protótipo de Baixa Fidelidade e Teste de Usabilidade](#-protótipo-de-baixa-fidelidade-e-teste-de-usabilidade)
 - [Protótipos de Alta Fidelidade](#-protótipos-de-alta-fidelidade)
-- [Produto Final: Conhecendo o A\Bordo](#produto-final)
+- [Produto Final: Conhecendo o A\Bordo](#-produto-final-conhecendo-o-abordo)
 - [Aprendizagem Utilizada em Projeto](#aprendizagem-utilizada-em-projeto)
 ---
 
