@@ -113,10 +113,11 @@
     color: #828386;
 }
 
-/* .fa-trash {
+/* .fa-trash-alt.comment::before{
   font-size: 10px;
   color:blue;
   padding: 5px;
-  margin-left: 60%;
+  margin-left: 80%;
   cursor: pointer;
-} */
+  float: right;
+}  */

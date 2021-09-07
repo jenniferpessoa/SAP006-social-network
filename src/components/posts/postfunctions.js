@@ -1,28 +1,17 @@
 /* eslint-disable spaced-comment */
 import {
-  currentUser, deletePostFeed, likePost, getLikes, unlikePost, getComments, deleteCommentFeed, savePost, getPostSave,
+  currentUser, deletePostFeed, likePost, getLikes, unlikePost, getComments, deleteCommentFeed,
+  savePost
 } from '../../services/index.js';
 import { modal } from '../popup/index.js';
 
-function dateFormat(date) {
-  const optionsDate = {
-    year: 'numeric',
-    month: 'numeric',
-    day: 'numeric',
-    hour: 'numeric',
-    minute: 'numeric',
-    hour12: false,
-  };
-
-  return new Intl.DateTimeFormat('pt-br', optionsDate).format(date);
-
+// new Intl.DateTimeFormat('pt-br', optionsDate).format(date);
   //console.log(new Intl.DateTimeFormat('en-US', optionsDate).format(date));
   // → "12/19/2012, 19:00:00"
-}
+
 
 const deletePost = (idPost, post) => {
   modal.confirm('Essa postagem será excluída, deseja continuar?', () => {
-    // const postDiv = rootElement.querySelector(`[data-id="${deleteId}"]`);
     deletePostFeed(idPost).then(() => post.remove());
   });
 };
@@ -45,11 +34,6 @@ const sendLike = (idUser, idPostClicked, numLikes, likeIcon) => {
   }).catch('error');
 };
 
-// const deleteComment = (idPost, comment, commentUL, commentLi) => {
-//   commentUL.removeChild(commentLi);
-//   deletePostComment(idPost, comment);
-// };
-
 const displayComments = (id) => {
   const sectionComments = document.getElementById(id);
   sectionComments.classList.toggle('active');
@@ -62,21 +46,15 @@ const deleteComment = (idPost, comment, commentLi) => {
   });
 };
 
-const commentsPost = (idPost, containerComment, containerPost) => {
-  getComments(idPost).then((snapshot) => {
-    //const commentsArray = snapshot.data().comments;
-    // const postElement = containerPost;
+const printComment = (comment, containerComment) => {
+  const commentId = comment.id;
+  const postCommentId = comment.data().idPost;
 
-    snapshot.forEach((comment) => {
-      const commentId = comment.id;
-      const postCommentId = comment.data().idPost;
+  const commentLi = document.createElement('li');
+  commentLi.classList.add('elementComment');
+  commentLi.setAttribute('data-comment', `${commentId}`);
 
-      const commentLi = document.createElement('li');
-      //const commentId = comment.date.replaceAll(/[/: ]/g, '');
-      commentLi.classList.add('elementComment');
-      commentLi.setAttribute('data-comment', `${commentId}`);
-
-      const commentTemplate = `
+  const commentTemplate = `
       <div class="positionComment">
         <p class="textComment">${comment.data().text}</p>
         <div class="sectionImgComment">
@@ -90,34 +68,36 @@ const commentsPost = (idPost, containerComment, containerPost) => {
         </div>
       </div>  
         `;
-      commentLi.innerHTML = commentTemplate;
+  commentLi.innerHTML = commentTemplate;
 
-      const btnDeleteComment = commentLi.querySelector(`#delete-${commentId}`);
-      console.log(btnDeleteComment);
+  const btnDeleteComment = commentLi.querySelector(`#delete-${commentId}`);
+  btnDeleteComment.addEventListener('click', (event) => {
+    event.stopPropagation();
+    deleteComment(postCommentId, commentId, commentLi);
+  });
 
-      btnDeleteComment.addEventListener('click', (event) => {
-        event.stopPropagation();
-        deleteComment(postCommentId, commentId, commentLi);
-      });
+  if (comment.data().photo) {
+    (commentLi.querySelector('.imgUserComment')).src = comment.data().photo;
+  }
 
-      // const picturePost = commentLi.querySelector('.imgUserComment');
-      if (comment.data().photo) {
-        (commentLi.querySelector('.imgUserComment')).src = comment.data().photo;
-      }
+  containerComment.append(commentLi);
+};
 
-      containerComment.prepend(commentLi);
+const commentsPost = (idPost, containerComment) => {
+  getComments(idPost).then((snapshot) => {
+    snapshot.forEach((comment) => {
+      printComment(comment, containerComment);
     });
   });
 };
 
 const savePostSelected = (idUser, idPost) => {
   const postSave = {
-    idUser,
     idPost,
   };
-  savePost(idUser, idPost);
+  savePost(idUser, idPost, postSave);
 };
 
 export {
-  deletePost, sendLike, displayComments, commentsPost, savePostSelected, dateFormat,
+  deletePost, sendLike, displayComments, commentsPost, printComment, savePostSelected,
 };

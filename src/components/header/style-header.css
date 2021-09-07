@@ -92,11 +92,15 @@ body, .menu {
   display: none !important;
 }
 
+/*esse body está aqui pq?*/
 body {
    position: static !important;
   top: 0 !important;
 }
-    
+
+
+
+
 
 @media (max-width: 600px) {
   .logo-header{

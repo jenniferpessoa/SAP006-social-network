@@ -55,7 +55,11 @@ const createComment = (idPost, comment) => firebase.firestore().collection('post
   .add(comment);
 
 const getComments = (idPost) => firebase.firestore().collection('post').doc(idPost).collection('comments')
-  .orderBy('date', 'desc')
+  .orderBy('date', 'asc')
+  .get();
+
+const getPublishComment = (idPost, idComment) => firebase.firestore().collection('post').doc(idPost).collection('comments')
+  .doc(idComment)
   .get();
 
 const deleteCommentFeed = (idPost, idComment) => firebase.firestore().collection('post').doc(idPost).collection('comments')
@@ -69,16 +73,20 @@ const getHome = (uid) => firebase.firestore().collection('home').where('userId',
 
 const infoUser = (idUser) => firebase.firestore().collection('home').doc(idUser).get();
 
-const savePost = (idUser, idPostSave) => firebase.firestore().collection('home').doc(idUser).collection('postsave')
-  .doc(idPostSave)
-  .add(idPostSave);
+const searchPosts = (array) => firebase.firestore().collection('post').where('keywords', 'array-contains-any', array)
+  .orderBy('date', 'asc')
+  .get();
 
-const getPostSave = (idPost) => firebase.firestore().collection('post').doc(idPost).collection('postsave')
+const savePost = (idUser, idPostSave, obj) => firebase.firestore().collection('home').doc(idUser).collection('postsave')
+  .doc(idPostSave)
+  .set(obj);
+
+const getPostSave = (idUser) => firebase.firestore().collection('home').doc(idUser).collection('postsave')
   .get();
 
 export {
   loginEmailAndPassword, loginWithGmail, signUpWithEmailAndPassword, resetPassword,
   signOut, createPost, getPost, updatePost, deletePostFeed, currentUser, createHome, getHome,
   uploadPicture, downloadPicture, likePost, getLikes, unlikePost, createComment, getComments,
-  deleteCommentFeed, infoUser, savePost, getPostSave,
+  getPublishComment, deleteCommentFeed, infoUser, searchPosts, savePost, getPostSave,
 };
