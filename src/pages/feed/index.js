@@ -66,7 +66,7 @@ export const Feed = () => {
         likes: [],
         comments: [],
       };
-      console.log(postObj);
+      // console.log(postObj);
       createPost(postObj);
 
       const timeline = root.querySelector('.feedTimeline');
@@ -79,7 +79,3 @@ export const Feed = () => {
   loadPost();
   return root;
 };
-
-
-
-
