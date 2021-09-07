@@ -1,9 +1,14 @@
+/* eslint-disable no-alert */
 /* eslint-disable no-console */
 /* eslint-disable spaced-comment */
 /* eslint-disable no-restricted-syntax */
-import { updatePost, getPost, currentUser, createComment, getPublishComment } from '../../services/index.js';
-import { /*dateFormat,*/ deletePost, sendLike, displayComments, commentsPost, printComment, savePostSelected } from './postfunctions.js';
-
+import {
+  updatePost, getPost, currentUser, createComment, getPublishComment,
+} from '../../services/index.js';
+import {
+/*dateFormat,*/ deletePost, sendLike, displayComments,
+  commentsPost, printComment, savePostSelected,
+} from './postfunctions.js';
 
 const Post = (photoPost, nameUserPost, text, idUserPost, idPost, dateP, likesPost) => {
   const element = document.createElement('li');
@@ -133,7 +138,6 @@ function printPost(post) {
       editBtn.style.display = 'block';
     }
 
-
     const commentsIdPost = target.dataset.comments;
     const commentUl = postElement.querySelector('[data-listcomments]');
     if (commentsIdPost) {
@@ -141,7 +145,6 @@ function printPost(post) {
       commentUl.innerHTML = '';
       commentsPost(commentsIdPost, commentUl);
     }
-
 
     const sendComment = target.dataset.send;
     if (sendComment) {
@@ -182,6 +185,6 @@ const loadPost = () => {
       printPost(post);
     });
   });
-}
+};
 
-export { printPost, loadPost};
+export { printPost, loadPost };

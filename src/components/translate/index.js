@@ -1,3 +1,5 @@
+/* eslint-disable no-use-before-define */
+/* eslint-disable no-undef */
 export const translate = () => {
   const flagPt = document.querySelector('[data-pt]');
   const flagEn = document.querySelector('[data-en]');

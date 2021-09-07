@@ -47,6 +47,8 @@ export const Login = () => {
   const btnSignUp = root.querySelector('.opt-signup');
   const btnLogin = root.querySelector('#buttonLogin');
   const btnGmail = root.querySelector('#btnGmail');
+  const inputEmail = root.querySelector('#email');
+  const inputPassword = root.querySelector('#password');
 
   reset.addEventListener('click', (event) => {
     event.preventDefault();
@@ -56,9 +58,7 @@ export const Login = () => {
   btnSignUp.addEventListener('click', () => navigation('/signup'));
 
   btnLogin.addEventListener('click', () => {
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
-    loginEmailAndPassword(email, password);
+    loginEmailAndPassword(inputEmail.value, inputPassword.value);
   });
 
   btnGmail.addEventListener('click', () => {

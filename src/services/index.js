@@ -1,8 +1,6 @@
 import { getError } from '../Errors/index.js';
 import { navigation } from '../routes/navigation.js';
 
-const storage = firebase.storage();
-
 const loginEmailAndPassword = (email, password) => {
   firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION).then(() => {
     firebase.auth().signInWithEmailAndPassword(email, password).then(() => navigation('/feed'));
@@ -45,9 +43,9 @@ const getLikes = (idPost) => firebase.firestore().collection('post').doc(idPost)
 
 const likePost = (idUser, idPost) => firebase.firestore().collection('post').doc(idPost).update({ likes: firebase.firestore.FieldValue.arrayUnion(idUser) });
 
-const uploadPicture = (log, folder) => storage.ref(`images/${log}`).put(folder);
+const uploadPicture = (log, folder) => firebase.storage().ref(`images/${log}`).put(folder);
 
-const downloadPicture = (log) => storage.ref().child(`images/${log}`).getDownloadURL();
+const downloadPicture = (log) => firebase.storage().ref().child(`images/${log}`).getDownloadURL();
 
 const unlikePost = (idUser, idPost) => firebase.firestore().collection('post').doc(idPost).update({ likes: firebase.firestore.FieldValue.arrayRemove(idUser) });
 

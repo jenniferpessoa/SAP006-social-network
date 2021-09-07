@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 import { getError } from '../../Errors/index.js';
 import { navigation } from '../../routes/navigation.js';
 import { resetPassword } from '../../services/index.js';
@@ -34,10 +35,10 @@ export const Reset = () => {
 
   const btnReset = root.querySelector('#buttonReset');
   const btnReturn = root.querySelector('#buttonReturn');
+  const inputEmail = root.querySelector('#email');
 
   btnReset.addEventListener('click', () => {
-    const email = document.getElementById('email').value;
-    resetPassword(email).then(() => {
+    resetPassword(inputEmail.value).then(() => {
       alert('E-mail enviado com sucesso! Confira sua caixa de entrada');
     }).catch((error) => {
       getError(error);

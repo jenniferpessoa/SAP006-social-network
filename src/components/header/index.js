@@ -4,8 +4,7 @@ import { signOut } from '../../services/index.js';
 import { translate } from '../translate/index.js';
 
 export function headerMenu() {
-  //<img src='img/rudder.png' class="material-icons" height="40px" width="40px">      
-
+  // <img src='img/rudder.png' class="material-icons" height="40px" width="40px">
 
   const main = document.querySelector('.root');
   main.innerHTML = '';

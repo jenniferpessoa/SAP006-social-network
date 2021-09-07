@@ -1,14 +1,13 @@
 /* eslint-disable spaced-comment */
 import {
   currentUser, deletePostFeed, likePost, getLikes, unlikePost, getComments, deleteCommentFeed,
-  savePost
+  savePost,
 } from '../../services/index.js';
 import { modal } from '../popup/index.js';
 
 // new Intl.DateTimeFormat('pt-br', optionsDate).format(date);
-  //console.log(new Intl.DateTimeFormat('en-US', optionsDate).format(date));
-  // → "12/19/2012, 19:00:00"
-
+// console.log(new Intl.DateTimeFormat('en-US', optionsDate).format(date));
+// → "12/19/2012, 19:00:00"
 
 const deletePost = (idPost, post) => {
   modal.confirm('Essa postagem será excluída, deseja continuar?', () => {

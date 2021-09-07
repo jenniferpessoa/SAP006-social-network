@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 // import { signOut } from "../../services/index.js";
 import { createPost, getLikes, currentUser } from '../../services/index.js';
 import { printPost, loadPost } from '../../components/posts/posts.js';
@@ -37,7 +38,7 @@ export const Feed = () => {
 
   const searchContainer = root.querySelector('.search-result');
   const timeline = root.querySelector('.feedTimeline');
-  
+
   AsideFeed(root, idUser, name, email, photo, searchContainer, timeline);
 
   const textInput = root.querySelector('.postPublishInput');

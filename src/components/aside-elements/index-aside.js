@@ -1,9 +1,13 @@
-import { infoUser, searchPosts, getPostSave, getLikes } from '../../services/index.js';
+import {
+  infoUser, searchPosts, getPostSave, getLikes,
+} from '../../services/index.js';
 import { weather } from '../weather/index.js';
-import { printPost, loadPost } from '../posts/posts.js'
+import { printPost, loadPost } from '../posts/posts.js';
 
 export const AsideFeed = (root, idUser, name, email, photo, searchContainer, timeline) => {
   const rootPf = root;
+  const searchCont = searchContainer;
+  const timeLine = timeline;
 
   const asideContainer = document.createElement('aside');
   asideContainer.classList.add('aside-info');
@@ -40,11 +44,11 @@ export const AsideFeed = (root, idUser, name, email, photo, searchContainer, tim
 
   infoUser(idUser).then((snapshot) => {
     if (!snapshot.data().boat || !snapshot.data().localization) {
-      root.querySelector('.userBoat').style.display = 'none';
-      root.querySelector('.userLocalization').style.display = 'none';
+      rootPf.querySelector('.userBoat').style.display = 'none';
+      rootPf.querySelector('.userLocalization').style.display = 'none';
     } else {
-      root.querySelector('.userBoat').innerHTML = `Veleiro: ${snapshot.data().boat}`;
-      root.querySelector('.userLocalization').innerHTML = `Local: ${snapshot.data().localization}`;
+      rootPf.querySelector('.userBoat').innerHTML = `Veleiro: ${snapshot.data().boat}`;
+      rootPf.querySelector('.userLocalization').innerHTML = `Local: ${snapshot.data().localization}`;
     }
   });
 
@@ -56,29 +60,25 @@ export const AsideFeed = (root, idUser, name, email, photo, searchContainer, tim
     rootPf.querySelector('.userName').innerHTML = 'Atualize o seu perfil';
   }
 
-
-
-
   const asideElements = root.querySelector('.aside-info');
-  console.log(asideElements)
 
   asideElements.addEventListener('click', (event) => {
     const { target } = event;
 
     const textSearchInput = root.querySelector('[data-searchText]');
-    const btnSearch = target.dataset.searchbtn;
+    // const btnSearch = target.dataset.searchbtn;
 
-    if (target.dataset.searchbtn && textSearchInput.value != "") {
+    if (target.dataset.searchbtn && textSearchInput.value !== '') {
       const textSearch = textSearchInput.value;
       const textSearchArray = textSearch.toLowerCase().split(' ');
 
-      searchContainer.innerHTML = `
+      searchCont.innerHTML = `
         <section class='resultSearchContainer'>
           <span class="searchresult-text">Veja o resultado da navegação por ${textSearch.toUpperCase()}:</span>
           <button data-clearsearchbtn="clearsearch" type='button'  class="btnClearSearch">Limpar a Pesquisa</button>
         </section>
     `;
-      timeline.innerHTML = '';
+      timeLine.innerHTML = '';
       searchPosts(textSearchArray).then((snapshot) => {
         snapshot.forEach((post) => {
           textSearchInput.value = '';
@@ -89,19 +89,19 @@ export const AsideFeed = (root, idUser, name, email, photo, searchContainer, tim
 
       const btnClearSearch = root.querySelector('[data-clearsearchbtn]');
       btnClearSearch.addEventListener('click', () => {
-        searchContainer.innerHTML = '';
-        timeline.innerHTML = '';
+        searchCont.innerHTML = '';
+        timeLine.innerHTML = '';
         loadPost();
       });
     }
 
     if (target.dataset.viewsavedposts || target.dataset.anchorsavedposts) {
-      searchContainer.innerHTML = `
+      searchCont.innerHTML = `
     <section class='resultSearchContainer'>
       <button data-clearsearchbtn="clearsearch" type='button'  class="btnClearSearch">Limpar o resultado da Ancoragem</button>
     </section>
     `;
-      timeline.innerHTML = '';
+      timeLine.innerHTML = '';
       getPostSave(idUser).then((snapshot) => {
         snapshot.forEach((doc) => {
           getLikes(doc.id).then((post) => {
@@ -112,12 +112,12 @@ export const AsideFeed = (root, idUser, name, email, photo, searchContainer, tim
       });
       const btnClearSearch = root.querySelector('[data-clearsearchbtn]');
       btnClearSearch.addEventListener('click', () => {
-        searchContainer.innerHTML = '';
-        timeline.innerHTML = '';
+        searchCont.innerHTML = '';
+        timeLine.innerHTML = '';
         loadPost();
       });
     }
   });
-  searchContainer.innerHTML = '';
+  searchCont.innerHTML = '';
   return root;
 };

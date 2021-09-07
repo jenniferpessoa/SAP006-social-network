@@ -41,15 +41,15 @@ export const SignUp = () => {
   const btnLogin = root.querySelector('.opt-login');
   const btnSignUp = root.querySelector('#signUpButton');
   const btnGoogle = root.querySelector('#btnGmail');
+  const inputEmail = root.querySelector('#email');
+  const inputPassword = root.querySelector('#password');
 
   btnLogin.addEventListener('click', () => {
     navigation('/');
   });
 
   btnSignUp.addEventListener('click', () => {
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
-    signUpWithEmailAndPassword(email, password)
+    signUpWithEmailAndPassword(inputEmail.value, inputPassword.value)
       .then(() => {
         navigation('/profile');
       })

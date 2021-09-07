@@ -1,0 +1,466 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Login should load 1`] = `
+<div>
+  
+  
+  <header
+    class="logo"
+  >
+    
+  
+    <img
+      alt=""
+      height="80px"
+      src="../.././img/logo-start.png"
+      width="350px"
+    />
+    
+    
+    <h2>
+      A Rede Social dos Velejadores
+    </h2>
+    
+  
+  </header>
+  
+  
+  <main
+    class="container"
+  >
+      
+    
+    <section
+      class="img-container"
+    >
+      
+    
+    </section>
+        
+    
+    <section
+      class="login-container"
+      id="login"
+    >
+      
+      
+      <header
+        class="form-options"
+      >
+        
+        
+        <span
+          class="opt-login"
+        >
+          Login
+        </span>
+        
+        
+        <span
+          class="opt-signup"
+        >
+          Cadastro
+        </span>
+        
+      
+      </header>
+      
+      
+      <section
+        class="form-container"
+      >
+        
+        
+        <form>
+          
+          
+          <div
+            class="form-fields"
+          >
+            
+            
+            <label
+              for="email"
+            >
+              E-mail
+            </label>
+            
+            
+            <input
+              class="input-email form-item"
+              id="email"
+              type="e-mail"
+            />
+            
+              
+            
+            <label
+              class="label-login"
+              for="password"
+            >
+              Senha
+            </label>
+            
+            
+            <input
+              class="input-password form-item"
+              id="password"
+              type="password"
+            />
+            
+          
+          </div>
+          
+          
+          <section
+            class="errors"
+          />
+          
+          
+          <div
+            class="rememberForgot"
+          >
+            
+            
+            <a
+              href="#"
+              id="reset"
+            >
+              Esqueci a senha
+            </a>
+            
+          
+          </div>
+            
+
+          
+          <button
+            class="btn-login btn form-item"
+            id="buttonLogin"
+            type="button"
+          >
+            Entrar
+          </button>
+          
+          
+          <p
+            class="separator"
+          >
+            ou
+          </p>
+                                
+          
+          <button
+            class="btnGmail btn form-item"
+            id="btnGmail"
+            type="button"
+          >
+            
+            
+            <img
+              class="google-icon"
+              src="./img/logo-google.png"
+            />
+            
+            
+            <span>
+              Entrar com o Google
+            </span>
+            
+          
+          </button>
+          
+        
+        </form>
+        
+      
+      </section>
+      
+    
+    </section>
+    
+  
+  </main>
+  
+  
+</div>
+`;
+
+exports[`register should load page 1`] = `
+<div>
+  
+  
+  <header
+    class="logo"
+  >
+    
+    
+    <h1>
+      A Bordo
+    </h1>
+    
+    
+    <h2>
+      A Rede Social dos Velejadores
+    </h2>
+    
+  
+  </header>
+  
+  
+  <main
+    class="container"
+    id="loginPage"
+  >
+    
+    
+    <section
+      class="img-container"
+    />
+        
+    
+    <section
+      class="login-container"
+      id="login"
+    >
+      
+      
+      <header
+        class="form-options"
+      >
+        
+        
+        <span
+          class="opt-login"
+        >
+          Login
+        </span>
+        
+        
+        <span
+          class="opt-signup linkSignUp"
+        >
+          Cadastro
+        </span>
+        
+      
+      </header>
+      
+      
+      <section
+        class="form-container"
+      >
+        
+        
+        <form>
+          
+          
+          <div
+            class="form-fields"
+          >
+            
+            
+            <label
+              for="email"
+            >
+              E-mail
+            </label>
+            
+            
+            <input
+              class="input-email form-item"
+              id="email"
+              type="e-mail"
+            />
+            
+            
+            
+            <label
+              class="label-login"
+              for="password"
+            >
+              Senha
+            </label>
+            
+            
+            <input
+              class="input-password form-item"
+              id="password"
+              type="password"
+            />
+            
+          
+          </div>
+          
+          
+          <section
+            class="errors"
+          />
+          
+          
+          <button
+            class="btn-signup btn form-item"
+            id="signUpButton"
+            type="button"
+          >
+            Cadastrar
+          </button>
+          
+          
+          <p
+            class="separator"
+          >
+            ou
+          </p>
+           
+          
+          <button
+            class="btnGmail btn form-item"
+            id="btnGmail"
+            type="button"
+          >
+            
+            
+            <img
+              class="google-icon"
+              src="./img/logo-google.png"
+            />
+            
+            
+            <span>
+              Entrar com o Google
+            </span>
+            
+          
+          </button>
+          
+        
+        </form>
+        
+      
+      </section>
+      
+    
+    </section>
+    
+  
+  </main>
+  
+  
+</div>
+`;
+
+exports[`reset should load reset page 1`] = `
+<div>
+  
+  
+  <header
+    class="logo"
+  >
+    
+    
+    <h1>
+      A Bordo
+    </h1>
+    
+    
+    <h2>
+      A Rede Social dos Velejadores
+    </h2>
+    
+  
+  </header>
+  
+  
+  <main
+    class="container"
+  >
+      
+    
+    <section
+      class="img-container"
+    >
+      
+    
+    </section>
+        
+    
+    <section
+      class="login-container"
+      id="login"
+    >
+      
+      
+      <header
+        class="reset-text"
+      >
+        
+        Redefinir Senha
+      
+      </header>
+      
+      
+      <section
+        class="form-container"
+      >
+        
+        
+        <form>
+          
+          
+          <div
+            class="form-fields"
+          >
+            
+            
+            <label
+              for="email"
+            >
+              E-mail
+            </label>
+            
+            
+            <input
+              class="input-item"
+              id="email"
+              type="e-mail"
+            />
+            
+              
+            
+            <button
+              class="btn-login btn form-item"
+              id="buttonReset"
+              type="button"
+            >
+              Enviar
+            </button>
+            
+
+            
+            <button
+              class="btn-login btn form-item"
+              id="buttonReturn"
+              type="button"
+            >
+              Voltar
+            </button>
+            
+          
+          </div>
+            
+        
+        </form>
+        
+      
+      </section>
+      
+    
+    </section>
+    
+  
+  </main>
+  
+  
+</div>
+`;
