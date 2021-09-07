@@ -8,7 +8,7 @@ Desenvolver uma Rede Social
 </h3>
 
 - [Prefácio](#prefácio)
-- [Idealização do Pojeto](#idealização-do-projeto)
+- [Idealização do Pojeto](#idealização-do-projeto--)
 - [Por Que A\Bordo?](#por-que-a\bordo)
 - [Histórias de Usuário](#histórias-de-usuário)
 - [Interface do Usuário](#interface-do-usuário)
