@@ -1,9 +1,9 @@
-.weather-container {
-  
+.weather-container {  
   margin: 20px 0 0 0;
   padding: 20px;
   background-color: white;
   border-radius: 10px 0;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 .widget {

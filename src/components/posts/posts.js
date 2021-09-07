@@ -1,12 +1,11 @@
-/* eslint-disable no-loop-func */
 /* eslint-disable no-console */
 /* eslint-disable spaced-comment */
 /* eslint-disable no-restricted-syntax */
-import { updatePost, currentUser, createComment,  } from '../../services/index.js';
-import { /*dateFormat,*/ deletePost, sendLike, displayComments, commentsPost, savePostSelected,  } from './postfunctions.js';
+import { updatePost, getPost, currentUser, createComment, getPublishComment } from '../../services/index.js';
+import { /*dateFormat,*/ deletePost, sendLike, displayComments, commentsPost, printComment, savePostSelected } from './postfunctions.js';
+
 
 const Post = (photoPost, nameUserPost, text, idUserPost, idPost, dateP, likesPost) => {
-
   const element = document.createElement('li');
   const template = `
     <article data-post class='postContainer' id=${idUserPost}>
@@ -24,7 +23,7 @@ const Post = (photoPost, nameUserPost, text, idUserPost, idPost, dateP, likesPos
     <form class='formContainer'>
       <textarea data-textPost='${idPost}' id='textarea-${idPost}' class='postInput' disabled>${text}</textarea>      
       <section id='section' class='postBtnContainer'>
-        <button type='button' data-comments='${idPost}' id='comment-${idPost}' class='commentBtn'>Comentários</button>
+        <i type='button' data-comments='${idPost}' id='comment-${idPost}'  class="far fa-comments"></i>
         
         <div data-editBtns='${idPost}' id='edition-btns' class='edition-btns'>
           <i data-saveEdit='${idPost}' id='save-${idPost}' class='far fa-check-square'></i> 
@@ -57,7 +56,6 @@ const Post = (photoPost, nameUserPost, text, idUserPost, idPost, dateP, likesPos
 function printPost(post) {
   const user = currentUser();
   const idUser = user.uid;
-  const date = post.data().date;
   const idPost = post.id;
   const text = post.data().text;
   const idUserPost = post.data().idUser;
@@ -70,7 +68,6 @@ function printPost(post) {
   const postElement = Post(photoPost, nameUserPost, text, idUserPost, idPost, dateP, likesPost);
   timeline2.append(postElement);
 
-
   const btnLike = postElement.querySelector(`#like-${idPost}`);
   if (likesPost.includes(idUser)) {
     btnLike.classList.add('fas');
@@ -82,12 +79,8 @@ function printPost(post) {
   listOfPosts.addEventListener('click', (e) => {
     const { target } = e;
 
-    const postSaveBtn = postElement.querySelector(`[data-saveAnchorPost='${idPost}']`);
-    console.log(postSaveBtn);
     const postSaveButton = target.dataset.saveanchorpost;
-    console.log(postSaveButton);
-
-    if (postSaveBtn === target) {      
+    if (postSaveButton) {
       savePostSelected(idUser, postSaveButton);
     }
 
@@ -140,18 +133,17 @@ function printPost(post) {
       editBtn.style.display = 'block';
     }
 
-    //Botão Comentários, aparecerá a section
+
     const commentsIdPost = target.dataset.comments;
     const commentUl = postElement.querySelector('[data-listcomments]');
-
     if (commentsIdPost) {
       displayComments(`showcomments-${idPost}`);
-      commentsPost(commentsIdPost, commentUl); // não consegui unir as funções, há um erro no then, mas nao entendo pq
+      commentUl.innerHTML = '';
+      commentsPost(commentsIdPost, commentUl);
     }
 
-    //Botão Publicar comentário
-    const sendComment = target.dataset.send;
 
+    const sendComment = target.dataset.send;
     if (sendComment) {
       const commentText = postElement.querySelector('[data-commentInput]');
       if (!commentText.value) {
@@ -160,8 +152,6 @@ function printPost(post) {
         alert('Atualize o seu cadastro');
       } else {
         const dateComment = new Date();
-        //  const commentId = dateComment.replaceAll(/[/: ]/g, '');
-
         const commentObj = {
           idUser,
           idPost,
@@ -169,23 +159,29 @@ function printPost(post) {
           photo: user.photoURL,
           text: commentText.value,
           date: dateComment.toLocaleString('pt-BR'),
-          //idComment: commentObj.date.replaceAll(/[/: ]/g, ''),
         };
         console.log(commentObj);
 
         commentText.value = '';
 
-        //cria o comentário com a função do services
-        createComment(commentObj.idPost, commentObj);
-
-            //atualiza a section dos comentários
-            commentUl.innerHTML = '';
-            commentsPost(commentObj.idPost, commentUl, postElement);
-          }          
+        createComment(commentObj.idPost, commentObj).then((doc) => {
+          getPublishComment(sendComment, doc.id).then((comment) => {
+            printComment(comment, commentUl);
+          });
+        });
+      }
     }
-    });
-
-  return timeline2;
+  });
+  // return timeline2;
+  return postElement;
 }
 
-export { printPost };
+const loadPost = () => {
+  getPost().then((snapshot) => {
+    snapshot.forEach((post) => {
+      printPost(post);
+    });
+  });
+}
+
+export { printPost, loadPost};

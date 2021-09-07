@@ -103,15 +103,13 @@
   display: none;
 } */
 
-.commentBtn {
-  background-color: #ffd632; 
-  font-size: small; 
-  border: none;
-  border-radius: 5px;
-  padding: 5px;  
-  width: 80px; 
-  height: 30px;
-  cursor: pointer;
+.fa-comments {
+  font-size: 25px;
+  color: #ffd632;
+  padding: 5px;
+  margin-right: 70%;
+  width: 60px;
+  cursor: pointer;  
 }
 
 .commentBtn {

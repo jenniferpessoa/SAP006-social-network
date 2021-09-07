@@ -1,23 +1,13 @@
 // import { signOut } from "../../services/index.js";
-import { createPost, getPost, currentUser } from '../../services/index.js';
-import { printPost } from '../../components/posts/posts.js';
+import { createPost, getLikes, currentUser } from '../../services/index.js';
+import { printPost, loadPost } from '../../components/posts/posts.js';
 import { headerMenu } from '../../components/header/index.js';
-import { profileFeed } from '../../components/profile-feed/profile-feed.js';
-
-function loadPost() {
-  getPost().then((snapshot) => {
-    snapshot.forEach((post) => {
-      printPost(post);
-    });
-  });
-}
+import { AsideFeed } from '../../components/aside-elements/index-aside.js';
 
 export const Feed = () => {
   const root = document.createElement('main');
   root.classList.add('main');
   root.style.display = 'flex';
-  // const main = document.querySelector('.root');
-  // main.style.display = 'flex';
 
   // cria a publicação do usuário
   const user = currentUser();
@@ -28,22 +18,27 @@ export const Feed = () => {
   const date = new Date();
 
   headerMenu();
-  profileFeed(root, idUser, name, email, photo);
 
   const feedContainer = document.createElement('div');
   feedContainer.classList.add('feed-container');
   feedContainer.innerHTML = `  
     <div class='publishContainer'>
       <form class='formPublishContainer'>
-        <textarea class='postPublishInput' type='text' placeholder='faça o seu Aviso aos Navegantes'></textarea>      
-        <section class='publishBtnContainer'>
+        <textarea class='postPublishInput' type='text' placeholder='faça o seu Aviso aos Navegantes'></textarea> 
+        <section class='publishBtnContainer'>         
           <button type='button' class='publishBtn'>Publicar</button>
         </section>  
       </form>     
-    </div>  
+    </div>
+    <section class="search-result"></section>  
     <ul data-feedTimeline='feedTimeline' class='feedTimeline'></ul>
   `;
   root.appendChild(feedContainer);
+
+  const searchContainer = root.querySelector('.search-result');
+  const timeline = root.querySelector('.feedTimeline');
+  
+  AsideFeed(root, idUser, name, email, photo, searchContainer, timeline);
 
   const textInput = root.querySelector('.postPublishInput');
   const btnPublish = root.querySelector('.publishBtn');
@@ -65,21 +60,19 @@ export const Feed = () => {
         dateP: `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`,
         likes: [],
         comments: [],
+        keywords: (textInput.value).toLowerCase().split(' '),
       };
-      console.log(postObj);
-      createPost(postObj);
 
-      const timeline = root.querySelector('.feedTimeline');
-      timeline.innerHTML = '';
+      createPost(postObj).then((doc) => {
+        getLikes(doc.id).then((post) => {
+          const postPosted = printPost(post);
+          timeline.prepend(postPosted);
+        });
+      });
       textInput.value = '';
-      loadPost();
     }
   });
 
   loadPost();
   return root;
 };
-
-
-
-

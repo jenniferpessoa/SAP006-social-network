@@ -4,6 +4,9 @@ import { signOut } from '../../services/index.js';
 import { translate } from '../translate/index.js';
 
 export function headerMenu() {
+  //<img src='img/rudder.png' class="material-icons" height="40px" width="40px">      
+
+
   const main = document.querySelector('.root');
   main.innerHTML = '';
   const header = document.createElement('header');
@@ -11,12 +14,12 @@ export function headerMenu() {
   header.innerHTML = `
         <figure>
           <img src='./img/logo-header.png' alt='A bordo' class='logo-header' id='feed'/>
-        </figure>
+        </figure>                           
         <nav class='menu-nav'>
-            <button class='btn-mobile'>
-                <span class='hamburguer'></span>
-            </button>
-            <ul class='menu'>
+          <button class='btn-mobile'>
+            <span class='hamburguer'></span>
+          </button>
+          <ul class='menu'>
                 <li class='menu-a' id='profile'>PERFIL</li>
                 <li class='menu-a' id='languages'>IDIOMAS
                   <ul id='google_translate_element' data-lang class='nav'>
