@@ -13,10 +13,14 @@
   
   .popup {
     text-align: center;
-    width: 60%;
+    width: 40%;
     margin: 10% auto;
     padding: 20px;
-    background: #1f1f4b;
+    background: linear-gradient(
+    180deg,
+    rgba(68, 136, 182, 0.418) 16.67%,
+    rgba(114, 183, 211, 0.25) 100%
+    );
     position: relative;
     color: black;
     box-shadow: 0px 0px 20px rgb(21, 2, 71);
@@ -41,13 +45,13 @@
   .popup-content {
     background-color: whitesmoke;
     padding: 5px;
-    margin: 10px auto;
+    margin: auto auto;
     text-align: justify;
-    width: 50%;
+    width: 95%;
     z-index: 3;
     color:black;
     font-size: larger;
-    position: absolute;
+   /* position: absolute;*/
   }
 
 

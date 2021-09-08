@@ -21,7 +21,7 @@ export const AsideFeed = (root, idUser, name, email, photo, searchContainer, tim
       <div class="panel">
         <div class="user-heading round">
           <figure class='feedProfilePicture'>            
-            <img class='userPicture' src="profileImg.png" alt="">
+            <img class='userPicture' src='img/profileImg.png' alt="">
           </figure>
           <h1 class='userName'>${name}</h1>
           <p class='userEmail'>${email}</p>

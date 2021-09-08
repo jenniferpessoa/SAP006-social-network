@@ -103,6 +103,14 @@
   margin-bottom: 10px;
 }
 
+#label-senha {
+  display: flex;
+}
+
+#password {
+  display: flex;
+}
+
 .rememberForgot {
   margin-left: 10px;
   display: flex;

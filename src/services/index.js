@@ -1,22 +1,36 @@
 import { getError } from '../Errors/index.js';
 import { navigation } from '../routes/navigation.js';
+import { popUpNotice } from '../../components/popup/index.js';
 
 const storage = firebase.storage();
 
 const loginEmailAndPassword = (email, password) => {
   firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION).then(() => {
-    firebase.auth().signInWithEmailAndPassword(email, password).then(() => navigation('/feed'));
-  }).catch((error) => {
-    getError(error);
+    firebase.auth().signInWithEmailAndPassword(email, password)
+      .then(() => {
+        const emailIsVerified = firebase.auth().currentUser.emailVerified;
+        if (emailIsVerified) {
+          navigation('/feed');
+        } else {
+          const messageText = '<span class="searchresult-text">Faça a verificação do seu email. Enviamos o link para você!</span>';
+          popUpNotice(messageText);
+          //alert('Faça a verificação do seu email. Enviamos o link para você!');
+        }
+      }).catch((error) => {
+        getError(error);
+      });
   });
 };
 
 const loginWithGmail = () => {
   const provider = new firebase.auth.GoogleAuthProvider();
   firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION).then(() => {
-    firebase.auth().signInWithPopup(provider).then(() => navigation('/feed'));
-  }).catch((error) => {
-    getError(error);
+    firebase.auth().signInWithPopup(provider).then(() => {
+      navigation('/feed');
+    })
+      .catch((error) => {
+        getError(error);
+      });
   });
 };
 

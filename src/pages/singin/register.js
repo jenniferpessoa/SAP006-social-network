@@ -22,10 +22,10 @@ export const SignUp = () => {
             <label for='email'>E-mail</label>
             <input id='email' type='e-mail' class='input-email form-item'>
             
-            <label class='label-login' for='password'>Senha</label>
+            <label class='label-login' id='passwordlabel'for='password'>Senha</label>
             <input id='password' type='password' class='input-password form-item'>
           </div>
-          <section class='errors'></section>
+          <section class='errors' id='errors'></section>
           <button type='button' id='signUpButton' class='btn-signup btn form-item'>Cadastrar</button>
           <p class='separator'>ou</p> 
           <button type='button' id='btnGmail' class='btnGmail btn form-item'>
@@ -49,9 +49,23 @@ export const SignUp = () => {
   btnSignUp.addEventListener('click', () => {
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
+
     signUpWithEmailAndPassword(email, password)
-      .then(() => {
-        navigation('/profile');
+      .then((response) => {
+        response.user.sendEmailVerification()
+          .then(() => {
+            const passwordDesapear = document.getElementById('password');
+            passwordDesapear.style.display = 'none';
+
+            const labelPasswordDesapear = document.getElementById('passwordlabel');
+            labelPasswordDesapear.style.display = 'none';
+
+            const errorSection = document.getElementById('errors');
+            errorSection.innerHTML = '<p>Email de verificação foi enviado!</p>';
+          }).catch((error) => {
+            getError(error);
+          });
+        // navigation('/');
       })
       .catch((error) => {
         getError(error);
