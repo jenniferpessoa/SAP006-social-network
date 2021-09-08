@@ -126,13 +126,13 @@ E ao pensar em uso em tablets grandes e computadores, decidimos por manter a int
 Produto Final: Conhecendo o A\Bordo
 </h2>  
 
-E assim, por fim, o [A\Bordo - Rede Social dos Velejadores]() veio ao mundo como o mais prazeroso e difícil desafio enfrentado até então por todas as colaboradoras.  
+E assim, após muito planejamento e execução, por fim, o [A\Bordo - Rede Social dos Velejadores]() veio ao mundo como o mais prazeroso e difícil desafio enfrentado até então por todas as colaboradoras.  
 Este projeto foi realizado com muito carinho e total dedicação e nenhum percalço foi capaz de impedir sua finalização.
 
 Conheça um pouco mais da versão para celulares.
 
 <p align='center'>
-  <img src='src/img/.png' widht='40%'>
+  <img src='src/img/abordo.login.celular.png' widht='40%'>
 </p>   
 
 <p align='center'>
@@ -146,7 +146,7 @@ Conheça um pouco mais da versão para celulares.
 E da versão para computadores.  
 
 <p align='center'>
-  <img src='src/img/.png' widht='40%'>
+  <img src='src/img/abordo.login.desk.png' widht='40%'>
 </p>   
 
 <p align='center'>
@@ -183,8 +183,7 @@ Aprendizagem Utilizada em Projeto
 :heavy_check_mark: Uso de onSnapshot | onAuthStateChanged  
 :heavy_check_mark: Firebase Storage  
 ### Testing
-:heavy_check_mark: Teste unitários  
- Testes assíncronos  
+:heavy_check_mark: Teste unitários   
 :heavy_check_mark: Mocking
 
 ### Git e Github
@@ -193,6 +192,7 @@ Aprendizagem Utilizada em Projeto
 
 ### Boas práticas de programação
 :heavy_check_mark: Criação de Boilerplate  
+:heavy_check_mark: Responsividade  
 :heavy_check_mark: Modularização  
 :heavy_check_mark: Nomenclatura / Semântica  
 :heavy_check_mark: Linting  
