@@ -3,6 +3,7 @@ import { createPost, getLikes, currentUser } from '../../services/index.js';
 import { printPost, loadPost } from '../../components/posts/posts.js';
 import { headerMenu } from '../../components/header/index.js';
 import { AsideFeed } from '../../components/aside-elements/index-aside.js';
+import { popUpNotice } from '../../components/popup/index.js';
 
 export const Feed = () => {
   const root = document.createElement('main');
@@ -46,9 +47,11 @@ export const Feed = () => {
   // publica criando o objeto no post-firestore
   btnPublish.addEventListener('click', () => {
     if (!textInput.value) {
-      alert('Escreva a sua mensagem!');
+      const messageText = '<span class="searchresult-text">Escreva a sua mensagem!</span>';
+      popUpNotice(messageText);
     } else if (!name) {
-      alert('Atualize o seu cadastro');
+      const messageText = '<span class="searchresult-text">Atualize o seu cadastro!</span>';
+      popUpNotice(messageText);
     } else {
       const postObj = {
         idUser,

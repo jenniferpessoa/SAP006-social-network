@@ -3,7 +3,7 @@
 /* eslint-disable no-restricted-syntax */
 import { updatePost, getPost, currentUser, createComment, getPublishComment } from '../../services/index.js';
 import { /*dateFormat,*/ deletePost, sendLike, displayComments, commentsPost, printComment, savePostSelected } from './postfunctions.js';
-
+import { popUpNotice } from '../../components/popup/index.js'
 
 const Post = (photoPost, nameUserPost, text, idUserPost, idPost, dateP, likesPost) => {
   const element = document.createElement('li');
@@ -116,7 +116,8 @@ function printPost(post) {
     if (saveEditButton === target) {
       const saveTextarea = postElement.querySelector('[data-textPost]').value;
       if (!saveTextarea) {
-        alert('Escreva a sua mensagem!');
+        const messageText = '<span class="searchresult-text">Escreva a sua mensagem!</span>';
+        popUpNotice(messageText);
         editTextarea.value = text;
       } else {
         updatePost(idPost, saveTextarea);
@@ -147,9 +148,11 @@ function printPost(post) {
     if (sendComment) {
       const commentText = postElement.querySelector('[data-commentInput]');
       if (!commentText.value) {
-        alert('Escreva a sua mensagem');
+        const messageText = '<span class="searchresult-text">Escreva a sua mensagem!</span>';
+        popUpNotice(messageText);
       } else if (!user.displayName) {
-        alert('Atualize o seu cadastro');
+        const messageText = '<span class="searchresult-text">Atualize o seu cadastro!</span>';
+        popUpNotice(messageText);
       } else {
         const dateComment = new Date();
         const commentObj = {

@@ -1,5 +1,6 @@
 import { getError } from '../Errors/index.js';
 import { navigation } from '../routes/navigation.js';
+import { popUpNotice } from '../../components/popup/index.js';
 
 const storage = firebase.storage();
 
@@ -11,7 +12,9 @@ const loginEmailAndPassword = (email, password) => {
         if (emailIsVerified) {
           navigation('/feed');
         } else {
-          alert('Faça a verificação do seu email. Enviamos o link para você!');
+          const messageText = '<span class="searchresult-text">Faça a verificação do seu email. Enviamos o link para você!</span>';
+          popUpNotice(messageText);
+          //alert('Faça a verificação do seu email. Enviamos o link para você!');
         }
       }).catch((error) => {
         getError(error);

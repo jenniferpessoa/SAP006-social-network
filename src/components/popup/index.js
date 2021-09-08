@@ -1,4 +1,4 @@
-const popUpNotice = (template) => {
+export const popUpNotice = (template) => {
   const root = document.querySelector('.root');
 
   const popupContainer = document.createElement('div');
@@ -80,4 +80,3 @@ export const modal = {
   },
 };
 
-export { popUpNotice };

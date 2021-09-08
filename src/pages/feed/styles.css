@@ -2,6 +2,8 @@
 @import url('../../components/aside-elements/style-aside.css');
 @import url('../../components/posts/style.css'); 
 @import url('../../components/weather/style.css');
+@import url('../../components/popup/style.css');
+
 
 .main {
   display: flex;
