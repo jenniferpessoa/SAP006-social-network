@@ -83,7 +83,7 @@ export const Profile = () => {
       downloadPicture(loggeduserId).then((url) => {
         const imgUrl = url;
 
-        loggedUser.updateProfile({
+        firebase.auth().currentUser.updateProfile({
           photoURL: imgUrl,
         });
         showPhoto();

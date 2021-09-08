@@ -53,11 +53,29 @@ export const Login = () => {
     navigation('/reset');
   });
 
+ // const userName = root.querySelector('.input-email').value;
+  // const userEmail = root.querySelector('.input-email').value;
+  // const userPassword = root.querySelector('.input-password').value;
+  // const validationSignup = rootElement.querySelector('#warning-signup');
+
+
+
+
+
+
+
   btnSignUp.addEventListener('click', () => navigation('/signup'));
 
   btnLogin.addEventListener('click', () => {
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
+    const errorSection = document.querySelector('.errors');
+
+    if (email === '') {
+      errorSection.innerHTML = '<p>Digite seu nome</p>';
+    } else if (password === '') {
+      errorSection.innerHTML = '<p>Digite uma senha</p>';
+    }
     loginEmailAndPassword(email, password);
   });
 
