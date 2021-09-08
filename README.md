@@ -1,18 +1,21 @@
 <h1 align='center'>
-Criando uma   Rede Social
-</h1
->
-## Índice
 
-- [Prefácio](prefácio)
-- [Idealização do Pojeto](idealização-do-projeto)
-- [3. Objetivos de aprendizagem](#3-objetivos-de-aprendizagem)
-- [4. Considerações gerais](#4-considerações-gerais)
-- [5. Critérios de aceitação mínimos do projeto](#5-criterios-de-aceitação-mínimos-do-projeto)
-- [6. Hacker edition](#6-hacker-edition)
-- [7. Entrega](#7-entrega)
-- [8. Guias, dicas e leituras complementares](#8-guias-dicas-e-leituras-complementares)
+Desenvolver uma Rede Social
+</h1>
 
+<h3>
+Índice
+</h3>
+
+- [Prefácio](#prefácio)
+- [Idealização do Pojeto](#idealização-do-projeto--)
+- [Por Que A\Bordo?](#por-que-abordo)
+- [Histórias de Usuário](#-histórias-de-usuário)
+- [Interface do Usuário](#interface-do-usuário--)
+- [Protótipo de Baixa Fidelidade e Teste de Usabilidade](#-protótipo-de-baixa-fidelidade-e-teste-de-usabilidade)
+- [Protótipos de Alta Fidelidade](#-protótipos-de-alta-fidelidade)
+- [Produto Final: Conhecendo o A\Bordo](#-produto-final-conhecendo-o-abordo)
+- [Aprendizagem Utilizada em Projeto](#aprendizagem-utilizada-em-projeto)
 ---
 
 <h1 align='center'>
@@ -60,33 +63,104 @@ Histórias de Usuário
 Com base nestas pesquisas e ao identificar a necessidade de nosso produto para os usuários, ao longo do projeto, criamos as 8 _User Stories_ a seguir para representar o que o usuário quer ver e fazer durante a utilização do produto.  
 
 <p align='center'>
-  <img src='src/img/U.S.1e2.png' widht='40%'>
+  <img src='src/img/User.Stories.1e2.png' widht='40%'>
 </p>
 <p align='center'>
-  <img src='src/img/U.S.3e4.png' widht='40%'>
+  <img src='src/img/User.Stories.3e4.png' widht='40%'>
 </p>
 <p align='center'>
-  <img src='src/img/U.S.5e6.png' widht='40%'>
+  <img src='src/img/User.Stories.5e6.png' widht='40%'>
 </p>
 <p align='center'>
-  <img src='src/img/U.S.7e8.png' widht='40%'>
+  <img src='src/img/User.Stories.7e8.png' widht='40%'>
 </p>  
 
 Todos as histórias tiveram como premisa as seguintes características para serem finalizadas e obterem em sua _Definição de Pronto_ a inclusão dos seguintes pontos:  
 
-:heavy_check_mark: Ser Responsiva;  
+:heavy_check_mark: Ser Responsivo;  
 :heavy_check_mark: Realizar os Testes Unitários;  
 :heavy_check_mark: Receber revisão de código da equipe;  
 :heavy_check_mark: Realizar testes manuais buscando erros e imperfeições simples.   
 
 
-## 3. Objetivos de aprendizagem
+<h1 align='center'>
+Interface do Usuário  
+</h1>  
 
-O objetivo principal de aprendizagem deste projeto é construir uma [Single-page
-Application
-(SPA)](https://pt.wikipedia.org/wiki/Aplicativo_de_p%C3%A1gina_%C3%BAnica)
-[_responsiva_](../../topics/css/02-responsive) (com mais de uma tela/ página) na
-qual seja possível **ler e escrever dados.**
+<h2 align='center'> 
+Protótipo de Baixa Fidelidade e Teste de Usabilidade
+</h2>  
+
+Após definido o tema de nosso produto, desenhamos um protótipo de baixa fidelidade, cujo o objetivo é desenhar um fluxo que o usuário seguiria para acessar o aplicativo.  
+
+<p align='center'>
+  <img src='src/img/prototipo.baixa_sailers.png' widht='40%'>
+</p>  
+
+Inicialmente, o <b color='blue'>A\Bordo</b> se chamava Sailers de modo paleativo e este protótipo de baixa fidelidade seguiu para o teste de usabilidade, onde recebemos diversos feedbacks reordenando os botões e textos e então, foi definida uma interface do usuário (UI) para o protótipo de alta fidelidade, seguindo o fluxo de forma mais intuitiva e ordenada.  
+
+<h2 align='center'> 
+Protótipos de Alta Fidelidade
+</h2>  
+
+Considerando que a maior parte da população acessa suas aplicações pelo celular em qualquer lugar do mundo com sinal de rede (ou Wifi), os protótipos de alta fidelidade seguiram a linha de responsividade _Mobile First_ durante o design, e assim ir se desenvolvendo para aparelhos maiores.  
+
+<p align='center'>
+  <img src='src/img/prototipo.alta.fidelidade.celular.png' widht='40%'>
+</p>  
+<p align='center'>
+  <img src='src/img/prototipo.alta.fid.login-perfil.cel.png' widht='40%'>
+</p>  
+
+E ao pensar em uso em tablets grandes e computadores, decidimos por manter a interface leve e clean, desenvolvendo o produto para ser carregado de forma eficiente e sem muitas informações extras.  
+
+<p align='center'>
+  <img src='src/img/prototipo.alta.fidelidade.login.png' widht='40%'>
+</p>  
+<p align='center'>
+  <img src='src/img/prototipo.alta.fidelidade.feed.png' widht='40%'>
+</p>  
+
+
+<h2 align='center'> 
+Produto Final: Conhecendo o A\Bordo
+</h2>  
+
+E assim, após muito planejamento e execução, por fim, o [A\Bordo - Rede Social dos Velejadores]() veio ao mundo como o mais prazeroso e difícil desafio enfrentado até então por todas as colaboradoras.  
+Este projeto foi realizado com muito carinho e total dedicação e nenhum percalço foi capaz de impedir sua finalização.
+
+Conheça um pouco mais da versão para celulares.
+
+<p align='center'>
+  <img src='src/img/abordo.login.celular.png' widht='40%'>
+</p>   
+
+<p align='center'>
+  <img src='src/img/.png' widht='40%'>
+</p>  
+
+<p align='center'>
+  <img src='src/img/.png' widht='40%'>
+</p>   
+
+E da versão para computadores.  
+
+<p align='center'>
+  <img src='src/img/abordo.login.desk.png' widht='40%'>
+</p>   
+
+<p align='center'>
+  <img src='src/img/.png' widht='40%'>
+</p>  
+
+<p align='center'>
+  <img src='src/img/.png' widht='40%'>
+</p>  
+
+
+<h1 align='center'>
+Aprendizagem Utilizada em Projeto
+</h1> 
 
 ### HTML e CSS
 
@@ -109,8 +183,7 @@ qual seja possível **ler e escrever dados.**
 :heavy_check_mark: Uso de onSnapshot | onAuthStateChanged  
 :heavy_check_mark: Firebase Storage  
 ### Testing
-:heavy_check_mark: Teste unitários  
- Testes assíncronos  
+:heavy_check_mark: Teste unitários   
 :heavy_check_mark: Mocking
 
 ### Git e Github
@@ -119,44 +192,7 @@ qual seja possível **ler e escrever dados.**
 
 ### Boas práticas de programação
 :heavy_check_mark: Criação de Boilerplate  
+:heavy_check_mark: Responsividade  
 :heavy_check_mark: Modularização  
 :heavy_check_mark: Nomenclatura / Semântica  
 :heavy_check_mark: Linting  
-
----
-----------------------------------CONTINUAR DAQUI--------------------------
-
-### 5.4 Desenho da Interface de Usuário (protótipo de baixa fidelidade)
-
-Você deve definir qual será o fluxo que o usuário seguirá dentro do seu
-aplicativo e, com isso, criar a interface do usuário (UI) que siga este fluxo.
-### 5.5 Responsivo
-
-Deve funcionar bem em dispositivos de tela grande (computadores, laptops etc.) e
-pequena (_tablets_, telefones celulares etc.). Sugerimos seguir a técnica
-_`mobile first`_ (mais detalhes sobre essa técnica ao final).
-
-### 5.6 Considerações sobre o comportamento da Interface do Usuário (UI)
-
-Essas considerações ajudarão você a escrever as definições de pronto de sua
-H.U.:
-
-### 5.8 Considerações técnicas UX
-
-- Faça pelo menos 2 entrevistas com os usuários.
-- Faça um protótipo de baixa fidelidade.
-- Verifique se a implementação do código segue as diretrizes do protótipo.
-- Faça sessões de teste de usabilidade com o produto em HTML.
-### 8.2. Mobile first
-
-O conceito de [_mobile
-first_](https://tableless.com.br/mobile-first-a-arte-de-pensar-com-foco/) faz
-referência a um processo de desenho e desenvolvimento que parte de como se vê e
-como funciona uma aplicação primeiro em um dispositivo móvel e mais adiante se
-analisa como adaptar a aplicação à telas progressivamente maiores. Esta é uma
-contraposição ao modelo tradicional, no qual primeiro se desenha os websites (ou
-webapps) para desktops e depois os adaptam para telas menores.
-
-A motivação aqui é se assegurar que desde o começo sejam desenhadas telas
-_responsivas_. Dessa forma, começamos com a aparência e o comportamento do
-aplicativo em uma tela e ambiente móvel.
