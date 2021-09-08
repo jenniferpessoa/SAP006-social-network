@@ -14,14 +14,14 @@ const Post = (photoPost, nameUserPost, text, idUserPost, idPost, dateP, likesPos
         <img id='photoPost-${idPost}' class='imageCirclePostUser' src='${photoPost}' height="40px" width="40px">
         <p class='username'>${nameUserPost}</p>       
       </section>
-      <section class='sectionSaveDate'>
-      <time datetime='${dateP}' id='postDate' class='postDate'>${dateP}</time>
-      <i data-saveAnchorPost='${idPost}'  type='button' id='${idPost}' class="fas fa-anchor"></i>
-                 
+      <section class='sectionSaveDate'>      
+      <i data-saveAnchorPost='${idPost}'  type='button' id='${idPost}' class="fas fa-anchor"></i>                 
       </section>
     </header> 
     <form class='formContainer'>
-      <textarea data-textPost='${idPost}' id='textarea-${idPost}' class='postInput' disabled>${text}</textarea>      
+      <time datetime='${dateP}' id='postDate' class='postDate'>${dateP}</time> 
+      <textarea data-textPost='${idPost}' id='textarea-${idPost}' class='postInput' disabled>${text}</textarea>  
+         
       <section id='section' class='postBtnContainer'>
         <i type='button' data-comments='${idPost}' id='comment-${idPost}'  class="far fa-comments"></i>
         

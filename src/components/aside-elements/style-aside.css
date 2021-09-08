@@ -52,11 +52,12 @@
   float: right;
   align-items: center;
   resize: none;
-  cursor: pointer 
+  cursor: pointer; 
 }
 
-.material-icons {
-  color: blue;  
+.material-icons:hover {
+  transform: rotate(500grad);
+  transition: 3s ease;  
 }
 
 .resultSearchContainer {
@@ -84,12 +85,18 @@
 .profile-feed {
   box-sizing: border-box;
   background-color: white;
-  width: 100%;
+  width: 90%;
+  margin: 0 auto;
   font-size: 13px;
   text-rendering: optimizeLegibility;
   box-sizing: border-box;
   border-radius: 10px;
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.profileInfoFeed {
+  width: 80%;
+  margin: 10% 0 10% 10%;
 }
 
 .panel {
@@ -103,16 +110,22 @@
   text-align: center;
 }
 
-.profileInfoFeed .user-heading .feedProfilePicture .userPicture {
-  width: 100px;
-  height: 100px;
+.profileInfoFeed /*.user-heading */.feedProfilePicture .userPicture {
+  width: 80px;
+  /*height: 100px;*/
   border-radius: 50%;
   margin: 4% 0 2% 0;
 
 }
 
+/* .feedProfilePicture .userPicture {
+  width: 100px;
+  border-radius: 50%;
+  margin: 4% 0 2% 0;
+} */
+
 .profileInfoFeed .user-heading .userName {
-  font-size: 22px;
+  font-size: 18px;
   font-weight: 300;
 }
 
@@ -135,4 +148,21 @@
   padding-right: 10px;
   color: #ffd632;
 }
+
+@media screen and (max-width: 768px) { 
+  .profileInfoFeed {
+    width: 80%;
+    margin: 10% 0 10% 10%;
+  }
+} 
+
+@media screen and (max-width: 1250px) { 
+  .profile-feed {
+    width: 80%;
+  }
+  .profileInfoFeed .user-heading .userName {
+    font-size: 15px;    
+  } 
+} 
+
 
