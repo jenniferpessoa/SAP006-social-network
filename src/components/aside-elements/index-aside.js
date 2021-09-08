@@ -17,7 +17,7 @@ export const AsideFeed = (root, idUser, name, email, photo, searchContainer, tim
     </section>
   </section>
   <section class='profile-feed'>
-    <div class="profileInfoFeed col-md-3">
+    <div class="profileInfoFeed">
       <div class="panel">
         <div class="user-heading round">
           <figure class='feedProfilePicture'>            

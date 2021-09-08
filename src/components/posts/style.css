@@ -10,7 +10,6 @@
   background-color: #fafafa;
 }
 
-
 .fa-heart::before {
   font-size: 25px;
   color: #ffd632;
@@ -27,6 +26,10 @@
   padding: 2% 2% 0 2%;
   margin-left: 2%;
   cursor: pointer;
+}
+
+.fa-anchor:hover {
+  font-size: 25px;
 }
 
 .fa-edit::before {
@@ -81,33 +84,11 @@
   display: block;
 }
 
-/*.editBtn {
-  border: none;
-  border-radius: 5px;
-  padding: 5px;
-  margin-right: 1%;
-  background-color: #ffd632;
-  color: #1f1f4b;
-  width: 60px;
-  display: none;
-}*/
-
-/* .deleteBtn {
-  border: none;
-  border-radius: 5px;
-  padding: 5px;
-  margin-right: 1%;
-  background-color: #ffd632;
-  color: #1f1f4b;
-  width: 60px;
-  display: none;
-} */
-
 .fa-comments {
   font-size: 25px;
   color: #ffd632;
   padding: 5px;
-  margin-right: 70%;
+  margin-right: auto;
   width: 60px;
   cursor: pointer;  
 }
@@ -115,5 +96,3 @@
 .commentBtn {
   margin-right: auto;
 }
-
-
