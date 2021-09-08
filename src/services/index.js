@@ -13,7 +13,7 @@ const loginEmailAndPassword = (email, password) => {
 
 const loginWithGmail = () => {
   const provider = new firebase.auth.GoogleAuthProvider();
-  firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL).then(() => {
+  firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION).then(() => {
     firebase.auth().signInWithPopup(provider).then(() => navigation('/feed'));
   }).catch((error) => {
     getError(error);
