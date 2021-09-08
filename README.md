@@ -126,22 +126,37 @@ E ao pensar em uso em tablets grandes e computadores, decidimos por manter a int
 Produto Final: Conhecendo o A\Bordo
 </h2>  
 
-E assim, após muito planejamento e execução, por fim, o [A\Bordo - Rede Social dos Velejadores]() veio ao mundo como o mais prazeroso e difícil desafio enfrentado até então por todas as colaboradoras.  
+E assim, após muito planejamento e execução, por fim, o [A\Bordo - Rede Social dos Velejadores](https://social-network-c20e5.web.app/) veio ao mundo como o mais prazeroso e difícil desafio enfrentado até então por todas as colaboradoras.  
 Este projeto foi realizado com muito carinho e total dedicação e nenhum percalço foi capaz de impedir sua finalização.
 
-Conheça um pouco mais da versão para celulares.
+Conheça um pouco mais da versão para celulares.  
+
+O aplicativo não permite acesso sem verificação de e-mail válido e o usuário será informado caso algum campo não esteja preenchido ou contenha informaçẽos inválidas.  
+É possível também realizar o cadastro e login ao clicar no botão de _Entrar com o Google_.  
+Caso o usuário também tenha esquecido sua senha, é possível recuperar a senha ao clicar em _Esqueci a Senha_.
+
 
 <p align='center'>
   <img src='src/img/abordo.login.celular.png' widht='40%'>
 </p>   
 
 <p align='center'>
-  <img src='src/img/.png' widht='40%'>
+  <img src='src/img/abordo.profile.celular.png' widht='40%'>
+</p> 
+
+<p align='center'>
+  <img src='src/img/abordo.feed.infos.celular.png' widht='40%'>
 </p>  
 
 <p align='center'>
-  <img src='src/img/.png' widht='40%'>
+  <img src='src/img/abordo.feed.posts.celular.png' widht='40%'>
 </p>   
+
+E ao clicar no menu exclusivo para celular no topo da tela à direita, abre as opções para acessar o perfil, realizar a mudança de idiomas e sair do seu acesso.  
+
+<p align='center'>
+  <img src='src/img/abordo.menu.celular.png' widht='40%'>
+</p> 
 
 E da versão para computadores.  
 
@@ -150,11 +165,33 @@ E da versão para computadores.
 </p>   
 
 <p align='center'>
-  <img src='src/img/.png' widht='40%'>
+  <img src='src/img/abordo.profile.desk.png' widht='40%'>
+</p>  
+
+Vale ressaltar, que tanto a versão para celular quanto para computador, o usuário pode editar e deletar seu post; curtir, comentar e deletar o comentário nos posts de outros usuários.  
+
+<p align='center'>
+  <img src='src/img/abordo.feed.edit.coment.desk.png' widht='40%'>
+</p>  
+
+A previsão do tempo se ajusta a localização do usuário e o aplicativo foi desenhado para atender um público internacional, realizando a troca de idiomas em 4 opções.  
+
+<p align='center'>
+  <img src='src/img/abordo.idiomas.feed.desk.png' widht='40%'>
+</p>
+
+<p align='center'>
+  <img src='src/img/abordo.ingles.feed.desk.png' widht='40%'>
+</p>
+
+O usuário pode também salvar seus posts favoritos para ver depois e por fim, realizar uma busca por palavra-chave, tendo também a opção de limpar tanto a pesquisa, quanto para sair dos itens salvos.  
+
+<p align='center'>
+  <img src='src/img/abordo.salvos.feed.desk.png' widht='40%'>
 </p>  
 
 <p align='center'>
-  <img src='src/img/.png' widht='40%'>
+  <img src='src/img/abordo.pesquisa.feed.desk.png' widht='40%'>
 </p>  
 
 
